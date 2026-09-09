@@ -4,8 +4,7 @@ import {
   GOAL_STATS, 
   INITIATIVE_CARDS, 
   PERSONA_STORY, 
-  TESTIMONIAL_QUOTE,
-  CATEGORIES 
+  TESTIMONIAL_QUOTE
 } from '../data/mockData';
 
 export default function Home() {
