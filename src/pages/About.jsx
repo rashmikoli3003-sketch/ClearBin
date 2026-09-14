@@ -1,87 +1,231 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 
 export default function About() {
+  const { showToast } = useApp();
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [contactMessage, setContactMessage] = useState('');
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    showToast(`✉️ Thank you ${contactName}! Your message has been sent to ClearBin team.`);
+    setContactName('');
+    setContactEmail('');
+    setContactMessage('');
+  };
+
   return (
-    <div className="container" style={{ padding: '3.5rem 1.5rem', maxWidth: '960px' }}>
+    <div className="container" style={{ padding: '4rem 1.5rem', maxWidth: '1080px' }}>
       {/* Page Header */}
       <div className="section-header" style={{ marginBottom: '3.5rem' }}>
-        <span className="section-tag">Vision & Purpose</span>
+        <span className="section-tag">Vision & Contact</span>
         <h1 className="section-title">Rethinking Waste as Resource Capital</h1>
         <p className="section-desc">
           How ClearBin solves household waste misallocation while supporting informal waste worker livelihoods and local creative upcyclers.
         </p>
       </div>
 
-      {/* Problem Statement Card */}
-      <div className="card" style={{ padding: '2.5rem', marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ fontSize: '1.75rem' }}>🚨</span>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>The Problem Statement</h2>
+      {/* 1. Clean 3-Card Contact-Info Row (From Image 3 - Lawncare) */}
+      <div className="contact-cards-grid">
+        <div className="contact-card-item">
+          <div className="contact-icon-circle">📞</div>
+          <h3 className="contact-card-title">(+91) 98765-43210</h3>
+          <p className="contact-card-detail">
+            Direct helpline for household waste batch scheduling & artisan support.
+          </p>
         </div>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.25rem' }}>
-          Millions of tons of potentially reusable household materials — clean PET bottles, glass jars, denim fabric, and working e-waste — are sent to municipal landfills every day.
-        </p>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-          <strong>Why do households discard valuable waste?</strong>
-        </p>
-        <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', marginTop: '0.75rem', lineHeight: '1.8' }}>
-          <li><strong>Inconvenience & Friction:</strong> No simple way to find who needs small quantities of specific waste.</li>
-          <li><strong>Lack of Trust & Transparency:</strong> Households rarely know if segregated waste actually gets recycled or just dumped.</li>
-          <li><strong>Zero Feedback Loop:</strong> Discarding feels unrewarding and invisible.</li>
-        </ul>
-      </div>
 
-      {/* The ClearBin Loop Solution */}
-      <div className="card" style={{ padding: '2.5rem', marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ fontSize: '1.75rem' }}>🔄</span>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>The ClearBin Circular Loop</h2>
+        <div className="contact-card-item">
+          <div className="contact-icon-circle" style={{ background: 'var(--primary-leaf)' }}>✉️</div>
+          <h3 className="contact-card-title">hello@clearbin.org</h3>
+          <p className="contact-card-detail">
+            Inquiries for artisan partnerships, NGO registration & corporate CSR.
+          </p>
         </div>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
-          ClearBin creates a decentralized peer-to-artisan waste exchange that turns discarded items into raw materials for local creators:
-        </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
-          <div style={{ background: 'var(--bg-surface-elevated)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-            <h4 style={{ color: 'var(--primary-light)', marginBottom: '0.5rem' }}>1. Hyperlocal Match</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Connects sellers with nearby upcyclers based on material demand and geographic distance.</p>
-          </div>
-
-          <div style={{ background: 'var(--bg-surface-elevated)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-            <h4 style={{ color: 'var(--primary-light)', marginBottom: '0.5rem' }}>2. Verified Proof</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Track handoffs and see the transformed end-product in our public showcase.</p>
-          </div>
-
-          <div style={{ background: 'var(--bg-surface-elevated)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-            <h4 style={{ color: 'var(--primary-light)', marginBottom: '0.5rem' }}>3. Incentive Points</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>Earn EcoPoints per handoff to redeem for eco-friendly goods or discount perks.</p>
-          </div>
+        <div className="contact-card-item">
+          <div className="contact-icon-circle" style={{ background: 'var(--accent-terracotta)' }}>📍</div>
+          <h3 className="contact-card-title">Pune Ward 4, India</h3>
+          <p className="contact-card-detail">
+            Grassroots sorting hub & Upcycling Community Studio.
+          </p>
         </div>
       </div>
 
-      {/* Empowering Informal Waste Pickers & Artisans */}
-      <div className="card" style={{ padding: '2.5rem', marginBottom: '2.5rem', borderLeft: '4px solid var(--primary-emerald)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ fontSize: '1.75rem' }}>🤝</span>
-          <h2 style={{ fontSize: '1.6rem', color: 'var(--text-primary)' }}>Livelihood & Informal Worker Empowerment</h2>
+      {/* 2. Problem Statement & Mission Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
+        {/* Problem Card */}
+        <div className="card" style={{ padding: '2.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ fontSize: '1.75rem' }}>🚨</span>
+            <h2 style={{ fontSize: '1.5rem', color: 'var(--primary-forest)' }}>The Waste Misallocation Problem</h2>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.25rem' }}>
+            Millions of tons of clean PET bottles, glass jars, denim, and e-waste are dumped into municipal landfills every day simply because households lack a direct connection to local upcyclers.
+          </p>
+          <ul className="mission-checklist">
+            <li>
+              <span className="mission-check-icon">✓</span>
+              <span><strong>Friction:</strong> No simple way to match small waste batches with nearby artisans.</span>
+            </li>
+            <li>
+              <span className="mission-check-icon">✓</span>
+              <span><strong>No Feedback Loop:</strong> Household waste sorting feels invisible and unrewarding.</span>
+            </li>
+          </ul>
         </div>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1rem' }}>
-          In developing urban economies, informal waste pickers and micro-artisans perform the heavy lifting of waste recovery under dangerous conditions with poor compensation.
-        </p>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-          <strong>ClearBin provides:</strong>
-        </p>
-        <ul style={{ color: 'var(--text-secondary)', paddingLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
-          <li><strong>Dignified Pre-Sorted Supply:</strong> Direct access to clean, segregated household materials without digging through mixed landfills.</li>
-          <li><strong>Direct Economic Uplift:</strong> Artisans reduce raw material purchasing costs, boosting earnings by up to 35%.</li>
-          <li><strong>Formal Recognition:</strong> Connecting informal collectives with eco-conscious consumers and corporate sustainability programs.</li>
-        </ul>
+
+        {/* Livelihoods Card */}
+        <div className="card" style={{ padding: '2.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ fontSize: '1.75rem' }}>🤝</span>
+            <h2 style={{ fontSize: '1.5rem', color: 'var(--primary-forest)' }}>Livelihood & Worker Empowerment</h2>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.25rem' }}>
+            Informal waste pickers perform essential recovery work under tough conditions. ClearBin provides pre-sorted, clean household supply directly to artisan collectives.
+          </p>
+          <ul className="mission-checklist">
+            <li>
+              <span className="mission-check-icon">✓</span>
+              <span><strong>Dignified Supply:</strong> Clean household materials without landfill digging.</span>
+            </li>
+            <li>
+              <span className="mission-check-icon">✓</span>
+              <span><strong>Income Boost:</strong> Artisans cut raw material costs, boosting earnings by 35%.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* 3. Two-Column "Get In Touch" Section (From Image 3 - Lawncare) */}
+      <div className="contact-form-layout" style={{ marginBottom: '4rem' }}>
+        {/* Left Column: Hours & Info */}
+        <div>
+          <span className="section-tag" style={{ textAlign: 'left' }}>Reach Our Team</span>
+          <h2 className="section-title" style={{ textAlign: 'left', fontSize: '1.8rem', marginBottom: '1rem' }}>
+            Our Working Hours & Hubs
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+            Our neighborhood pickup team and artisan workshop coordinators operate Monday through Saturday.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.95rem', color: 'var(--text-primary)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span>🕒</span>
+              <div>
+                <strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span>📅</span>
+              <div>
+                <strong>Saturday:</strong> 9:00 AM - 4:00 PM
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span>🚫</span>
+              <div>
+                <strong>Sunday:</strong> Closed (Scheduled automated pickups active)
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
+            <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-forest)', marginBottom: '0.5rem' }}>
+              📍 Sorting Hub Location:
+            </h4>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+              ClearBin Upcycling Hub, Plot 14, Block 4, Kothrud Ward, Pune, MH 411038
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column: Contact Form */}
+        <div>
+          <h3 style={{ fontSize: '1.5rem', marginBottom: '1.25rem', color: 'var(--primary-forest)' }}>
+            Get In Touch !
+          </h3>
+          
+          <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div>
+              <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                Your Name
+              </label>
+              <input
+                type="text"
+                value={contactName}
+                onChange={(e) => setContactName(e.target.value)}
+                placeholder="Enter your name..."
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.85rem 1.1rem',
+                  background: 'var(--bg-main)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-full)',
+                  outline: 'none',
+                  color: 'var(--text-primary)'
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                Email Address
+              </label>
+              <input
+                type="email"
+                value={contactEmail}
+                onChange={(e) => setContactEmail(e.target.value)}
+                placeholder="Enter your email address..."
+                required
+                style={{
+                  width: '100%',
+                  padding: '0.85rem 1.1rem',
+                  background: 'var(--bg-main)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-full)',
+                  outline: 'none',
+                  color: 'var(--text-primary)'
+                }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                Message
+              </label>
+              <textarea
+                value={contactMessage}
+                onChange={(e) => setContactMessage(e.target.value)}
+                placeholder="Write your message or inquiry here..."
+                required
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: '0.85rem 1.1rem',
+                  background: 'var(--bg-main)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-md)',
+                  outline: 'none',
+                  color: 'var(--text-primary)',
+                  resize: 'vertical'
+                }}
+              />
+            </div>
+
+            <button type="submit" className="btn btn-primary btn-full">
+              Submit Message ➔
+            </button>
+          </form>
+        </div>
       </div>
 
       {/* CTA Box */}
-      <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Ready to test the prototype?</h3>
+      <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--primary-forest)' }}>Ready to post your reusable waste?</h3>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
           <Link to="/post" className="btn btn-primary btn-lg">
             Post Waste Item ➔

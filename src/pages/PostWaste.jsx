@@ -244,10 +244,10 @@ export default function PostWaste() {
               onChange={(e) => setCategory(e.target.value)}
               style={{
                 width: '100%',
-                padding: '0.85rem 1rem',
-                background: 'var(--bg-surface-elevated)',
+                padding: '0.85rem 1.25rem',
+                background: 'var(--bg-main)',
                 border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
+                borderRadius: 'var(--radius-full)',
                 color: 'var(--text-primary)',
                 fontSize: '1rem',
                 outline: 'none'
@@ -274,10 +274,10 @@ export default function PostWaste() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: 'var(--primary-light)',
+                  color: 'var(--primary-forest)',
                   cursor: 'pointer',
                   fontSize: '0.825rem',
-                  fontWeight: '600'
+                  fontWeight: '700'
                 }}
               >
                 {isLocating ? '📍 Detecting...' : '📍 Use Current GPS'}
@@ -292,10 +292,10 @@ export default function PostWaste() {
               required
               style={{
                 width: '100%',
-                padding: '0.85rem 1rem',
-                background: 'var(--bg-surface-elevated)',
+                padding: '0.85rem 1.25rem',
+                background: 'var(--bg-main)',
                 border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-md)',
+                borderRadius: 'var(--radius-full)',
                 color: 'var(--text-primary)',
                 fontSize: '1rem',
                 outline: 'none'
@@ -318,10 +318,10 @@ export default function PostWaste() {
                 required
                 style={{
                   width: '100%',
-                  padding: '0.85rem 1rem',
-                  background: 'var(--bg-surface-elevated)',
+                  padding: '0.85rem 1.25rem',
+                  background: 'var(--bg-main)',
                   border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-md)',
+                  borderRadius: 'var(--radius-full)',
                   color: 'var(--text-primary)',
                   fontSize: '0.95rem',
                   outline: 'none'
@@ -340,10 +340,10 @@ export default function PostWaste() {
                 placeholder="e.g. Clean, sorted, dry"
                 style={{
                   width: '100%',
-                  padding: '0.85rem 1rem',
-                  background: 'var(--bg-surface-elevated)',
+                  padding: '0.85rem 1.25rem',
+                  background: 'var(--bg-main)',
                   border: '1px solid var(--border-subtle)',
-                  borderRadius: 'var(--radius-md)',
+                  borderRadius: 'var(--radius-full)',
                   color: 'var(--text-primary)',
                   fontSize: '0.95rem',
                   outline: 'none'

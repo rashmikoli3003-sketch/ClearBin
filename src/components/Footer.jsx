@@ -5,58 +5,82 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-disclaimer">
-          <span style={{ fontSize: '1.25rem' }}>💡</span>
+        {/* Prototype Banner */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.08)',
+          border: '1px dashed rgba(255, 255, 255, 0.2)',
+          borderRadius: 'var(--radius-md)',
+          padding: '1.1rem 1.5rem',
+          fontSize: '0.875rem',
+          color: '#EAF4ED',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.85rem',
+          marginBottom: '3rem'
+        }}>
+          <span style={{ fontSize: '1.35rem' }}>💡</span>
           <div>
-            <strong>Hackathon Submission Reference Build:</strong> ClearBin is a conceptual frontend prototype demonstrating the circular waste-to-artisan loop using mock state and static data. No backend connection is required.
+            <strong>ClearBin Platform Build:</strong> Connecting households with local upcycling artisans & waste recovery collectives using live Firestore database persistence.
           </div>
         </div>
 
+        {/* 4-Column Footer Grid (From Image 3 - Lawncare) */}
         <div className="footer-grid">
+          {/* Brand Col */}
           <div className="footer-brand">
-            <div className="logo-link" style={{ marginBottom: '0.5rem' }}>
+            <div className="logo-link" style={{ marginBottom: '0.75rem' }}>
               <div className="logo-icon">🗑️</div>
-              <span>ClearBin</span>
+              <span style={{ color: '#FFFFFF' }}>ClearBin</span>
             </div>
-            <p>
-              Transforming household waste into creative capital. Connecting households with local artisans, upcyclers, and NGOs.
+            <p style={{ color: '#D1E0D7', fontSize: '0.925rem', lineHeight: '1.6' }}>
+              Transforming household waste into creative capital. Connecting households directly with local artisans, upcyclers, and NGOs.
             </p>
+            <div style={{ display: 'flex', gap: '0.85rem', marginTop: '1.25rem', fontSize: '1.25rem' }}>
+              <span style={{ cursor: 'pointer' }}>🌐</span>
+              <span style={{ cursor: 'pointer' }}>🌱</span>
+              <span style={{ cursor: 'pointer' }}>♻️</span>
+              <span style={{ cursor: 'pointer' }}>💬</span>
+            </div>
           </div>
 
-          <div className="footer-col">
-            <h4>Platform</h4>
+          {/* Platform Navigation */}
+          <div>
+            <h4>Navigation</h4>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
+              <li><Link to="/">Homepage</Link></li>
               <li><Link to="/post">Post Reusable Waste</Link></li>
-              <li><Link to="/matches">Browse Local Matches</Link></li>
+              <li><Link to="/matches">Browse Local Upcyclers</Link></li>
               <li><Link to="/showcase">Before & After Gallery</Link></li>
             </ul>
           </div>
 
-          <div className="footer-col">
-            <h4>Waste Streams</h4>
+          {/* Quick Links / Initiatives */}
+          <div>
+            <h4>Quick Links</h4>
             <ul className="footer-links">
-              <li><Link to="/post">PET & HDPE Plastics</Link></li>
-              <li><Link to="/post">Glass Bottles & Jars</Link></li>
-              <li><Link to="/post">Textiles & Fabrics</Link></li>
-              <li><Link to="/post">E-Waste & Batteries</Link></li>
+              <li><Link to="/about">Problem Statement</Link></li>
+              <li><Link to="/about">Informal Waste Pickers</Link></li>
+              <li><Link to="/about">Artisan Empowerment</Link></li>
+              <li><Link to="/about">Circular Loop Model</Link></li>
             </ul>
           </div>
 
-          <div className="footer-col">
-            <h4>Impact & Vision</h4>
-            <ul className="footer-links">
-              <li><Link to="/about">Problem Statement</Link></li>
-              <li><Link to="/about">Informal Waste Workers</Link></li>
-              <li><Link to="/about">Artisan Empowerment</Link></li>
-              <li><Link to="/about">Circular Model</Link></li>
-            </ul>
+          {/* Work Hours & Contact (From Image 3 - Lawncare) */}
+          <div>
+            <h4>Work Hours & Contact</h4>
+            <div style={{ fontSize: '0.9rem', color: '#D1E0D7', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <div>🕒 <strong>Mon - Fri:</strong> 8:00 AM - 6:00 PM</div>
+              <div>📅 <strong>Saturday:</strong> 9:00 AM - 4:00 PM</div>
+              <div>📞 <strong>Helpline:</strong> (+91) 98765-43210</div>
+              <div>✉️ <strong>Email:</strong> hello@clearbin.org</div>
+            </div>
           </div>
         </div>
 
+        {/* Footer Bottom Bar */}
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} ClearBin — Hackathon Demo Build. Built for circular economy innovation.</p>
-          <p>React + Vite + Plain CSS</p>
+          <p>© {new Date().getFullYear()} ClearBin — Reusable Waste & Circular Economy Platform. All Rights Reserved.</p>
+          <p>React + Vite + Firebase Firestore</p>
         </div>
       </div>
     </footer>

@@ -15,8 +15,8 @@ export default function Navbar() {
         <NavLink to="/" className="logo-link" onClick={closeMenu}>
           <div className="logo-icon">🗑️</div>
           <span>ClearBin</span>
-          <span className="logo-badge" style={{ background: 'var(--primary-emerald)', color: '#fff' }}>
-            Prototype
+          <span className="logo-badge">
+            Circular
           </span>
         </NavLink>
 
@@ -41,7 +41,7 @@ export default function Navbar() {
           </div>
           <div className="nav-item">
             <NavLink to="/matches" onClick={closeMenu}>
-              Browse Matches
+              Browse Upcyclers
             </NavLink>
           </div>
           <div className="nav-item">
@@ -51,7 +51,7 @@ export default function Navbar() {
           </div>
           <div className="nav-item">
             <NavLink to="/about" onClick={closeMenu}>
-              About / Problem
+              About / Vision
             </NavLink>
           </div>
 
@@ -63,11 +63,11 @@ export default function Navbar() {
                 setIsAiModalOpen(true);
               }}
               style={{
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2))',
-                border: '1px solid rgba(168, 85, 247, 0.5)',
-                color: '#e9d5ff',
+                background: 'linear-gradient(135deg, rgba(46, 125, 50, 0.12), rgba(132, 204, 22, 0.12))',
+                border: '1px solid var(--primary-leaf)',
+                color: 'var(--primary-forest)',
                 borderRadius: 'var(--radius-full)',
-                padding: '0.4rem 0.85rem',
+                padding: '0.45rem 0.95rem',
                 fontSize: '0.85rem',
                 fontWeight: '700',
                 cursor: 'pointer',
@@ -91,11 +91,11 @@ export default function Navbar() {
                 setIsRewardsOpen(true);
               }}
               style={{
-                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2))',
-                border: '1px solid var(--primary-emerald)',
-                color: 'var(--primary-light)',
+                background: 'linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(194, 65, 12, 0.12))',
+                border: '1px solid var(--accent-amber)',
+                color: 'var(--accent-terracotta)',
                 borderRadius: 'var(--radius-full)',
-                padding: '0.4rem 0.85rem',
+                padding: '0.45rem 0.95rem',
                 fontSize: '0.85rem',
                 fontWeight: '700',
                 cursor: 'pointer',
