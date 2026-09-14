@@ -177,7 +177,7 @@ export default function Matches() {
           </div>
 
           {filteredMatches.length === 0 && (
-            <div className="card-parchment reveal-on-scroll" style={{ padding: '3rem', textAlign: 'center' }}>
+            <div className="card-kraft reveal-on-scroll" style={{ padding: '3rem', textAlign: 'center' }}>
               No upcyclers found matching your search. Try resetting filters.
             </div>
           )}
@@ -188,12 +188,12 @@ export default function Matches() {
       {activeTab === 'pickups' && (
         <div style={{ maxWidth: '860px', margin: '0 auto' }}>
           {pickupRequests.length === 0 ? (
-            <div className="card-parchment reveal-on-scroll" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+            <div className="card-kraft reveal-on-scroll" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚚</div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: '#163023', fontFamily: 'var(--font-heading)' }}>
                 No Active Pickups Scheduled
               </h3>
-              <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.5rem' }}>
+              <p style={{ color: '#2C4A38', marginBottom: '1.5rem', fontWeight: '500' }}>
                 Browse our upcycler directory or post your waste to schedule doorstep pickups and earn EcoPoints.
               </p>
               <button onClick={() => setActiveTab('directory')} className="btn btn-primary">

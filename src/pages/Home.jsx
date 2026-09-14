@@ -4,7 +4,7 @@ import {
   GOAL_STATS, 
   PERSONA_STORY
 } from '../data/mockData';
-import { TornEdgeTop, TornEdgeBottom } from '../components/TornEdge';
+import { TornEdgeMultiLayerTop, TornEdgeMultiLayerBottom } from '../components/TornEdge';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Home() {
@@ -134,8 +134,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. 4-Step "How It Works" Section with Torn Paper Parchment Background */}
-      <TornEdgeTop fill="#F4ECD8" height={42} />
+      {/* 3. 4-Step "How It Works" Section with Multi-Layered Green & Parchment Torn Paper Divider */}
+      <TornEdgeMultiLayerTop fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
       <section className="parchment-section">
         <div className="container">
           <div className="section-header reveal-on-scroll">
@@ -240,7 +240,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <TornEdgeBottom fill="#F4ECD8" height={42} />
+      <TornEdgeMultiLayerBottom fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
 
       {/* 4. Dark Green Full-Width Impact Section Band */}
       <section style={{ padding: '5rem 0', background: 'var(--bg-main)', textAlign: 'center' }}>
@@ -275,12 +275,12 @@ export default function Home() {
       </section>
 
       {/* 5. Overlapping Photo Collage & Checklist "Our Mission" Block on Parchment */}
-      <TornEdgeTop fill="#F4ECD8" height={42} />
+      <TornEdgeMultiLayerTop fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
       <section className="parchment-section">
         <div className="container reveal-on-scroll" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-          {/* Overlapping Photo Cards Visual */}
+          {/* Overlapping Kraft & Parchment Photo Cards Visual */}
           <div style={{ position: 'relative', minHeight: '360px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{
+            <div className="card-kraft" style={{
               width: '240px',
               height: '190px',
               position: 'absolute',
@@ -288,15 +288,13 @@ export default function Home() {
               left: '20px',
               transform: 'rotate(-4deg)',
               zIndex: 2,
-              background: 'var(--bg-main)',
-              color: 'var(--bg-parchment)',
               padding: '1.5rem',
               borderRadius: 'var(--radius-md)',
-              boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
+              boxShadow: '0 12px 28px rgba(0,0,0,0.3)'
             }}>
               <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>♻️</div>
-              <h3 style={{ fontSize: '1.25rem', color: 'var(--bg-parchment)' }}>100% Circular</h3>
-              <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Zero waste reaching municipal landfills</p>
+              <h3 style={{ fontSize: '1.25rem', color: '#163023' }}>100% Circular</h3>
+              <p style={{ fontSize: '0.85rem', color: '#2C4A38', fontWeight: '600' }}>Zero waste reaching municipal landfills</p>
             </div>
 
             <div style={{
@@ -346,7 +344,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <TornEdgeBottom fill="#F4ECD8" height={42} />
+      <TornEdgeMultiLayerBottom fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
 
       {/* 6. Grassroots Voices & Persona Section */}
       <section style={{ padding: '4.5rem 0', background: 'var(--bg-main)' }}>

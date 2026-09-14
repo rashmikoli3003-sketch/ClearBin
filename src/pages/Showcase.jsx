@@ -110,16 +110,16 @@ export default function Showcase() {
           gap: '2.5rem',
           alignItems: 'start'
         }}>
-          {/* Interleaved Sticky Note 1 */}
-          <div className="sticky-note sticky-note-yellow reveal-on-scroll">
+          {/* Interleaved Kraft Paper Scrap Note 1 */}
+          <div className="sticky-note card-kraft reveal-on-scroll" style={{ border: '1px dashed rgba(22,48,35,0.3)', padding: '1.5rem 1.25rem' }}>
             <div className="paperclip">📎</div>
-            <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#37474F' }}>
+            <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#163023' }}>
               🌟 Nice Job Team!
             </h4>
-            <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3' }}>
+            <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3', color: '#2C4A38' }}>
               Every completed handoff awards EcoPoints redeemable for green store discounts or artisan product drops!
             </p>
-            <div style={{ marginTop: '0.75rem', fontWeight: '800', fontSize: '0.85rem', color: 'var(--accent-terracotta)', textAlign: 'right' }}>
+            <div style={{ marginTop: '0.75rem', fontWeight: '800', fontSize: '0.85rem', color: '#C85A32', textAlign: 'right' }}>
               +150 EcoPoints Pinned
             </div>
           </div>

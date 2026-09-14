@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { TornEdgeTop, TornEdgeBottom } from '../components/TornEdge';
+import { TornEdgeMultiLayerTop, TornEdgeMultiLayerBottom } from '../components/TornEdge';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function About() {
@@ -65,8 +65,8 @@ export default function About() {
         </div>
       </div>
 
-      {/* 2. Problem Statement & Mission Cards on Torn Parchment */}
-      <TornEdgeTop fill="#F4ECD8" height={40} />
+      {/* 2. Problem Statement & Mission Cards on Multi-Layered Torn Parchment */}
+      <TornEdgeMultiLayerTop fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
       <section className="parchment-section">
         <div className="container reveal-on-scroll">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '1rem' }}>
@@ -91,22 +91,22 @@ export default function About() {
               </ul>
             </div>
 
-            {/* Livelihoods Card */}
-            <div className="card-parchment" style={{ padding: '2.25rem' }}>
+            {/* Livelihoods Kraft Card */}
+            <div className="card-kraft" style={{ padding: '2.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '1.75rem' }}>🤝</span>
-                <h2 style={{ fontSize: '1.5rem', color: 'var(--bg-main)' }}>Livelihood & Worker Empowerment</h2>
+                <h2 style={{ fontSize: '1.5rem', color: '#163023' }}>Livelihood & Worker Empowerment</h2>
               </div>
-              <p style={{ color: 'var(--text-secondary-parchment)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.25rem' }}>
+              <p style={{ color: '#2C4A38', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.25rem', fontWeight: '500' }}>
                 Informal waste pickers perform essential recovery work under tough conditions. ClearBin provides pre-sorted, clean household supply directly to artisan collectives.
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                  <span style={{ color: 'var(--primary-leaf)', fontWeight: '800' }}>✓</span>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#163023' }}>
+                  <span style={{ color: '#C85A32', fontWeight: '900' }}>✓</span>
                   <span><strong>Dignified Supply:</strong> Clean household materials without landfill digging.</span>
                 </li>
-                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                  <span style={{ color: 'var(--primary-leaf)', fontWeight: '800' }}>✓</span>
+                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#163023' }}>
+                  <span style={{ color: '#C85A32', fontWeight: '900' }}>✓</span>
                   <span><strong>Income Boost:</strong> Artisans cut raw material costs, boosting earnings by 35%.</span>
                 </li>
               </ul>
@@ -114,7 +114,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      <TornEdgeBottom fill="#F4ECD8" height={40} />
+      <TornEdgeMultiLayerBottom fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
 
       {/* 3. Two-Column "Get In Touch" Contact Form Section */}
       <div className="container reveal-on-scroll" style={{ padding: '3.5rem 1.5rem' }}>
