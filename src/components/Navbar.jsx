@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { MaskingTape } from './Scrapbook/Fasteners';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,35 +10,47 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header style={{ position: 'sticky', top: '15px', zIndex: 100, padding: '0 1rem' }}>
+    <header style={{ position: 'relative', zIndex: 100, padding: '1.25rem 2rem 0.5rem 2rem', background: 'transparent' }}>
       <div
         className="container"
         style={{
-          background: 'rgba(253, 251, 247, 0.96)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          border: '1.5px solid var(--border-parchment, #e6dac8)',
-          borderRadius: '50px',
-          padding: '0.65rem 1.4rem',
-          boxShadow: 'var(--shadow-paper, 3px 12px 25px rgba(45, 30, 15, 0.18))',
+          maxWidth: '1200px',
+          margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
           justify: 'space-between',
           position: 'relative'
         }}
       >
-        {/* Subtle Masking Tape */}
-        <MaskingTape style={{ position: 'absolute', top: '-14px', left: '40px', width: '70px', height: '18px' }} />
-
-        {/* Brand Logo */}
-        <NavLink to="/" className="logo-link" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>🌱</span>
-          <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.55rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', letterSpacing: '-0.02em' }}>
-            ClearBin
-          </span>
-          <span className="handwritten" style={{ fontSize: '1.15rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold', marginLeft: '0.15rem' }}>
-            v2.0
-          </span>
+        {/* Brand Logo Tag: White Torn Paper Badge pinned on Kraft */}
+        <NavLink
+          to="/"
+          className="logo-link"
+          onClick={closeMenu}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            textDecoration: 'none',
+            background: '#FDFBF7',
+            padding: '0.5rem 1.25rem',
+            borderRadius: '12px',
+            boxShadow: 'var(--shadow-paper, 3px 8px 18px rgba(45,30,15,0.15))',
+            border: '1.5px solid #E6DAC8',
+            transform: 'rotate(-1deg)'
+          }}
+        >
+          <div style={{ width: '42px', height: '42px', background: '#193f2d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FDFBF7', fontSize: '1.4rem' }}>
+            🌱
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.65rem', fontWeight: '800', color: '#193f2d', lineHeight: 1 }}>
+              ClearBin
+            </span>
+            <span className="handwritten" style={{ fontSize: '0.9rem', color: '#2e7d32', fontWeight: 'bold' }}>
+              Sort Today. A Cleaner Tomorrow.
+            </span>
+          </div>
         </NavLink>
 
         {/* Mobile Hamburger Toggle */}
@@ -47,33 +58,47 @@ export default function Navbar() {
           className="mobile-toggle"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
-          style={{ background: 'none', border: 'none', fontSize: '1.4rem', color: 'var(--green-dark, #193f2d)', cursor: 'pointer' }}
+          style={{ background: 'none', border: 'none', fontSize: '1.6rem', color: '#193f2d', cursor: 'pointer' }}
         >
           {isOpen ? '✕' : '☰'}
         </button>
 
-        {/* Navigation Links & Action Controls */}
-        <nav className={`nav-links ${isOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
-          <NavLink to="/" end onClick={closeMenu} style={({ isActive }) => ({ color: isActive ? 'var(--green-leaf, #2e7d32)' : 'var(--green-dark, #193f2d)', fontWeight: isActive ? '800' : '700', fontSize: '0.925rem', textDecoration: 'none' })}>
+        {/* Center Nav Links inside paper pill tags */}
+        <nav className={`nav-links ${isOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+          <NavLink
+            to="/"
+            end
+            onClick={closeMenu}
+            style={({ isActive }) => ({
+              background: isActive ? '#E6DAC8' : 'transparent',
+              color: '#193f2d',
+              padding: '0.35rem 0.95rem',
+              borderRadius: '6px',
+              fontWeight: '800',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              border: isActive ? '1px solid #D4C3AA' : 'none'
+            })}
+          >
             Home
           </NavLink>
-          <a href="#how-it-works" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.925rem', textDecoration: 'none' }}>
+          <a href="#how-it-works" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
             How It Works
           </a>
-          <a href="#waste-guide" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.925rem', textDecoration: 'none' }}>
+          <a href="#waste-guide" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
             Waste Guide
           </a>
-          <a href="#community" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.925rem', textDecoration: 'none' }}>
+          <a href="#community" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
             Community
           </a>
-          <NavLink to="/about" onClick={closeMenu} style={({ isActive }) => ({ color: isActive ? 'var(--green-leaf, #2e7d32)' : 'var(--green-dark, #193f2d)', fontWeight: isActive ? '800' : '700', fontSize: '0.925rem', textDecoration: 'none' })}>
+          <NavLink to="/about" onClick={closeMenu} style={({ isActive }) => ({ color: '#193f2d', fontWeight: isActive ? '800' : '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' })}>
             About
           </NavLink>
-          <a href="#contact" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.925rem', textDecoration: 'none' }}>
+          <a href="#contact" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
             Contact
           </a>
 
-          {/* EcoCraft AI Button */}
+          {/* EcoCraft AI Assistant Button */}
           <button
             onClick={() => {
               closeMenu();
@@ -82,10 +107,10 @@ export default function Navbar() {
             style={{
               background: '#9DBE9B',
               border: 'none',
-              color: 'var(--green-dark, #193f2d)',
+              color: '#193f2d',
               borderRadius: '20px',
-              padding: '0.4rem 0.85rem',
-              fontSize: '0.825rem',
+              padding: '0.35rem 0.85rem',
+              fontSize: '0.8rem',
               fontWeight: '800',
               cursor: 'pointer',
               display: 'flex',
@@ -97,19 +122,19 @@ export default function Navbar() {
             <span>✨ AI Assist</span>
           </button>
 
-          {/* EcoPoints Rewards Button */}
+          {/* EcoPoints Button */}
           <button
             onClick={() => {
               closeMenu();
               setIsRewardsOpen(true);
             }}
             style={{
-              background: 'var(--sticky-yellow, #f8ebb2)',
+              background: '#f8ebb2',
               border: 'none',
-              color: 'var(--green-dark, #193f2d)',
+              color: '#193f2d',
               borderRadius: '20px',
-              padding: '0.4rem 0.85rem',
-              fontSize: '0.825rem',
+              padding: '0.35rem 0.85rem',
+              fontSize: '0.8rem',
               fontWeight: '800',
               cursor: 'pointer',
               display: 'flex',
@@ -121,43 +146,42 @@ export default function Navbar() {
             <span>🌟 {ecoPoints} pts</span>
           </button>
 
-          {/* CTA: Dark Forest Green Pill Button "Schedule Pickup" */}
+          {/* CTA Button: Dark Forest Green Pill "Schedule Pickup" */}
           <NavLink
             to="/post"
             onClick={closeMenu}
             style={{
-              background: 'var(--green-dark, #193f2d)',
-              color: 'var(--paper-white, #fdfbf7)',
-              padding: '0.65rem 1.35rem',
+              background: '#193f2d',
+              color: '#FDFBF7',
+              padding: '0.65rem 1.4rem',
               borderRadius: '50px',
               fontWeight: '800',
               fontSize: '0.9rem',
               textDecoration: 'none',
-              boxShadow: '0 4px 14px rgba(25, 63, 45, 0.3)',
+              boxShadow: '0 4px 14px rgba(25, 63, 45, 0.35)',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.4rem',
-              transition: 'transform 0.2s ease, background 0.2s ease'
+              marginLeft: '0.5rem'
             }}
           >
-            <span>Schedule Pickup</span>
+            Schedule Pickup
           </NavLink>
 
-          {/* Profile Icon */}
+          {/* Profile Circle Icon */}
           <div
             title="User Profile"
             style={{
-              width: '36px',
-              height: '36px',
+              width: '38px',
+              height: '38px',
               borderRadius: '50%',
-              background: 'var(--green-leaf, #2e7d32)',
-              color: '#fdfbf7',
+              background: '#193f2d',
+              color: '#FDFBF7',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
               fontWeight: '800',
-              fontSize: '0.95rem',
-              boxShadow: '0 2px 8px rgba(46, 125, 50, 0.3)',
+              fontSize: '1rem',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
               cursor: 'pointer'
             }}
           >
