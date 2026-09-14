@@ -2,18 +2,18 @@ import React from 'react';
 
 export default function MatchCard({ match, onRequestPickup }) {
   return (
-    <div className="card match-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className="card-parchment match-card" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1rem', gap: '0.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
           <div style={{
-            width: '46px',
-            height: '46px',
+            width: '48px',
+            height: '48px',
             borderRadius: '12px',
-            background: match.avatarBg,
+            background: match.avatarBg || 'var(--accent-terracotta)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '1.4rem',
+            fontSize: '1.5rem',
             color: '#fff',
             boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
             flexShrink: 0
@@ -23,40 +23,40 @@ export default function MatchCard({ match, onRequestPickup }) {
              match.category === 'fabric' ? '🧵' : '💻'}
           </div>
           <div>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: '700', marginBottom: '0.15rem' }}>
+            <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', marginBottom: '0.15rem', color: 'var(--bg-main)' }}>
               {match.name}
             </h3>
-            <span style={{ fontSize: '0.825rem', color: 'var(--text-secondary)' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary-parchment)' }}>
               {match.type} • ⭐ {match.rating}
             </span>
           </div>
         </div>
 
-        <span className={`badge ${match.category === 'plastic' ? 'badge-plastic' : match.category === 'glass' ? 'badge-glass' : match.category === 'fabric' ? 'badge-fabric' : 'badge-ewaste'}`}>
+        <span className="badge badge-terracotta">
           {match.categoryLabel}
         </span>
       </div>
 
       <div style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid var(--border-subtle)',
+        background: '#FFFFFF',
+        border: '1px solid var(--border-parchment)',
         borderRadius: 'var(--radius-md)',
         padding: '0.85rem 1rem',
         marginBottom: '1rem',
         flex: 1
       }}>
-        <div style={{ fontSize: '0.8rem', color: 'var(--primary-light)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+        <div style={{ fontSize: '0.8rem', color: 'var(--accent-terracotta)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
           Materials Needed
         </div>
-        <p style={{ fontSize: '0.95rem', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+        <p style={{ fontSize: '0.95rem', fontWeight: '700', color: 'var(--bg-main)', marginBottom: '0.5rem' }}>
           {match.neededMaterial}
         </p>
-        <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+        <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary-parchment)' }}>
           {match.purpose}
         </p>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-secondary-parchment)', marginBottom: '1.25rem' }}>
         <span>📍 {match.distance}</span>
         <span>🚚 {match.pickupType}</span>
       </div>

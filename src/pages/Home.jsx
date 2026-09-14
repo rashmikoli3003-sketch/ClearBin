@@ -2,55 +2,66 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   GOAL_STATS, 
-  PERSONA_STORY, 
-  TESTIMONIAL_QUOTE
+  PERSONA_STORY
 } from '../data/mockData';
+import { TornEdgeTop, TornEdgeBottom } from '../components/TornEdge';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Home() {
+  useScrollReveal();
+
   return (
     <div className="home-page">
-      {/* 1. Hero Section - Warm, Grassroots Tone */}
+      {/* 1. Hero Section - Deep Bottle Green with Organic Boho Accents */}
       <section style={{
         padding: '5rem 0 4rem 0',
-        background: 'linear-gradient(180deg, #F2ECE1 0%, var(--bg-main) 100%)',
+        background: 'radial-gradient(circle at 15% 20%, #234734 0%, #163023 70%)',
         textAlign: 'center',
-        borderBottom: '1px solid var(--border-subtle)'
+        position: 'relative',
+        overflow: 'hidden'
       }}>
+        {/* Botanical SVG Flourishes */}
+        <div style={{ position: 'absolute', top: '30px', left: '40px', opacity: 0.15, fontSize: '4rem', pointerEvents: 'none' }}>
+          🌿
+        </div>
+        <div style={{ position: 'absolute', bottom: '40px', right: '50px', opacity: 0.15, fontSize: '4.5rem', pointerEvents: 'none' }}>
+          ☀️
+        </div>
+
         <div className="container">
-          <div style={{
+          <div className="reveal-on-scroll" style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
-            background: 'var(--bg-sage-light)',
-            border: '1px solid var(--border-green)',
-            color: 'var(--primary-forest)',
-            padding: '0.45rem 1.2rem',
+            background: 'rgba(200, 90, 50, 0.18)',
+            border: '1px solid var(--accent-terracotta)',
+            color: 'var(--accent-terracotta)',
+            padding: '0.45rem 1.25rem',
             borderRadius: 'var(--radius-full)',
             fontSize: '0.875rem',
             fontWeight: '700',
             marginBottom: '1.75rem'
           }}>
-            🤝 Grassroots Waste-to-Artisan Platform • Circular Community Loop
+            🤝 Grassroots Waste-to-Artisan Platform • Circular Boho Economy
           </div>
 
-          <h1 style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4.25rem)',
-            fontWeight: '800',
-            letterSpacing: '-0.025em',
-            maxWidth: '900px',
+          <h1 className="reveal-on-scroll" style={{
+            fontSize: 'clamp(2.6rem, 5.5vw, 4.5rem)',
+            fontFamily: 'var(--font-heading)',
+            maxWidth: '920px',
             margin: '0 auto 1.35rem auto',
             lineHeight: '1.15',
-            color: 'var(--primary-forest)'
+            color: 'var(--bg-parchment)'
           }}>
             Your household waste still has value — <br />
-            <span style={{ color: 'var(--accent-terracotta)' }}>
+            <span style={{ color: 'var(--accent-amber)', fontStyle: 'italic' }}>
               let's find it a second life.
             </span>
           </h1>
 
-          <p style={{
+          <p className="reveal-on-scroll" style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.25rem)',
-            color: 'var(--text-secondary)',
+            color: 'var(--text-muted-dark)',
             maxWidth: '720px',
             margin: '0 auto 2.5rem auto',
             lineHeight: '1.65'
@@ -58,7 +69,7 @@ export default function Home() {
             ClearBin connects households with reusable plastic, glass, fabric, e-waste, and batteries directly to nearby artisans, upcyclers, and green collectives who can reuse them.
           </p>
 
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+          <div className="reveal-on-scroll" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
             <Link to="/post" className="btn btn-primary btn-lg">
               Post Your Waste ➔
             </Link>
@@ -69,159 +80,277 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Target / Goal Stats Strip (From Reference Design) */}
-      <section className="container">
-        <div className="goal-stats-strip">
+      {/* 2. Target / Goal Stats Strip */}
+      <section className="container reveal-on-scroll">
+        <div style={{
+          background: 'var(--bg-parchment)',
+          color: 'var(--text-on-parchment)',
+          border: '1.5px solid var(--border-parchment)',
+          borderRadius: 'var(--radius-lg)',
+          padding: '2.25rem 1.75rem',
+          margin: '-2.5rem auto 3.5rem auto',
+          position: 'relative',
+          zIndex: 10,
+          boxShadow: '0 12px 32px rgba(0,0,0,0.3)',
+          clipPath: 'polygon(0% 1px, 100% 0px, 99% 100%, 1% 99%)'
+        }}>
           <div style={{ textAlign: 'center' }}>
-            <span className="goal-stats-badge">
+            <span style={{
+              fontSize: '0.75rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              fontWeight: '800',
+              color: 'var(--accent-terracotta)',
+              background: 'rgba(200, 90, 50, 0.12)',
+              padding: '0.35rem 0.85rem',
+              borderRadius: 'var(--radius-full)',
+              display: 'inline-block',
+              marginBottom: '1.5rem'
+            }}>
               🎯 Projected Impact Targets & Milestone Metrics
             </span>
           </div>
 
-          <div className="goal-stats-grid">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '1.5rem',
+            textAlign: 'center'
+          }}>
             {GOAL_STATS.map((stat, idx) => (
-              <div key={idx} className="goal-stat-item">
-                <div className="goal-stat-number">{stat.number}</div>
-                <div style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--primary-forest)', marginBottom: '0.2rem' }}>
+              <div key={idx} style={{ padding: '0.75rem', borderRight: idx < GOAL_STATS.length - 1 ? '1px solid var(--border-parchment)' : 'none' }}>
+                <div style={{ fontFamily: 'var(--font-heading)', fontSize: '2.4rem', color: 'var(--bg-main)', lineHeight: 1.1, marginBottom: '0.35rem' }}>
+                  {stat.number}
+                </div>
+                <div style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--bg-main)', marginBottom: '0.2rem' }}>
                   {stat.targetLabel}
                 </div>
-                <div className="goal-stat-label">{stat.sub}</div>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary-parchment)' }}>
+                  {stat.sub}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. 4-Step "How It Works" Section (From Image 1 - Wastewise) */}
-      <section style={{ padding: '3.5rem 0 4.5rem 0' }}>
+      {/* 3. 4-Step "How It Works" Section with Torn Paper Parchment Background */}
+      <TornEdgeTop fill="#F4ECD8" height={42} />
+      <section className="parchment-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-tag">How It Works</span>
-            <h2 className="section-title">A Simple Process For All Your Waste Management Needs</h2>
-            <p className="section-desc">
+          <div className="section-header reveal-on-scroll">
+            <span className="section-tag" style={{ color: 'var(--accent-terracotta)' }}>How It Works</span>
+            <h2 className="section-title" style={{ color: 'var(--bg-main)' }}>
+              A Simple Process For All Your Waste Management Needs
+            </h2>
+            <p className="section-desc" style={{ color: 'var(--text-secondary-parchment)' }}>
               Delivering smart waste solutions for homes, micro-artisans, and green collectives to keep communities clean.
             </p>
           </div>
 
-          <div className="how-it-works-grid">
-            <div className="step-card-clean">
-              <div className="step-icon-circle">📞</div>
-              <h4>1. Request & Pickup</h4>
-              <p>Waste pickups are scheduled and collected from homes, businesses, or neighborhood hubs.</p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '2rem',
+            marginTop: '2.5rem'
+          }}>
+            <div className="card-parchment reveal-on-scroll" style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(77, 139, 85, 0.15)',
+                border: '1px solid var(--primary-leaf)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.75rem',
+                margin: '0 auto 1.25rem auto'
+              }}>
+                📞
+              </div>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--bg-main)' }}>1. Request & Pickup</h4>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary-parchment)', lineHeight: '1.5' }}>
+                Waste pickups are scheduled and collected from homes, businesses, or neighborhood hubs.
+              </p>
             </div>
 
-            <div className="step-card-clean">
-              <div className="step-icon-circle">🚚</div>
-              <h4>2. Transportation</h4>
-              <p>Waste is safely transported to specialized treatment, upcycling, or artisan workshop studios.</p>
+            <div className="card-parchment reveal-on-scroll" style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(200, 90, 50, 0.15)',
+                border: '1px solid var(--accent-terracotta)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.75rem',
+                margin: '0 auto 1.25rem auto'
+              }}>
+                🚚
+              </div>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--bg-main)' }}>2. Transportation</h4>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary-parchment)', lineHeight: '1.5' }}>
+                Waste is safely transported to specialized treatment, upcycling, or artisan workshop studios.
+              </p>
             </div>
 
-            <div className="step-card-clean">
-              <div className="step-icon-circle">📦</div>
-              <h4>3. Sorting & Processing</h4>
-              <p>Waste is sorted into clear types and prepped for upcycling, crafting, or green disposal.</p>
+            <div className="card-parchment reveal-on-scroll" style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(224, 159, 62, 0.15)',
+                border: '1px solid var(--accent-amber)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.75rem',
+                margin: '0 auto 1.25rem auto'
+              }}>
+                📦
+              </div>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--bg-main)' }}>3. Sorting & Processing</h4>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary-parchment)', lineHeight: '1.5' }}>
+                Waste is sorted into clear types and prepped for upcycling, crafting, or green disposal.
+              </p>
             </div>
 
-            <div className="step-card-clean">
-              <div className="step-icon-circle">♻️</div>
-              <h4>4. Upcycling & Second Life</h4>
-              <p>Reusable materials are turned into value-added products, and creators earn EcoPoints.</p>
+            <div className="card-parchment reveal-on-scroll" style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(216, 131, 115, 0.15)',
+                border: '1px solid var(--accent-dusty-rose)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.75rem',
+                margin: '0 auto 1.25rem auto'
+              }}>
+                ♻️
+              </div>
+              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--bg-main)' }}>4. Upcycling & Second Life</h4>
+              <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary-parchment)', lineHeight: '1.5' }}>
+                Reusable materials are turned into value-added products, and creators earn EcoPoints.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <TornEdgeBottom fill="#F4ECD8" height={42} />
+
+      {/* 4. Dark Green Full-Width Impact Section Band */}
+      <section style={{ padding: '5rem 0', background: 'var(--bg-main)', textAlign: 'center' }}>
+        <div className="container reveal-on-scroll">
+          <span className="section-tag" style={{ color: 'var(--accent-amber)' }}>
+            Grassroots Circular Movement
+          </span>
+          <h2 className="section-title" style={{ color: 'var(--bg-parchment)', maxWidth: '780px', margin: '0 auto 1.25rem auto' }}>
+            Empowering 500+ Local Upcyclers & Community Collectives
+          </h2>
+          <p style={{ color: 'var(--text-muted-dark)', fontSize: '1.15rem', maxWidth: '680px', margin: '0 auto 2.5rem auto' }}>
+            Connecting everyday citizens with informal waste workers, studio artisans, and NGOs to build a sustainable, zero-waste neighborhood economy.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
+            <div className="card-dark" style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '400', color: 'var(--accent-amber)', fontFamily: 'var(--font-heading)' }}>12,400+</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted-dark)', marginTop: '0.35rem' }}>Kg Waste Diverted</div>
+            </div>
+
+            <div className="card-dark" style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '400', color: 'var(--accent-amber)', fontFamily: 'var(--font-heading)' }}>3,850+</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted-dark)', marginTop: '0.35rem' }}>Completed Handoffs</div>
+            </div>
+
+            <div className="card-dark" style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '400', color: 'var(--accent-amber)', fontFamily: 'var(--font-heading)' }}>+35%</div>
+              <div style={{ fontSize: '0.95rem', color: 'var(--text-muted-dark)', marginTop: '0.35rem' }}>Artisan Income Uplift</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Overlapping Photo Collage & Checklist "Our Mission" Block (From Image 1 - Wastewise) */}
-      <section style={{ padding: '4.5rem 0', background: 'var(--bg-surface-elevated)', borderTop: '1px solid var(--border-subtle)' }}>
-        <div className="container photo-collage-wrapper">
+      {/* 5. Overlapping Photo Collage & Checklist "Our Mission" Block on Parchment */}
+      <TornEdgeTop fill="#F4ECD8" height={42} />
+      <section className="parchment-section">
+        <div className="container reveal-on-scroll" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
           {/* Overlapping Photo Cards Visual */}
-          <div className="collage-photos-container">
-            <div className="collage-card collage-card-1">
-              <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>♻️</div>
-              <h3 style={{ fontSize: '1.25rem', color: '#fff' }}>100% Circular</h3>
+          <div style={{ position: 'relative', minHeight: '360px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{
+              width: '240px',
+              height: '190px',
+              position: 'absolute',
+              top: '10px',
+              left: '20px',
+              transform: 'rotate(-4deg)',
+              zIndex: 2,
+              background: 'var(--bg-main)',
+              color: 'var(--bg-parchment)',
+              padding: '1.5rem',
+              borderRadius: 'var(--radius-md)',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
+            }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>♻️</div>
+              <h3 style={{ fontSize: '1.25rem', color: 'var(--bg-parchment)' }}>100% Circular</h3>
               <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Zero waste reaching municipal landfills</p>
             </div>
 
-            <div className="collage-card collage-card-2">
-              <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>🧵</div>
-              <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-forest)' }}>Artisan Crafts</h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Transformed into local handmade goods</p>
-            </div>
-
-            <div className="collage-card collage-card-3">
-              <div style={{ fontSize: '2.25rem', marginBottom: '0.25rem' }}>🌟</div>
-              <h3 style={{ fontSize: '1.1rem', color: 'var(--primary-forest)' }}>EcoPoints</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Rewarded on handoffs</p>
+            <div style={{
+              width: '250px',
+              height: '200px',
+              position: 'absolute',
+              bottom: '10px',
+              right: '20px',
+              transform: 'rotate(3deg)',
+              zIndex: 3,
+              background: 'var(--bg-card-parchment)',
+              border: '1px solid var(--border-parchment)',
+              padding: '1.5rem',
+              borderRadius: 'var(--radius-md)',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.25)'
+            }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>🧵</div>
+              <h3 style={{ fontSize: '1.25rem', color: 'var(--bg-main)' }}>Artisan Crafts</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary-parchment)' }}>Transformed into local handmade goods</p>
             </div>
           </div>
 
           {/* Checklist Mission Block */}
           <div>
-            <span className="section-tag" style={{ textAlign: 'left' }}>Our Mission</span>
-            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: '1.25rem' }}>
+            <span className="section-tag" style={{ color: 'var(--accent-terracotta)' }}>Our Mission</span>
+            <h2 className="section-title" style={{ color: 'var(--bg-main)', marginBottom: '1.25rem' }}>
               Responsible Waste Disposal for a Healthier Tomorrow
             </h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '1.05rem', lineHeight: '1.7' }}>
-              We specialize in innovative circular waste management solutions for residential and artisan clients. From doorstep collection to creative upcycling, we ensure responsible reuse that protects the environment.
+            <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.5rem', fontSize: '1.05rem', lineHeight: '1.7' }}>
+              We specialize in innovative circular waste management solutions for residential and artisan clients. From doorstep collection to creative upcycling, we ensure responsible reuse.
             </p>
 
-            <ul className="mission-checklist">
-              <li>
-                <span className="mission-check-icon">✓</span>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem', fontSize: '1rem', color: 'var(--text-on-parchment)' }}>
+                <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--accent-terracotta)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: '800', flexShrink: 0, marginTop: '0.15rem' }}>✓</span>
                 <span>Deliver efficient, eco-friendly waste collection, sorting, and upcycling services.</span>
               </li>
-              <li>
-                <span className="mission-check-icon">✓</span>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem', fontSize: '1rem', color: 'var(--text-on-parchment)' }}>
+                <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--accent-terracotta)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: '800', flexShrink: 0, marginTop: '0.15rem' }}>✓</span>
                 <span>Promote sustainability through household waste reduction and artisan initiatives.</span>
               </li>
-              <li>
-                <span className="mission-check-icon">✓</span>
+              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem', fontSize: '1rem', color: 'var(--text-on-parchment)' }}>
+                <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: 'var(--accent-terracotta)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: '800', flexShrink: 0, marginTop: '0.15rem' }}>✓</span>
                 <span>Support informal waste worker livelihoods with dignified, pre-sorted materials.</span>
-              </li>
-              <li>
-                <span className="mission-check-icon">✓</span>
-                <span>Educate communities on responsible waste management and environmental stewardship.</span>
               </li>
             </ul>
           </div>
         </div>
       </section>
-
-      {/* 5. Dark Forest-Green Full-Width Section Band (From Image 1 - Wastewise) */}
-      <section className="dark-band-section">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <span className="section-tag" style={{ color: 'var(--primary-accent-lime)' }}>
-            Grassroots Circular Movement
-          </span>
-          <h2 className="section-title" style={{ color: '#FFFFFF', maxWidth: '780px', margin: '0 auto 1.25rem auto' }}>
-            Empowering 500+ Local Upcyclers & Community Collectives
-          </h2>
-          <p style={{ color: '#D1E0D7', fontSize: '1.15rem', maxWidth: '680px', margin: '0 auto 2.5rem auto' }}>
-            Connecting everyday citizens with informal waste workers, studio artisans, and NGOs to build a sustainable, zero-waste neighborhood economy.
-          </p>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem', maxWidth: '900px', margin: '0 auto' }}>
-            <div style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '1.75rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--primary-accent-lime)', fontFamily: 'var(--font-heading)' }}>12,400+</div>
-              <div style={{ fontSize: '0.95rem', color: '#EAF4ED', marginTop: '0.35rem' }}>Kg Waste Diverted</div>
-            </div>
-
-            <div style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '1.75rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--primary-accent-lime)', fontFamily: 'var(--font-heading)' }}>3,850+</div>
-              <div style={{ fontSize: '0.95rem', color: '#EAF4ED', marginTop: '0.35rem' }}>Completed Handoffs</div>
-            </div>
-
-            <div style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '1.75rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(255, 255, 255, 0.12)' }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '800', color: 'var(--primary-accent-lime)', fontFamily: 'var(--font-heading)' }}>+35%</div>
-              <div style={{ fontSize: '0.95rem', color: '#EAF4ED', marginTop: '0.35rem' }}>Artisan Income Uplift</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TornEdgeBottom fill="#F4ECD8" height={42} />
 
       {/* 6. Grassroots Voices & Persona Section */}
       <section style={{ padding: '4.5rem 0', background: 'var(--bg-main)' }}>
-        <div className="container">
+        <div className="container reveal-on-scroll">
           <div className="section-header" style={{ marginBottom: '2.5rem' }}>
             <span className="section-tag">Grassroots Voices</span>
             <h2 className="section-title">Meet the Person Behind the Waste</h2>
@@ -230,28 +359,40 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="persona-card">
-            <div className="persona-avatar-wrapper">
-              <div className="persona-avatar-svg">
-                <svg width="90" height="90" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="50" cy="50" r="48" fill="#EAF4ED" stroke="#2E7D32" strokeWidth="2"/>
-                  <circle cx="50" cy="38" r="20" fill="#2E7D32"/>
-                  <path d="M20 85C20 70 33 62 50 62C67 62 80 70 80 85" fill="#1C3829"/>
-                  <path d="M42 35C42 35 46 39 50 39C54 39 58 35 58 35" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="43" cy="32" r="2.5" fill="#FFFFFF"/>
-                  <circle cx="57" cy="32" r="2.5" fill="#FFFFFF"/>
-                  <circle cx="50" cy="25" r="2" fill="#C2410C"/>
+          <div style={{
+            background: 'var(--bg-sage-light)',
+            border: '1.5px dashed var(--border-dark)',
+            borderRadius: 'var(--radius-lg)',
+            padding: '2.5rem',
+            display: 'grid',
+            gridTemplateColumns: '200px 1fr',
+            gap: '2.5rem',
+            alignItems: 'center'
+          }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{
+                width: '130px',
+                height: '130px',
+                borderRadius: '50%',
+                background: 'var(--bg-main)',
+                border: '3px solid var(--accent-amber)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 0.75rem auto'
+              }}>
+                <svg width="85" height="85" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="48" fill="#163023" stroke="#E09F3E" strokeWidth="2"/>
+                  <circle cx="50" cy="38" r="20" fill="#E09F3E"/>
+                  <path d="M20 85C20 70 33 62 50 62C67 62 80 70 80 85" fill="#F4ECD8"/>
                 </svg>
               </div>
-              <div className="persona-name">{PERSONA_STORY.name}</div>
-              <div className="persona-role">{PERSONA_STORY.role}</div>
-              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
-                📍 {PERSONA_STORY.location}
-              </div>
+              <div style={{ fontSize: '1.25rem', fontFamily: 'var(--font-heading)', color: 'var(--bg-parchment)' }}>{PERSONA_STORY.name}</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--accent-amber)', fontWeight: '700', textTransform: 'uppercase' }}>{PERSONA_STORY.role}</div>
             </div>
 
             <div>
-              <blockquote className="persona-quote">
+              <blockquote className="font-handwritten" style={{ fontSize: '1.8rem', color: 'var(--bg-parchment)', lineHeight: '1.4', fontStyle: 'italic' }}>
                 "{PERSONA_STORY.quote}"
               </blockquote>
             </div>
@@ -259,41 +400,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Bordered Testimonial Quote Box ("What Da' People Sayin'?") (From Image 2 - Soul & Soil) */}
-      <section style={{ padding: '3rem 0 4.5rem 0' }}>
-        <div className="container">
-          <div className="quote-box-bordered">
-            <div className="quote-box-title">
-              💬 WHAT DA' PEOPLE SAYIN'?
-            </div>
-            <p className="quote-box-text">
-              "{TESTIMONIAL_QUOTE.quote}"
-            </p>
-            <div className="quote-box-author">
-              — {TESTIMONIAL_QUOTE.author}
-            </div>
-            <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-              ({TESTIMONIAL_QUOTE.tag} — Inspired by grassroots cooperatives like SwaCH)
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Scrolling Marquee Strip (From Image 1 - Wastewise) */}
+      {/* 7. Scrolling Marquee Strip */}
       <div className="marquee-wrapper">
         <div className="marquee-track">
-          <span className="marquee-item">♻️ PET & HDPE PLASTICS</span>
+          <span className="marquee-item">🌿 PET & HDPE PLASTICS</span>
           <span className="marquee-item">🍾 GLASS BOTTLES & JARS</span>
           <span className="marquee-item">🧵 TEXTILES & DENIM</span>
           <span className="marquee-item">💻 E-WASTE RESCUE</span>
           <span className="marquee-item">🌱 ORGANIC COMPOSTING</span>
           <span className="marquee-item">🌟 ECOPOINTS REWARDS</span>
-          <span className="marquee-item">♻️ PET & HDPE PLASTICS</span>
+          <span className="marquee-item">🌿 PET & HDPE PLASTICS</span>
           <span className="marquee-item">🍾 GLASS BOTTLES & JARS</span>
           <span className="marquee-item">🧵 TEXTILES & DENIM</span>
           <span className="marquee-item">💻 E-WASTE RESCUE</span>
-          <span className="marquee-item">🌱 ORGANIC COMPOSTING</span>
-          <span className="marquee-item">🌟 ECOPOINTS REWARDS</span>
         </div>
       </div>
     </div>

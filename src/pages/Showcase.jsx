@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import ShowcaseCard from '../components/ShowcaseCard';
 import { useApp } from '../context/AppContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Showcase() {
+  useScrollReveal();
   const { showcaseList, ecoPoints, addShowcaseStory } = useApp();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,16 +37,16 @@ export default function Showcase() {
   return (
     <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
       {/* 1. Scrapbook Corkboard Main Container */}
-      <div className="scrapbook-board">
+      <div className="scrapbook-board reveal-on-scroll">
         {/* Background Decorative Sticker SVGs */}
         <div style={{ position: 'absolute', top: '25px', left: '30px', fontSize: '2rem', opacity: 0.85, transform: 'rotate(-12deg)' }}>
-          ⭐
+          🌿
         </div>
         <div style={{ position: 'absolute', top: '120px', right: '40px', fontSize: '2.2rem', opacity: 0.85, transform: 'rotate(15deg)' }}>
-          💖
+          🌸
         </div>
         <div style={{ position: 'absolute', bottom: '80px', left: '45px', fontSize: '2.4rem', opacity: 0.8, transform: 'rotate(8deg)' }}>
-          ✨
+          ☀️
         </div>
         <div style={{ position: 'absolute', bottom: '30px', right: '50px', fontSize: '2.5rem', opacity: 0.85, transform: 'rotate(-15deg)' }}>
           ⭐
@@ -52,40 +54,40 @@ export default function Showcase() {
 
         {/* 2. Pinned Scrapbook Header Note */}
         <div style={{
-          background: '#FFFDF9',
-          border: '1px solid #D1C7B3',
+          background: 'var(--bg-card-parchment)',
+          border: '1px solid var(--border-parchment)',
           borderRadius: '4px',
           padding: '2.25rem 2rem',
           maxWidth: '780px',
           margin: '0 auto 3rem auto',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
           position: 'relative',
           transform: 'rotate(-1deg)',
           textAlign: 'center'
         }}>
           {/* Top Washi Tape Clip */}
-          <div className="washi-tape" style={{ width: '130px', background: 'rgba(255, 138, 128, 0.75)', border: '1.5px dashed rgba(229, 115, 115, 0.9)' }} />
+          <div className="washi-tape" style={{ width: '130px', background: 'rgba(200, 90, 50, 0.75)', border: '1.5px dashed rgba(176, 74, 37, 0.9)' }} />
 
           <span className="font-handwritten" style={{ fontSize: '1.75rem', color: 'var(--accent-terracotta)', display: 'block', marginBottom: '0.25rem' }}>
             📌 Community Vision-Board & Scrapbook
           </span>
 
-          <h1 className="font-handwritten" style={{ fontSize: '3.2rem', color: 'var(--primary-forest)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
+          <h1 className="font-handwritten" style={{ fontSize: '3.2rem', color: 'var(--bg-main)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
             Upcycling Transformation Gallery
           </h1>
 
-          <p className="font-handwritten" style={{ fontSize: '1.5rem', color: '#4D5C54', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: '1.3' }}>
+          <p className="font-handwritten" style={{ fontSize: '1.5rem', color: 'var(--text-secondary-parchment)', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: '1.3' }}>
             "Witness how everyday household waste gets transformed into handcrafted goods by local artisans!"
           </p>
 
           <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{
-              background: '#EAF4ED',
+              background: '#FFFFFF',
               padding: '0.5rem 1.1rem',
               borderRadius: 'var(--radius-full)',
-              border: '1px solid var(--border-green)',
+              border: '1px solid var(--border-parchment)',
               fontWeight: '700',
-              color: 'var(--primary-forest)',
+              color: 'var(--bg-main)',
               fontSize: '0.9rem'
             }}>
               🌟 Total EcoPoints Issued: <strong>{45200 + ecoPoints} pts</strong>
@@ -109,7 +111,7 @@ export default function Showcase() {
           alignItems: 'start'
         }}>
           {/* Interleaved Sticky Note 1 */}
-          <div className="sticky-note sticky-note-yellow">
+          <div className="sticky-note sticky-note-yellow reveal-on-scroll">
             <div className="paperclip">📎</div>
             <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#37474F' }}>
               🌟 Nice Job Team!
@@ -125,11 +127,13 @@ export default function Showcase() {
           {/* Render Firestore Polaroid Cards */}
           {showcaseList.map((item, idx) => (
             <React.Fragment key={item.id}>
-              <ShowcaseCard item={item} index={idx} />
+              <div className="reveal-on-scroll">
+                <ShowcaseCard item={item} index={idx} />
+              </div>
 
               {/* Interleave a sticky note after every 2 cards */}
               {idx === 1 && (
-                <div className="sticky-note sticky-note-pink">
+                <div className="sticky-note sticky-note-pink reveal-on-scroll">
                   <div className="paperclip">📎</div>
                   <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#4E342E' }}>
                     💚 Did You Know?
@@ -141,7 +145,7 @@ export default function Showcase() {
               )}
 
               {idx === 3 && (
-                <div className="sticky-note sticky-note-mint">
+                <div className="sticky-note sticky-note-mint reveal-on-scroll">
                   <div className="paperclip">📎</div>
                   <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#004D40' }}>
                     ✨ AI Scanner Tip
@@ -155,7 +159,7 @@ export default function Showcase() {
           ))}
 
           {/* Sticky Note 4 at the end */}
-          <div className="sticky-note sticky-note-blue">
+          <div className="sticky-note sticky-note-blue reveal-on-scroll">
             <div className="paperclip">📎</div>
             <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#006064' }}>
               🌱 Zero Landfill Goal
@@ -175,7 +179,7 @@ export default function Showcase() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(0,0,0,0.75)',
+          background: 'rgba(0,0,0,0.8)',
           backdropFilter: 'blur(8px)',
           zIndex: 2000,
           display: 'flex',
@@ -183,14 +187,14 @@ export default function Showcase() {
           justifyContent: 'center',
           padding: '1.5rem'
         }}>
-          <div className="card" style={{ maxWidth: '540px', width: '100%', padding: '2rem', borderRadius: 'var(--radius-lg)' }}>
+          <div className="card-parchment" style={{ maxWidth: '540px', width: '100%', padding: '2.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <h3 className="font-handwritten" style={{ fontSize: '2.2rem', color: 'var(--primary-forest)' }}>
+              <h3 className="font-handwritten" style={{ fontSize: '2.2rem', color: 'var(--bg-main)' }}>
                 📌 Pin New Upcycled Story
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '1.5rem', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: 'var(--bg-main)', fontSize: '1.5rem', cursor: 'pointer' }}
               >
                 ✕
               </button>
@@ -198,7 +202,7 @@ export default function Showcase() {
 
             <form onSubmit={handleSubmitStory}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Transformation Title
                 </label>
                 <input
@@ -210,17 +214,17 @@ export default function Showcase() {
                   style={{
                     width: '100%',
                     padding: '0.8rem 1.1rem',
-                    background: 'var(--bg-main)',
-                    border: '1px solid var(--border-subtle)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
                     borderRadius: 'var(--radius-full)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--bg-main)'
                   }}
                 />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                     Before Item (Waste Input)
                   </label>
                   <input
@@ -232,15 +236,15 @@ export default function Showcase() {
                     style={{
                       width: '100%',
                       padding: '0.8rem 1.1rem',
-                      background: 'var(--bg-main)',
-                      border: '1px solid var(--border-subtle)',
+                      background: '#FFFFFF',
+                      border: '1px solid var(--border-parchment)',
                       borderRadius: 'var(--radius-full)',
-                      color: 'var(--text-primary)'
+                      color: 'var(--bg-main)'
                     }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                     After Item (End Product)
                   </label>
                   <input
@@ -252,17 +256,17 @@ export default function Showcase() {
                     style={{
                       width: '100%',
                       padding: '0.8rem 1.1rem',
-                      background: 'var(--bg-main)',
-                      border: '1px solid var(--border-subtle)',
+                      background: '#FFFFFF',
+                      border: '1px solid var(--border-parchment)',
                       borderRadius: 'var(--radius-full)',
-                      color: 'var(--text-primary)'
+                      color: 'var(--bg-main)'
                     }}
                   />
                 </div>
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Artisan / Studio Name
                 </label>
                 <input
@@ -274,16 +278,16 @@ export default function Showcase() {
                   style={{
                     width: '100%',
                     padding: '0.8rem 1.1rem',
-                    background: 'var(--bg-main)',
-                    border: '1px solid var(--border-subtle)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
                     borderRadius: 'var(--radius-full)',
-                    color: 'var(--text-primary)'
+                    color: 'var(--bg-main)'
                   }}
                 />
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Transformation Story / Caption
                 </label>
                 <textarea
@@ -295,10 +299,10 @@ export default function Showcase() {
                   style={{
                     width: '100%',
                     padding: '0.8rem 1.1rem',
-                    background: 'var(--bg-main)',
-                    border: '1px solid var(--border-subtle)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
                     borderRadius: 'var(--radius-md)',
-                    color: 'var(--text-primary)',
+                    color: 'var(--bg-main)',
                     resize: 'vertical'
                   }}
                 />

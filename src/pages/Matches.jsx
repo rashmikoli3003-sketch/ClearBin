@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import MatchCard from '../components/MatchCard';
 import { MATCHES } from '../data/mockData';
 import { useApp } from '../context/AppContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function Matches() {
+  useScrollReveal();
   const { userListings, pickupRequests, requestPickup, completePickup } = useApp();
 
   const [activeTab, setActiveTab] = useState('directory'); // 'directory' | 'pickups'
@@ -47,8 +49,8 @@ export default function Matches() {
   };
 
   return (
-    <div className="container" style={{ padding: '3rem 1.5rem' }}>
-      <div className="section-header">
+    <div className="container" style={{ padding: '3.5rem 1.5rem' }}>
+      <div className="section-header reveal-on-scroll">
         <span className="section-tag">Circular Directory & Handoffs</span>
         <h1 className="section-title">Nearby Eco-Matches</h1>
         <p className="section-desc">
@@ -57,18 +59,18 @@ export default function Matches() {
       </div>
 
       {/* Main Tabs Header */}
-      <div style={{
+      <div className="reveal-on-scroll" style={{
         display: 'flex',
         justifyContent: 'center',
         gap: '1rem',
         marginBottom: '2rem',
-        borderBottom: '1px solid var(--border-subtle)',
-        paddingBottom: '1rem'
+        borderBottom: '1px dashed var(--border-dark)',
+        paddingBottom: '1.25rem'
       }}>
         <button
           onClick={() => setActiveTab('directory')}
           className={`btn ${activeTab === 'directory' ? 'btn-primary' : 'btn-secondary'}`}
-          style={{ padding: '0.6rem 1.5rem', fontSize: '0.95rem' }}
+          style={{ padding: '0.65rem 1.65rem', fontSize: '0.95rem' }}
         >
           🔍 Browse Upcyclers Directory ({MATCHES.length})
         </button>
@@ -76,7 +78,7 @@ export default function Matches() {
         <button
           onClick={() => setActiveTab('pickups')}
           className={`btn ${activeTab === 'pickups' ? 'btn-primary' : 'btn-secondary'}`}
-          style={{ padding: '0.6rem 1.5rem', fontSize: '0.95rem', position: 'relative' }}
+          style={{ padding: '0.65rem 1.65rem', fontSize: '0.95rem', position: 'relative' }}
         >
           🚚 My Active Pickups ({pickupRequests.length})
           {pickupRequests.filter(r => r.status !== 'completed').length > 0 && (
@@ -87,8 +89,8 @@ export default function Matches() {
               background: 'var(--accent-terracotta)',
               color: '#fff',
               borderRadius: '50%',
-              width: '20px',
-              height: '20px',
+              width: '22px',
+              height: '22px',
               fontSize: '0.75rem',
               fontWeight: '800',
               display: 'flex',
@@ -105,7 +107,7 @@ export default function Matches() {
       {activeTab === 'directory' && (
         <>
           {/* Controls: Search + Filter Tabs */}
-          <div style={{
+          <div className="reveal-on-scroll" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -121,13 +123,13 @@ export default function Matches() {
                   onClick={() => setFilterCategory(cat)}
                   className={`btn ${filterCategory === cat ? 'btn-primary' : 'btn-secondary'}`}
                   style={{
-                    padding: '0.45rem 0.9rem',
+                    padding: '0.45rem 1rem',
                     fontSize: '0.85rem',
                     textTransform: 'capitalize'
                   }}
                 >
                   {cat === 'all' ? '✨ All' : 
-                   cat === 'plastic' ? '♻️ Plastic' :
+                   cat === 'plastic' ? '🌿 Plastic' :
                    cat === 'glass' ? '🍾 Glass' :
                    cat === 'fabric' ? '🧵 Fabric' : '💻 E-Waste'}
                 </button>
@@ -143,11 +145,11 @@ export default function Matches() {
                 placeholder="Search by name or material..."
                 style={{
                   width: '100%',
-                  padding: '0.55rem 1rem 0.55rem 2.2rem',
-                  background: 'var(--bg-surface-elevated)',
-                  border: '1px solid var(--border-subtle)',
+                  padding: '0.6rem 1rem 0.6rem 2.2rem',
+                  background: 'var(--bg-parchment)',
+                  border: '1px solid var(--border-parchment)',
                   borderRadius: 'var(--radius-full)',
-                  color: 'var(--text-primary)',
+                  color: 'var(--bg-main)',
                   fontSize: '0.875rem',
                   outline: 'none'
                 }}
@@ -162,19 +164,20 @@ export default function Matches() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '1.75rem'
+            gap: '2rem'
           }}>
             {filteredMatches.map(match => (
-              <MatchCard 
-                key={match.id} 
-                match={match} 
-                onRequestPickup={handleOpenPickupModal}
-              />
+              <div key={match.id} className="reveal-on-scroll">
+                <MatchCard 
+                  match={match} 
+                  onRequestPickup={handleOpenPickupModal}
+                />
+              </div>
             ))}
           </div>
 
           {filteredMatches.length === 0 && (
-            <div className="card" style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+            <div className="card-parchment reveal-on-scroll" style={{ padding: '3rem', textAlign: 'center' }}>
               No upcyclers found matching your search. Try resetting filters.
             </div>
           )}
@@ -183,12 +186,14 @@ export default function Matches() {
 
       {/* TAB 2: MY ACTIVE PICKUPS */}
       {activeTab === 'pickups' && (
-        <div style={{ maxWidth: '840px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
           {pickupRequests.length === 0 ? (
-            <div className="card" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+            <div className="card-parchment reveal-on-scroll" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚚</div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>No Active Pickups Scheduled</h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
+                No Active Pickups Scheduled
+              </h3>
+              <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.5rem' }}>
                 Browse our upcycler directory or post your waste to schedule doorstep pickups and earn EcoPoints.
               </p>
               <button onClick={() => setActiveTab('directory')} className="btn btn-primary">
@@ -196,17 +201,12 @@ export default function Matches() {
               </button>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
               {pickupRequests.map(req => (
                 <div
                   key={req.id}
-                  className="card"
-                  style={{
-                    padding: '1.75rem',
-                    border: req.status === 'completed' 
-                      ? '1px solid rgba(16, 185, 129, 0.3)' 
-                      : '1px solid var(--border-glow)'
-                  }}
+                  className="card-parchment reveal-on-scroll"
+                  style={{ padding: '2rem' }}
                 >
                   {/* Status Banner Header */}
                   <div style={{
@@ -218,24 +218,22 @@ export default function Matches() {
                     gap: '0.5rem'
                   }}>
                     <div>
-                      <span className="section-tag" style={{ marginBottom: '0.2rem' }}>
+                      <span className="badge badge-amber" style={{ marginBottom: '0.2rem' }}>
                         ID: {req.id}
                       </span>
-                      <h3 style={{ fontSize: '1.25rem', margin: 0 }}>
+                      <h3 style={{ fontSize: '1.35rem', margin: 0, color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
                         Pickup with {req.artisanName}
                       </h3>
                     </div>
 
                     <span style={{
-                      background: req.status === 'completed' 
-                        ? 'rgba(16, 185, 129, 0.15)' 
-                        : 'rgba(234, 88, 12, 0.15)',
-                      color: req.status === 'completed' ? 'var(--primary-light)' : 'var(--accent-terracotta)',
-                      border: `1px solid ${req.status === 'completed' ? 'var(--primary-emerald)' : 'var(--accent-terracotta)'}`,
+                      background: req.status === 'completed' ? 'rgba(77, 139, 85, 0.15)' : 'rgba(200, 90, 50, 0.15)',
+                      color: req.status === 'completed' ? 'var(--primary-leaf)' : 'var(--accent-terracotta)',
+                      border: `1px solid ${req.status === 'completed' ? 'var(--primary-leaf)' : 'var(--accent-terracotta)'}`,
                       padding: '0.35rem 0.85rem',
                       borderRadius: 'var(--radius-full)',
                       fontSize: '0.8rem',
-                      fontWeight: '700'
+                      fontWeight: '800'
                     }}>
                       {req.status === 'completed' ? '✅ Hand-off Completed' :
                        req.status === 'in_progress' ? '🚚 Pickup Scheduled' :
@@ -248,28 +246,29 @@ export default function Matches() {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                     gap: '1rem',
-                    background: 'var(--bg-surface-elevated)',
-                    padding: '1rem',
+                    background: '#FFFFFF',
+                    padding: '1rem 1.25rem',
                     borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--border-parchment)',
                     marginBottom: '1.25rem',
                     fontSize: '0.9rem'
                   }}>
                     <div>
-                      <span style={{ color: 'var(--text-secondary)', display: 'block', fontSize: '0.775rem' }}>Material Needed</span>
-                      <strong>{req.material}</strong>
+                      <span style={{ color: 'var(--text-secondary-parchment)', display: 'block', fontSize: '0.775rem' }}>Material Needed</span>
+                      <strong style={{ color: 'var(--bg-main)' }}>{req.material}</strong>
                     </div>
                     <div>
-                      <span style={{ color: 'var(--text-secondary)', display: 'block', fontSize: '0.775rem' }}>Scheduled Time</span>
-                      <strong>📅 {req.pickupDate}</strong>
+                      <span style={{ color: 'var(--text-secondary-parchment)', display: 'block', fontSize: '0.775rem' }}>Scheduled Time</span>
+                      <strong style={{ color: 'var(--bg-main)' }}>📅 {req.pickupDate}</strong>
                     </div>
                     <div>
-                      <span style={{ color: 'var(--text-secondary)', display: 'block', fontSize: '0.775rem' }}>Reward Offer</span>
-                      <strong style={{ color: 'var(--primary-light)' }}>🌟 +{req.pointsOffer} EcoPoints</strong>
+                      <span style={{ color: 'var(--text-secondary-parchment)', display: 'block', fontSize: '0.775rem' }}>Reward Offer</span>
+                      <strong style={{ color: 'var(--accent-terracotta)' }}>🌟 +{req.pointsOffer} EcoPoints</strong>
                     </div>
                   </div>
 
                   {req.notes && (
-                    <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
+                    <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary-parchment)', marginBottom: '1.25rem' }}>
                       <strong>Notes:</strong> {req.notes}
                     </div>
                   )}
@@ -285,7 +284,7 @@ export default function Matches() {
                         ⚡ Confirm Hand-off & Collect +{req.pointsOffer} Pts
                       </button>
                     ) : (
-                      <span style={{ fontSize: '0.875rem', color: 'var(--primary-light)', fontWeight: '700' }}>
+                      <span style={{ fontSize: '0.9rem', color: 'var(--primary-leaf)', fontWeight: '800' }}>
                         🌟 +{req.pointsOffer} EcoPoints Credited to Balance
                       </span>
                     )}
@@ -305,7 +304,7 @@ export default function Matches() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(0,0,0,0.75)',
+          background: 'rgba(0,0,0,0.8)',
           backdropFilter: 'blur(8px)',
           zIndex: 1000,
           display: 'flex',
@@ -313,25 +312,25 @@ export default function Matches() {
           justifyContent: 'center',
           padding: '1.5rem'
         }}>
-          <div className="card" style={{ maxWidth: '520px', width: '100%', padding: '2rem' }}>
+          <div className="card-parchment" style={{ maxWidth: '520px', width: '100%', padding: '2.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h3 style={{ fontSize: '1.4rem' }}>Schedule Pickup Request</h3>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>Schedule Pickup Request</h3>
               <button 
                 onClick={() => setSelectedMatch(null)}
-                style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '1.5rem', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: 'var(--bg-main)', fontSize: '1.5rem', cursor: 'pointer' }}
               >
                 ✕
               </button>
             </div>
 
             <form onSubmit={handleConfirmPickupRequest}>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem', fontSize: '0.95rem' }}>
+              <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.25rem', fontSize: '0.95rem' }}>
                 You are scheduling a handoff with <strong>{selectedMatch.name}</strong>.
               </p>
 
               {/* Select Active Listing to Offer */}
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Select Your Waste Listing to Offer:
                 </label>
                 <select
@@ -340,10 +339,10 @@ export default function Matches() {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
-                    color: 'var(--text-primary)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
+                    borderRadius: 'var(--radius-full)',
+                    color: 'var(--bg-main)',
                     fontSize: '0.9rem'
                   }}
                 >
@@ -361,7 +360,7 @@ export default function Matches() {
 
               {/* Preferred Time */}
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Preferred Pickup Time:
                 </label>
                 <input
@@ -373,10 +372,10 @@ export default function Matches() {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
-                    color: 'var(--text-primary)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
+                    borderRadius: 'var(--radius-full)',
+                    color: 'var(--bg-main)',
                     fontSize: '0.9rem'
                   }}
                 />
@@ -384,7 +383,7 @@ export default function Matches() {
 
               {/* Instructions */}
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--bg-main)' }}>
                   Doorstep / Gate Instructions:
                 </label>
                 <input
@@ -395,10 +394,10 @@ export default function Matches() {
                   style={{
                     width: '100%',
                     padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
-                    border: '1px solid var(--border-subtle)',
+                    background: '#FFFFFF',
+                    border: '1px solid var(--border-parchment)',
                     borderRadius: 'var(--radius-md)',
-                    color: 'var(--text-primary)',
+                    color: 'var(--bg-main)',
                     fontSize: '0.9rem'
                   }}
                 />

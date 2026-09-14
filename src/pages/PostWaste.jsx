@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { CATEGORIES, MATCHES } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 import { analyzeWasteImage } from '../services/aiService';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export default function PostWaste() {
+  useScrollReveal();
   const navigate = useNavigate();
   const { addListing, requestPickup } = useApp();
 
@@ -124,30 +126,30 @@ export default function PostWaste() {
   };
 
   return (
-    <div className="container" style={{ padding: '3rem 1.5rem', maxWidth: '800px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+    <div className="container" style={{ padding: '3.5rem 1.5rem', maxWidth: '820px' }}>
+      <div className="reveal-on-scroll" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <span className="section-tag">AI-Powered Circular Listing</span>
-        <h1 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>Post Your Reusable Waste</h1>
-        <p style={{ color: 'var(--text-secondary)' }}>
+        <h1 className="section-title">Post Your Reusable Waste</h1>
+        <p className="section-desc">
           Upload a photo — AI automatically classifies material, estimates quantity, and finds matching upcyclers.
         </p>
       </div>
 
       {status === 'idle' && (
-        <form onSubmit={handleSubmit} className="card" style={{ padding: '2.25rem' }}>
+        <form onSubmit={handleSubmit} className="card-parchment reveal-on-scroll" style={{ padding: '2.5rem' }}>
           {/* Photo Upload Zone */}
           <div style={{ marginBottom: '1.75rem' }}>
-            <label style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+            <label style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem', color: 'var(--bg-main)' }}>
               1. Upload Item Photo (AI Auto-Classifies Material)
             </label>
 
             <div 
               style={{
-                border: '2px dashed var(--border-glow)',
+                border: '2px dashed var(--accent-terracotta)',
                 borderRadius: 'var(--radius-md)',
                 padding: photoUrl ? '1.25rem' : '2rem 1.5rem',
                 textAlign: 'center',
-                background: photoUrl ? 'rgba(16, 185, 129, 0.04)' : 'rgba(255,255,255,0.02)',
+                background: photoUrl ? 'rgba(200, 90, 50, 0.06)' : '#FFFFFF',
                 position: 'relative',
                 cursor: 'pointer',
                 transition: 'var(--transition-fast)'
@@ -177,24 +179,25 @@ export default function PostWaste() {
                       width: '100px',
                       height: '80px',
                       objectFit: 'cover',
-                      borderRadius: 'var(--radius-md)',
-                      border: '1px solid var(--border-glow)'
+                      borderRadius: 'var(--radius-sm)',
+                      border: '1px solid var(--border-parchment)'
                     }}
                   />
                   <div style={{ textAlign: 'left', flex: 1, minWidth: '220px' }}>
-                    <div style={{ color: 'var(--primary-light)', fontWeight: '700', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
+                    <div style={{ color: 'var(--bg-main)', fontWeight: '700', fontSize: '0.95rem', marginBottom: '0.25rem' }}>
                       📸 Photo Selected: {photoName || 'Uploaded Image'}
                     </div>
                     {isAiAnalyzing ? (
-                      <div style={{ fontSize: '0.85rem', color: 'var(--accent-lime)', fontWeight: '700' }}>
-                        ✨ Gemini AI Scanning Image & Detecting Material...
+                      <div style={{ fontSize: '0.9rem', color: 'var(--accent-terracotta)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <span className="leaf-loader" style={{ fontSize: '1.2rem' }}>🌿</span>
+                        <span>Gemini AI Scanning & Classifying Material...</span>
                       </div>
                     ) : aiResult ? (
-                      <div style={{ fontSize: '0.8rem', color: 'var(--primary-light)' }}>
+                      <div style={{ fontSize: '0.85rem', color: 'var(--primary-leaf)', fontWeight: '700' }}>
                         ✨ AI Classification: <strong>{aiResult.detectedItems || aiResult.categoryLabel}</strong>
                       </div>
                     ) : (
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+                      <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary-parchment)' }}>
                         Click or drop another image to replace
                       </div>
                     )}
@@ -203,10 +206,10 @@ export default function PostWaste() {
               ) : (
                 <div>
                   <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📤</div>
-                  <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+                  <div style={{ fontWeight: '700', marginBottom: '0.25rem', color: 'var(--bg-main)' }}>
                     Drag & drop or click to upload photo for Gemini AI Scanning
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  <div style={{ fontSize: '0.825rem', color: 'var(--text-secondary-parchment)' }}>
                     AI automatically detects Plastic, Glass, Textiles, E-Waste, or Batteries
                   </div>
                 </div>
@@ -217,17 +220,17 @@ export default function PostWaste() {
           {/* AI Banner Callout */}
           {aiResult && (
             <div style={{
-              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(20, 184, 166, 0.15))',
-              border: '1px solid var(--primary-emerald)',
+              background: 'rgba(77, 139, 85, 0.15)',
+              border: '1px solid var(--primary-leaf)',
               borderRadius: 'var(--radius-md)',
               padding: '1rem',
               marginBottom: '1.75rem',
-              fontSize: '0.875rem'
+              fontSize: '0.9rem'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', fontWeight: '700', color: 'var(--primary-light)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', fontWeight: '700', color: 'var(--bg-main)' }}>
                 <span>✨ Gemini AI Multimodal Analysis</span>
               </div>
-              <div style={{ color: 'var(--text-secondary)' }}>
+              <div style={{ color: 'var(--text-secondary-parchment)' }}>
                 <strong>Upcycling Potential:</strong> {aiResult.upcyclingPotential}
               </div>
             </div>
@@ -235,7 +238,7 @@ export default function PostWaste() {
 
           {/* Waste Category Selection */}
           <div style={{ marginBottom: '1.75rem' }}>
-            <label htmlFor="category-select" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+            <label htmlFor="category-select" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem', color: 'var(--bg-main)' }}>
               2. Waste Category (Auto-Selected by AI)
             </label>
             <select
@@ -245,10 +248,10 @@ export default function PostWaste() {
               style={{
                 width: '100%',
                 padding: '0.85rem 1.25rem',
-                background: 'var(--bg-main)',
-                border: '1px solid var(--border-subtle)',
+                background: '#FFFFFF',
+                border: '1px solid var(--border-parchment)',
                 borderRadius: 'var(--radius-full)',
-                color: 'var(--text-primary)',
+                color: 'var(--bg-main)',
                 fontSize: '1rem',
                 outline: 'none'
               }}
@@ -264,7 +267,7 @@ export default function PostWaste() {
           {/* Location Field */}
           <div style={{ marginBottom: '1.75rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <label htmlFor="location-input" style={{ fontWeight: '700', fontSize: '0.95rem' }}>
+              <label htmlFor="location-input" style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--bg-main)' }}>
                 3. Pickup Location / Neighborhood
               </label>
               <button
@@ -274,9 +277,9 @@ export default function PostWaste() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: 'var(--primary-forest)',
+                  color: 'var(--accent-terracotta)',
                   cursor: 'pointer',
-                  fontSize: '0.825rem',
+                  fontSize: '0.85rem',
                   fontWeight: '700'
                 }}
               >
@@ -293,10 +296,10 @@ export default function PostWaste() {
               style={{
                 width: '100%',
                 padding: '0.85rem 1.25rem',
-                background: 'var(--bg-main)',
-                border: '1px solid var(--border-subtle)',
+                background: '#FFFFFF',
+                border: '1px solid var(--border-parchment)',
                 borderRadius: 'var(--radius-full)',
-                color: 'var(--text-primary)',
+                color: 'var(--bg-main)',
                 fontSize: '1rem',
                 outline: 'none'
               }}
@@ -306,7 +309,7 @@ export default function PostWaste() {
           {/* Quantity & Notes */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
             <div>
-              <label htmlFor="quantity-input" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+              <label htmlFor="quantity-input" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem', color: 'var(--bg-main)' }}>
                 Estimated Quantity (AI Suggested)
               </label>
               <input
@@ -319,17 +322,17 @@ export default function PostWaste() {
                 style={{
                   width: '100%',
                   padding: '0.85rem 1.25rem',
-                  background: 'var(--bg-main)',
-                  border: '1px solid var(--border-subtle)',
+                  background: '#FFFFFF',
+                  border: '1px solid var(--border-parchment)',
                   borderRadius: 'var(--radius-full)',
-                  color: 'var(--text-primary)',
+                  color: 'var(--bg-main)',
                   fontSize: '0.95rem',
                   outline: 'none'
                 }}
               />
             </div>
             <div>
-              <label htmlFor="notes-input" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+              <label htmlFor="notes-input" style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem', color: 'var(--bg-main)' }}>
                 Item Condition / Notes
               </label>
               <input
@@ -341,10 +344,10 @@ export default function PostWaste() {
                 style={{
                   width: '100%',
                   padding: '0.85rem 1.25rem',
-                  background: 'var(--bg-main)',
-                  border: '1px solid var(--border-subtle)',
+                  background: '#FFFFFF',
+                  border: '1px solid var(--border-parchment)',
                   borderRadius: 'var(--radius-full)',
-                  color: 'var(--text-primary)',
+                  color: 'var(--bg-main)',
                   fontSize: '0.95rem',
                   outline: 'none'
                 }}
@@ -358,36 +361,24 @@ export default function PostWaste() {
         </form>
       )}
 
-      {/* Animated Matching State */}
+      {/* Animated Matching State (Boho Leaf Loader) */}
       {status === 'matching' && (
-        <div className="card" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
-          <div style={{
-            width: '72px',
-            height: '72px',
-            margin: '0 auto 1.5rem auto',
-            border: '4px solid rgba(16, 185, 129, 0.2)',
-            borderTopColor: 'var(--primary-light)',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite'
-          }} />
-          <style>{`
-            @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-            }
-          `}</style>
-          <h2 style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>
+        <div className="card-parchment reveal-on-scroll" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+          <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }} className="leaf-loader">
+            🌿
+          </div>
+          <h2 style={{ fontSize: '1.75rem', marginBottom: '0.75rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
             Matching with Local Upcyclers...
           </h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem auto' }}>
+          <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem auto' }}>
             Calculating match confidence for <strong>{category.toUpperCase()}</strong> near <em>{location}</em>...
           </p>
 
           <div style={{
             width: '100%',
             maxWidth: '400px',
-            height: '10px',
-            background: 'var(--bg-surface-elevated)',
+            height: '12px',
+            background: 'var(--border-parchment)',
             borderRadius: 'var(--radius-full)',
             overflow: 'hidden',
             margin: '0 auto 1.5rem auto'
@@ -395,11 +386,11 @@ export default function PostWaste() {
             <div style={{
               width: `${matchingProgress}%`,
               height: '100%',
-              background: 'linear-gradient(90deg, var(--primary-emerald), var(--accent-lime))',
+              background: 'linear-gradient(90deg, var(--accent-terracotta), var(--accent-amber))',
               transition: 'width 0.3s ease'
             }} />
           </div>
-          <span style={{ fontSize: '0.85rem', color: 'var(--primary-light)', fontWeight: '700' }}>
+          <span style={{ fontSize: '0.9rem', color: 'var(--accent-terracotta)', fontWeight: '800' }}>
             {matchingProgress}% Match Calculation Complete
           </span>
         </div>
@@ -407,13 +398,13 @@ export default function PostWaste() {
 
       {/* Success Confirmation with Matched Artisans */}
       {status === 'success' && (
-        <div className="card" style={{ padding: '3rem 2rem', borderColor: 'var(--border-glow)' }}>
+        <div className="card-parchment reveal-on-scroll" style={{ padding: '3rem 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <div style={{ fontSize: '3.5rem', marginBottom: '0.75rem' }}>🎉</div>
-            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
               Waste Listing Created & AI Matched!
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto' }}>
+            <p style={{ color: 'var(--text-secondary-parchment)', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto' }}>
               We found <strong>{computedMatches.length} verified upcycler(s)</strong> within pickup range actively seeking {category.toUpperCase()} waste.
             </p>
           </div>
@@ -421,20 +412,20 @@ export default function PostWaste() {
           {/* Top Matched Card Highlight */}
           {computedMatches.length > 0 && (
             <div style={{
-              background: 'var(--bg-surface-elevated)',
-              border: '1px solid var(--border-glow)',
+              background: '#FFFFFF',
+              border: '1px solid var(--border-parchment)',
               borderRadius: 'var(--radius-md)',
               padding: '1.5rem',
               marginBottom: '2rem'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                <span className="section-tag">🔥 Best Match (98% Confidence)</span>
-                <span style={{ color: 'var(--primary-light)', fontWeight: '700', fontSize: '0.9rem' }}>
+                <span className="badge badge-terracotta">🔥 Best Match (98% Confidence)</span>
+                <span style={{ color: 'var(--accent-terracotta)', fontWeight: '800', fontSize: '0.95rem' }}>
                   {computedMatches[0].pointsOffer}
                 </span>
               </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>{computedMatches[0].name}</h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.25rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>{computedMatches[0].name}</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary-parchment)', marginBottom: '1rem' }}>
                 {computedMatches[0].purpose}
               </p>
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>

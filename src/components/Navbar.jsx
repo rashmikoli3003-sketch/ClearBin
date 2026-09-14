@@ -13,10 +13,10 @@ export default function Navbar() {
     <header className="navbar">
       <div className="container nav-container">
         <NavLink to="/" className="logo-link" onClick={closeMenu}>
-          <div className="logo-icon">🗑️</div>
+          <div className="logo-icon">🌿</div>
           <span>ClearBin</span>
           <span className="logo-badge">
-            Circular
+            Boho Eco
           </span>
         </NavLink>
 
@@ -63,9 +63,9 @@ export default function Navbar() {
                 setIsAiModalOpen(true);
               }}
               style={{
-                background: 'linear-gradient(135deg, rgba(46, 125, 50, 0.12), rgba(132, 204, 22, 0.12))',
-                border: '1px solid var(--primary-leaf)',
-                color: 'var(--primary-forest)',
+                background: 'rgba(224, 159, 62, 0.15)',
+                border: '1px solid var(--accent-amber)',
+                color: 'var(--accent-amber)',
                 borderRadius: 'var(--radius-full)',
                 padding: '0.45rem 0.95rem',
                 fontSize: '0.85rem',
@@ -91,9 +91,9 @@ export default function Navbar() {
                 setIsRewardsOpen(true);
               }}
               style={{
-                background: 'linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(194, 65, 12, 0.12))',
-                border: '1px solid var(--accent-amber)',
-                color: 'var(--accent-terracotta)',
+                background: 'rgba(216, 131, 115, 0.15)',
+                border: '1px solid var(--accent-dusty-rose)',
+                color: 'var(--accent-dusty-rose)',
                 borderRadius: 'var(--radius-full)',
                 padding: '0.45rem 0.95rem',
                 fontSize: '0.85rem',
