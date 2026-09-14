@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { CATEGORIES, MATCHES } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 import { analyzeWasteImage } from '../services/aiService';
+import { PaperSheet } from '../components/Scrapbook/PaperSheet';
+import { PaperClip, WashiTape } from '../components/Scrapbook/Fasteners';
 
 export default function PostWaste() {
   const navigate = useNavigate();
@@ -124,17 +126,23 @@ export default function PostWaste() {
   };
 
   return (
-    <div className="container" style={{ padding: '3rem 1.5rem', maxWidth: '800px' }}>
+    <div className="container" style={{ padding: '3.5rem 1.5rem', maxWidth: '820px' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span className="section-tag">AI-Powered Circular Listing</span>
-        <h1 style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>Post Your Reusable Waste</h1>
-        <p style={{ color: 'var(--text-secondary)' }}>
-          Upload a photo — AI automatically classifies material, estimates quantity, and finds matching upcyclers.
+        <span className="section-tag" style={{ color: '#D9A036' }}>AI-Powered Circular Listing</span>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)', color: '#F5F0E6' }}>
+          POST REUSABLE HOUSEHOLD WASTE
+        </h1>
+        <p style={{ color: '#B5C985', fontSize: '1.05rem' }}>
+          Upload a photo — Gemini AI automatically classifies material, estimates quantity, and finds matching upcyclers.
         </p>
       </div>
 
       {status === 'idle' && (
-        <form onSubmit={handleSubmit} className="card" style={{ padding: '2.25rem' }}>
+        <PaperSheet variant="notebook" rotate="-0.5deg" shadow="deep" style={{ padding: '3rem 2.5rem', position: 'relative' }}>
+          <PaperClip color="#717D8A" size={42} style={{ position: 'absolute', top: '-22px', left: '40px' }} />
+          <WashiTape width="120px" height="30px" rotate="1deg" style={{ position: 'absolute', top: '-15px', right: '60px' }} />
+
+          <form onSubmit={handleSubmit}>
           {/* Photo Upload Zone */}
           <div style={{ marginBottom: '1.75rem' }}>
             <label style={{ display: 'block', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
@@ -353,9 +361,10 @@ export default function PostWaste() {
             Post Waste & Run Match Engine ➔
           </button>
         </form>
+      </PaperSheet>
       )}
 
-      {/* Animated Matching St      {/* Animated Matching State */}
+      {/* Animated Matching State */}
       {status === 'matching' && (
         <div className="card-parchment" style={{ padding: '3.5rem 2rem', textAlign: 'center', margin: '0 auto', maxWidth: '640px' }}>
           {/* Animated Botanical Pulse Icon */}

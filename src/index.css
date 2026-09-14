@@ -4,46 +4,56 @@
    ========================================================================== */
 
 :root {
-  /* Dark Green & Parchment Palette */
-  --bg-main: #163023; /* Deep Forest / Bottle Green */
+  /* Editorial Scrapbook Palette System */
+  --bg-main: #173F35; /* Deep Forest Green */
   --bg-dark-green: #0F2319;
-  --bg-parchment: #F4ECD8; /* Warm Cream Parchment */
-  --bg-parchment-elevated: #EADFCA;
-  --bg-card-parchment: #FAF5E8;
-  
-  /* Boho Accent Colors */
-  --accent-terracotta: #C85A32; /* Rust Orange */
-  --accent-amber: #E09F3E; /* Mustard Yellow */
-  --accent-dusty-rose: #D88373; /* Dusty Rose */
-  --primary-leaf: #4D8B55; /* Leaf Green */
-  --accent-sage: #8BB096;
-  
-  /* Typography & Colors */
-  --text-on-dark: #F4ECD8; /* Off-white / Cream */
-  --text-muted-dark: #A8BBAE;
-  --text-on-parchment: #163023; /* Dark Green / Charcoal */
-  --text-secondary-parchment: #475E50;
-  
-  --border-parchment: #DCD0B9;
-  --border-dark: rgba(244, 236, 216, 0.15);
-  
-  /* Typography */
+  --color-deep-forest: #173F35;
+  --color-rich-botanical: #245C48;
+  --color-leaf-green: #4F7F4A;
+  --color-sage: #789B62;
+  --color-soft-green: #B5C985;
+
+  /* Physical Neutrals */
+  --bg-parchment: #F5F0E6; /* Warm Paper */
+  --bg-parchment-elevated: #FFFDF7; /* Aged Paper */
+  --bg-card-parchment: #FFFDF7;
+  --color-kraft-beige: #E7D8BE;
+  --color-paper-shadow: rgba(23, 63, 53, 0.18);
+
+  /* Muted Accents */
+  --accent-terracotta: #C85A32; /* Terracotta */
+  --accent-amber: #D9A036; /* Muted Mustard */
+  --accent-faded-blue: #6B8E9C; /* Faded Blue */
+  --accent-dusty-rose: #B05646; /* Dusty Red */
+  --primary-leaf: #4F7F4A;
+  --accent-sage: #789B62;
+
+  /* Typography & Text */
+  --text-on-dark: #F5F0E6;
+  --text-muted-dark: #B5C985;
+  --text-on-parchment: #173F35;
+  --text-secondary-parchment: #245C48;
+
+  --border-parchment: #E7D8BE;
+  --border-dark: rgba(245, 240, 230, 0.15);
+
+  /* Typography Fonts */
   --font-heading: 'DM Serif Display', Georgia, serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-handwritten: 'Caveat', cursive, sans-serif;
-  
+
   /* Layout & Spacing */
   --max-width: 1180px;
   --radius-sm: 6px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-full: 9999px;
-  
-  /* Shadows & Touches */
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.25);
-  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.35);
-  
+
+  /* Physical Layered Shadows */
+  --shadow-sm: 0 4px 12px rgba(23, 63, 53, 0.12);
+  --shadow-md: 0 10px 28px rgba(23, 63, 53, 0.2);
+  --shadow-hover: 0 18px 42px rgba(23, 63, 53, 0.32);
+
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.35s ease;
 }

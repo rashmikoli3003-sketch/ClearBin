@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ShowcaseCard from '../components/ShowcaseCard';
 import { useApp } from '../context/AppContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { PaperSheet } from '../components/Scrapbook/PaperSheet';
+import { PushPin, WashiTape } from '../components/Scrapbook/Fasteners';
 
 export default function Showcase() {
   useScrollReveal();
@@ -35,9 +37,9 @@ export default function Showcase() {
   };
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.5rem', maxWidth: '1140px' }}>
       {/* 1. Scrapbook Corkboard Main Container */}
-      <div className="scrapbook-board reveal-on-scroll">
+      <div className="scrapbook-board reveal-on-scroll" style={{ padding: '3.5rem 2rem' }}>
         {/* Background Decorative Sticker SVGs */}
         <div style={{ position: 'absolute', top: '25px', left: '30px', fontSize: '2rem', opacity: 0.85, transform: 'rotate(-12deg)' }}>
           🌿
@@ -45,50 +47,44 @@ export default function Showcase() {
         <div style={{ position: 'absolute', top: '120px', right: '40px', fontSize: '2.2rem', opacity: 0.85, transform: 'rotate(15deg)' }}>
           🌸
         </div>
-        <div style={{ position: 'absolute', bottom: '80px', left: '45px', fontSize: '2.4rem', opacity: 0.8, transform: 'rotate(8deg)' }}>
-          ☀️
-        </div>
-        <div style={{ position: 'absolute', bottom: '30px', right: '50px', fontSize: '2.5rem', opacity: 0.85, transform: 'rotate(-15deg)' }}>
-          ⭐
-        </div>
 
         {/* 2. Pinned Scrapbook Header Note */}
-        <div style={{
-          background: 'var(--bg-card-parchment)',
-          border: '1px solid var(--border-parchment)',
-          borderRadius: '4px',
-          padding: '2.25rem 2rem',
-          maxWidth: '780px',
-          margin: '0 auto 3rem auto',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
-          position: 'relative',
-          transform: 'rotate(-1deg)',
-          textAlign: 'center'
-        }}>
-          {/* Top Washi Tape Clip */}
-          <div className="washi-tape" style={{ width: '130px', background: 'rgba(200, 90, 50, 0.75)', border: '1.5px dashed rgba(176, 74, 37, 0.9)' }} />
+        <PaperSheet
+          variant="parchment"
+          rotate="-1deg"
+          shadow="deep"
+          style={{
+            maxWidth: '820px',
+            margin: '0 auto 3.5rem auto',
+            textAlign: 'center',
+            padding: '2.75rem 2rem',
+            position: 'relative'
+          }}
+        >
+          <PushPin color="#C85A32" style={{ position: 'absolute', top: '-18px', left: '50%', transform: 'translateX(-50%)' }} />
+          <WashiTape width="140px" height="32px" rotate="-1deg" style={{ position: 'absolute', top: '-14px', right: '60px' }} />
 
-          <span className="font-handwritten" style={{ fontSize: '1.75rem', color: 'var(--accent-terracotta)', display: 'block', marginBottom: '0.25rem' }}>
+          <span className="font-handwritten" style={{ fontSize: '1.75rem', color: '#C85A32', display: 'block', marginBottom: '0.25rem' }}>
             📌 Community Vision-Board & Scrapbook
           </span>
 
-          <h1 className="font-handwritten" style={{ fontSize: '3.2rem', color: 'var(--bg-main)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
-            Upcycling Transformation Gallery
+          <h1 style={{ fontSize: '2.8rem', color: '#173F35', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)', lineHeight: '1.1' }}>
+            UPCYCLING TRANSFORMATION GALLERY
           </h1>
 
-          <p className="font-handwritten" style={{ fontSize: '1.5rem', color: 'var(--text-secondary-parchment)', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: '1.3' }}>
+          <p className="font-handwritten" style={{ fontSize: '1.5rem', color: '#245C48', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: '1.3' }}>
             "Witness how everyday household waste gets transformed into handcrafted goods by local artisans!"
           </p>
 
           <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
             <div style={{
-              background: '#FFFFFF',
-              padding: '0.5rem 1.1rem',
+              background: '#FFFDF7',
+              padding: '0.5rem 1.25rem',
               borderRadius: 'var(--radius-full)',
-              border: '1px solid var(--border-parchment)',
+              border: '1px solid #E7D8BE',
               fontWeight: '700',
-              color: 'var(--bg-main)',
-              fontSize: '0.9rem'
+              color: '#173F35',
+              fontSize: '0.925rem'
             }}>
               🌟 Total EcoPoints Issued: <strong>{45200 + ecoPoints} pts</strong>
             </div>
@@ -96,12 +92,12 @@ export default function Showcase() {
             <button
               onClick={() => setIsModalOpen(true)}
               className="btn btn-primary"
-              style={{ padding: '0.65rem 1.5rem', fontSize: '0.95rem' }}
+              style={{ padding: '0.65rem 1.65rem', fontSize: '0.95rem' }}
             >
               + Pin Upcycling Story
             </button>
           </div>
-        </div>
+        </PaperSheet>
 
         {/* 3. Collage / Masonry Polaroid Grid */}
         <div style={{

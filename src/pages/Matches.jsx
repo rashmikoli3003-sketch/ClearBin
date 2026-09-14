@@ -3,6 +3,8 @@ import MatchCard from '../components/MatchCard';
 import { MATCHES } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { PaperSheet } from '../components/Scrapbook/PaperSheet';
+import { PaperClip, WashiTape } from '../components/Scrapbook/Fasteners';
 
 export default function Matches() {
   useScrollReveal();
@@ -49,14 +51,16 @@ export default function Matches() {
   };
 
   return (
-    <div className="container" style={{ padding: '3.5rem 1.5rem' }}>
-      <div className="section-header reveal-on-scroll">
-        <span className="section-tag">Circular Directory & Handoffs</span>
-        <h1 className="section-title">Nearby Eco-Matches</h1>
-        <p className="section-desc">
+    <div className="container" style={{ padding: '3.5rem 1.5rem', maxWidth: '1100px' }}>
+      <PaperSheet variant="parchment" rotate="-0.5deg" shadow="medium" style={{ padding: '2.5rem 2rem', marginBottom: '2.5rem', textAlign: 'center', position: 'relative' }} className="reveal-on-scroll">
+        <PaperClip color="#717D8A" size={40} style={{ position: 'absolute', top: '-20px', left: '30px' }} />
+        <WashiTape width="110px" height="28px" rotate="1deg" style={{ position: 'absolute', top: '-14px', right: '50px' }} />
+        <span className="section-tag" style={{ color: '#C85A32' }}>Circular Directory & Handoffs</span>
+        <h1 className="section-title" style={{ color: '#173F35', fontSize: '2.5rem' }}>NEARBY ECO-MATCHES</h1>
+        <p className="section-desc" style={{ color: '#245C48', maxWidth: '640px', margin: '0 auto' }}>
           Connect your household directly with local artisans, micro-entrepreneurs, and green NGOs within pickup range.
         </p>
-      </div>
+      </PaperSheet>
 
       {/* Main Tabs Header */}
       <div className="reveal-on-scroll" style={{

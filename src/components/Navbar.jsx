@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { WashiTape } from './Scrapbook/Fasteners';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,13 +11,17 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="navbar">
-      <div className="container nav-container">
-        <NavLink to="/" className="logo-link" onClick={closeMenu}>
-          <div className="logo-icon">🌿</div>
-          <span>ClearBin</span>
-          <span className="logo-badge">
-            Boho Eco
+    <header className="navbar" style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(23, 63, 53, 0.96)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(245, 240, 230, 0.15)', padding: '0.85rem 0' }}>
+      <div className="container nav-container" style={{ position: 'relative' }}>
+        <WashiTape style={{ position: 'absolute', top: '-18px', left: '10px', width: '80px', height: '20px' }} />
+        
+        <NavLink to="/" className="logo-link" onClick={closeMenu} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <div className="logo-icon" style={{ width: '40px', height: '40px', background: '#C85A32', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FFFDF7', fontSize: '1.25rem', fontWeight: '800', boxShadow: '0 4px 10px rgba(0,0,0,0.2)' }}>
+            🌿
+          </div>
+          <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', color: '#F5F0E6', letterSpacing: '0.01em' }}>ClearBin</span>
+          <span className="font-handwritten" style={{ fontSize: '1.15rem', color: '#D9A036', marginLeft: '0.2rem' }}>
+            scrapbook v2.0
           </span>
         </NavLink>
 

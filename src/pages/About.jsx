@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { TornEdgeMultiLayerTop, TornEdgeMultiLayerBottom } from '../components/TornEdge';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { PaperSheet } from '../components/Scrapbook/PaperSheet';
+import { PaperClip, WashiTape } from '../components/Scrapbook/Fasteners';
 
 export default function About() {
   useScrollReveal();
@@ -23,13 +25,15 @@ export default function About() {
     <div className="about-page">
       <div className="container" style={{ padding: '4rem 1.5rem', maxWidth: '1080px' }}>
         {/* Page Header */}
-        <div className="section-header reveal-on-scroll" style={{ marginBottom: '3.5rem' }}>
-          <span className="section-tag">Vision & Contact</span>
-          <h1 className="section-title">Rethinking Waste as Resource Capital</h1>
-          <p className="section-desc">
+        <PaperSheet variant="parchment" rotate="-0.8deg" shadow="medium" style={{ padding: '2.5rem 2rem', marginBottom: '3.5rem', textAlign: 'center', position: 'relative' }} className="reveal-on-scroll">
+          <PaperClip color="#717D8A" size={40} style={{ position: 'absolute', top: '-20px', left: '35px' }} />
+          <WashiTape width="110px" height="28px" rotate="1deg" style={{ position: 'absolute', top: '-14px', right: '50px' }} />
+          <span className="section-tag" style={{ color: '#C85A32' }}>Vision & Contact Manifesto</span>
+          <h1 className="section-title" style={{ color: '#173F35', fontSize: '2.5rem' }}>RETHINKING WASTE AS RESOURCE CAPITAL</h1>
+          <p className="section-desc" style={{ color: '#245C48', maxWidth: '660px', margin: '0 auto' }}>
             How ClearBin solves household waste misallocation while supporting informal waste worker livelihoods and local creative upcyclers.
           </p>
-        </div>
+        </PaperSheet>
 
         {/* 1. Clean 3-Card Contact-Info Row */}
         <div className="reveal-on-scroll" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
