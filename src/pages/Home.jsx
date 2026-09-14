@@ -50,17 +50,17 @@ export default function Home() {
               <img src="/assets/pink_clip_notepad.png" alt="Pink Clip Notepad Card" style={{ width: '100%' }} />
               <div className="handwritten" style={{
                 position: 'absolute',
-                top: '55px',
-                left: '25px',
+                top: '72px',
+                left: '32px',
                 right: '15px',
-                fontSize: '1.25rem',
+                fontSize: '1.2rem',
                 color: '#193f2d',
                 lineHeight: 1.2,
                 fontWeight: 'bold'
               }}>
                 Good Waste <br />
                 Brighter Future <br />
-                <span style={{ fontSize: '1.4rem' }}>♡</span>
+                <span style={{ fontSize: '1.3rem' }}>♡</span>
               </div>
             </div>
 
@@ -272,7 +272,7 @@ export default function Home() {
               <MaskingTape width="85px" height="24px" rotate="1deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.2rem' }}>01</span>
               <div style={{ width: '90px', height: '90px', margin: '0 auto 0.5rem auto' }}>
-                <img src="/assets/colored_bin_illustration.png" alt="Crayon Waste Bin Illustration" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <img src="/assets/colored_bin_illustration.png" alt="Crayon Waste Bin Illustration" style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'screen' }} />
               </div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>SORT</h3>
               <p style={{ fontSize: '0.9rem', color: '#2e7d32', lineHeight: '1.45', fontWeight: '600' }}>

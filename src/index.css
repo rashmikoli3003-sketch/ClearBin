@@ -49,7 +49,7 @@
   --border-dark: rgba(253, 251, 247, 0.15);
 
   /* Typography Fonts */
-  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-handwritten: 'Caveat', cursive, sans-serif;
 
