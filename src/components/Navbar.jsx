@@ -12,93 +12,92 @@ export default function Navbar() {
   return (
     <header style={{ position: 'relative', zIndex: 100, padding: '1.25rem 2rem 0.5rem 2rem', background: 'transparent' }}>
       <div
-        className="container"
         style={{
-          maxWidth: '1200px',
+          maxWidth: '1280px',
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
           justify: 'space-between',
-          position: 'relative'
+          flexWrap: 'wrap',
+          gap: '1rem'
         }}
       >
-        {/* Brand Logo Tag: White Torn Paper Badge pinned on Kraft */}
+        {/* Pinned White Paper Logo Badge */}
         <NavLink
           to="/"
-          className="logo-link"
           onClick={closeMenu}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
             textDecoration: 'none',
-            background: '#FDFBF7',
+            background: 'var(--paper-white, #fdfbf7)',
             padding: '0.5rem 1.25rem',
             borderRadius: '12px',
-            boxShadow: 'var(--shadow-paper, 3px 8px 18px rgba(45,30,15,0.15))',
-            border: '1.5px solid #E6DAC8',
+            boxShadow: 'var(--shadow-paper, 3px 12px 25px rgba(45, 30, 15, 0.18))',
+            border: '1.5px solid #e6dac8',
             transform: 'rotate(-1deg)'
           }}
         >
-          <div style={{ width: '42px', height: '42px', background: '#193f2d', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#FDFBF7', fontSize: '1.4rem' }}>
+          <div style={{ width: '42px', height: '42px', background: 'var(--green-dark, #193f2d)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fdfbf7', fontSize: '1.4rem' }}>
             🌱
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.65rem', fontWeight: '800', color: '#193f2d', lineHeight: 1 }}>
+            <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.65rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', lineHeight: 1 }}>
               ClearBin
             </span>
-            <span className="handwritten" style={{ fontSize: '0.9rem', color: '#2e7d32', fontWeight: 'bold' }}>
+            <span className="handwritten" style={{ fontSize: '0.9rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold' }}>
               Sort Today. A Cleaner Tomorrow.
             </span>
           </div>
         </NavLink>
 
-        {/* Mobile Hamburger Toggle */}
+        {/* Mobile Toggle */}
         <button
           className="mobile-toggle"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
-          style={{ background: 'none', border: 'none', fontSize: '1.6rem', color: '#193f2d', cursor: 'pointer' }}
+          style={{ background: 'none', border: 'none', fontSize: '1.6rem', color: 'var(--green-dark, #193f2d)', cursor: 'pointer' }}
         >
           {isOpen ? '✕' : '☰'}
         </button>
 
-        {/* Center Nav Links inside paper pill tags */}
-        <nav className={`nav-links ${isOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+        {/* Center Nav Links inside paper tabs */}
+        <nav className={`nav-links ${isOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <NavLink
             to="/"
             end
             onClick={closeMenu}
             style={({ isActive }) => ({
-              background: isActive ? '#E6DAC8' : 'transparent',
-              color: '#193f2d',
-              padding: '0.35rem 0.95rem',
+              background: isActive ? '#f4ecdc' : 'transparent',
+              color: 'var(--green-dark, #193f2d)',
+              padding: '0.4rem 1rem',
               borderRadius: '6px',
               fontWeight: '800',
               fontSize: '0.9rem',
               textDecoration: 'none',
-              border: isActive ? '1px solid #D4C3AA' : 'none'
+              border: isActive ? '1px solid #d8c7ad' : '1px solid transparent'
             })}
           >
             Home
           </NavLink>
-          <a href="#how-it-works" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
+          <a href="#how-it-works" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
             How It Works
           </a>
-          <a href="#waste-guide" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
+          <a href="#waste-guide" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
             Waste Guide
           </a>
-          <a href="#community" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
+          <a href="#community" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
             Community
           </a>
-          <NavLink to="/about" onClick={closeMenu} style={({ isActive }) => ({ color: '#193f2d', fontWeight: isActive ? '800' : '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' })}>
+          <NavLink to="/about" onClick={closeMenu} style={({ isActive }) => ({ color: 'var(--green-dark, #193f2d)', fontWeight: isActive ? '800' : '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' })}>
             About
           </NavLink>
-          <a href="#contact" onClick={closeMenu} style={{ color: '#193f2d', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.35rem 0.75rem' }}>
+          <a href="#contact" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
             Contact
           </a>
 
-          {/* EcoCraft AI Assistant Button */}
+          {/* EcoCraft AI Button */}
           <button
             onClick={() => {
               closeMenu();
@@ -107,9 +106,9 @@ export default function Navbar() {
             style={{
               background: '#9DBE9B',
               border: 'none',
-              color: '#193f2d',
+              color: 'var(--green-dark, #193f2d)',
               borderRadius: '20px',
-              padding: '0.35rem 0.85rem',
+              padding: '0.4rem 0.85rem',
               fontSize: '0.8rem',
               fontWeight: '800',
               cursor: 'pointer',
@@ -129,11 +128,11 @@ export default function Navbar() {
               setIsRewardsOpen(true);
             }}
             style={{
-              background: '#f8ebb2',
+              background: 'var(--sticky-yellow, #f8ebb2)',
               border: 'none',
-              color: '#193f2d',
+              color: 'var(--green-dark, #193f2d)',
               borderRadius: '20px',
-              padding: '0.35rem 0.85rem',
+              padding: '0.4rem 0.85rem',
               fontSize: '0.8rem',
               fontWeight: '800',
               cursor: 'pointer',
@@ -146,13 +145,13 @@ export default function Navbar() {
             <span>🌟 {ecoPoints} pts</span>
           </button>
 
-          {/* CTA Button: Dark Forest Green Pill "Schedule Pickup" */}
+          {/* CTA: Dark Forest Green Pill Button */}
           <NavLink
             to="/post"
             onClick={closeMenu}
             style={{
-              background: '#193f2d',
-              color: '#FDFBF7',
+              background: 'var(--green-dark, #193f2d)',
+              color: 'var(--paper-white, #fdfbf7)',
               padding: '0.65rem 1.4rem',
               borderRadius: '50px',
               fontWeight: '800',
@@ -167,15 +166,15 @@ export default function Navbar() {
             Schedule Pickup
           </NavLink>
 
-          {/* Profile Circle Icon */}
+          {/* Circular Profile Button */}
           <div
             title="User Profile"
             style={{
               width: '38px',
               height: '38px',
               borderRadius: '50%',
-              background: '#193f2d',
-              color: '#FDFBF7',
+              background: 'var(--green-dark, #193f2d)',
+              color: '#fdfbf7',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
