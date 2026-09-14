@@ -47,7 +47,7 @@ export default function Home() {
               transform: 'rotate(-7deg)',
               filter: 'drop-shadow(0 8px 18px rgba(0,0,0,0.15))'
             }}>
-              <img src="/assets/pink_clip_notepad.jpg" alt="Pink Clip Notepad Card" style={{ width: '100%', borderRadius: '8px' }} />
+              <img src="/assets/pink_clip_notepad.png" alt="Pink Clip Notepad Card" style={{ width: '100%' }} />
               <div className="handwritten" style={{
                 position: 'absolute',
                 top: '55px',
@@ -119,7 +119,7 @@ export default function Home() {
               transform: 'rotate(-4deg)',
               filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.12))'
             }}>
-              <img src="/assets/ripped_ruled_paper.jpg" alt="Ripped Ruled Paper Scrap" style={{ width: '100%' }} />
+              <img src="/assets/ripped_ruled_paper.png" alt="Ripped Ruled Paper Scrap" style={{ width: '100%' }} />
               <div className="handwritten" style={{
                 position: 'absolute',
                 top: '50%',
@@ -272,7 +272,7 @@ export default function Home() {
               <MaskingTape width="85px" height="24px" rotate="1deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.2rem' }}>01</span>
               <div style={{ width: '90px', height: '90px', margin: '0 auto 0.5rem auto' }}>
-                <img src="/assets/colored_bin_illustration.jpg" alt="Crayon Waste Bin Illustration" style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply' }} />
+                <img src="/assets/colored_bin_illustration.png" alt="Crayon Waste Bin Illustration" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>SORT</h3>
               <p style={{ fontSize: '0.9rem', color: '#2e7d32', lineHeight: '1.45', fontWeight: '600' }}>
@@ -376,7 +376,7 @@ export default function Home() {
                 transform: 'rotate(2deg)',
                 filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.3))'
               }}>
-                <img src="/assets/green_bag_quote.jpg" alt="Nothing we use for a few minutes should pollute our planet for centuries" style={{ width: '100%', borderRadius: '12px' }} />
+                <img src="/assets/green_bag_quote.png" alt="Nothing we use for a few minutes should pollute our planet for centuries" style={{ width: '100%' }} />
               </div>
 
               <span className="badge" style={{ background: '#2e7d32', color: '#FDFBF7', padding: '0.35rem 0.95rem', borderRadius: '4px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
