@@ -14,7 +14,8 @@
   --sticky-pink: #F2D4D7;
   --sage-green: #9DBE9B;
 
-  --bg-main: #D4C3AA; /* Warm textured kraft/cardboard beige */
+  --bg-main: #D4C3AA;
+  /* Warm textured kraft/cardboard beige */
   --bg-dark-green: #1B3F2E;
   --color-deep-forest: #1B3F2E;
   --color-rich-botanical: #1B3F2E;
@@ -23,7 +24,8 @@
   --color-soft-green: #9DBE9B;
 
   /* Physical Neutrals */
-  --bg-parchment: #FDFBF7; /* Paper White */
+  --bg-parchment: #FDFBF7;
+  /* Paper White */
   --bg-parchment-elevated: #FFFDF7;
   --bg-card-parchment: #FDFBF7;
   --color-kraft-beige: #E6DAC8;
@@ -91,7 +93,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 400;
   color: var(--text-on-dark);
@@ -104,7 +111,10 @@ a {
   text-decoration: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }
@@ -236,7 +246,8 @@ button, input, select, textarea {
   user-select: none;
 }
 
-.btn:active, button:active {
+.btn:active,
+button:active {
   transform: scale(0.97) translateY(1px) !important;
 }
 
@@ -286,10 +297,21 @@ button, input, select, textarea {
 }
 
 @keyframes bohoWobble {
-  0% { transform: scale(1.03) rotate(0deg); }
-  25% { transform: scale(1.03) rotate(-1.5deg); }
-  75% { transform: scale(1.03) rotate(1.5deg); }
-  100% { transform: scale(1.03) rotate(0deg); }
+  0% {
+    transform: scale(1.03) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.03) rotate(-1.5deg);
+  }
+
+  75% {
+    transform: scale(1.03) rotate(1.5deg);
+  }
+
+  100% {
+    transform: scale(1.03) rotate(0deg);
+  }
 }
 
 /* Page Route Transition Animation */
@@ -303,6 +325,7 @@ button, input, select, textarea {
     opacity: 0;
     transform: translateY(18px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -324,9 +347,19 @@ button, input, select, textarea {
 
 /* Celebratory & Micro-Animations */
 @keyframes bounceBadge {
-  0%, 100% { transform: scale(1); }
-  30% { transform: scale(1.25) rotate(-3deg); }
-  60% { transform: scale(0.95) rotate(3deg); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.25) rotate(-3deg);
+  }
+
+  60% {
+    transform: scale(0.95) rotate(3deg);
+  }
 }
 
 .bounce-badge {
@@ -334,9 +367,17 @@ button, input, select, textarea {
 }
 
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(77, 139, 85, 0.4); }
-  70% { box-shadow: 0 0 0 15px rgba(77, 139, 85, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(77, 139, 85, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(77, 139, 85, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(77, 139, 85, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(77, 139, 85, 0);
+  }
 }
 
 .pulse-glow {
@@ -344,27 +385,54 @@ button, input, select, textarea {
 }
 
 @keyframes checkmarkDraw {
-  0% { stroke-dashoffset: 50; opacity: 0; }
-  100% { stroke-dashoffset: 0; opacity: 1; }
+  0% {
+    stroke-dashoffset: 50;
+    opacity: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes dotBounce {
-  0%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-8px); }
+
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-8px);
+  }
 }
 
-.dot-bounce-1 { animation: dotBounce 1.2s infinite ease-in-out 0s; }
-.dot-bounce-2 { animation: dotBounce 1.2s infinite ease-in-out 0.2s; }
-.dot-bounce-3 { animation: dotBounce 1.2s infinite ease-in-out 0.4s; }
+.dot-bounce-1 {
+  animation: dotBounce 1.2s infinite ease-in-out 0s;
+}
+
+.dot-bounce-2 {
+  animation: dotBounce 1.2s infinite ease-in-out 0.2s;
+}
+
+.dot-bounce-3 {
+  animation: dotBounce 1.2s infinite ease-in-out 0.4s;
+}
 
 /* Accessibility - Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
   .reveal-on-scroll {
     opacity: 1 !important;
     transform: none !important;
@@ -379,7 +447,9 @@ button, input, select, textarea {
   position: relative;
 }
 
-.parchment-section h1, .parchment-section h2, .parchment-section h3 {
+.parchment-section h1,
+.parchment-section h2,
+.parchment-section h3 {
   color: var(--bg-main);
 }
 
@@ -397,12 +467,10 @@ button, input, select, textarea {
   position: relative;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  clip-path: polygon(
-    0% 2px, 5% 0px, 10% 3px, 15% 1px, 20% 3px, 25% 0px, 30% 2px, 35% 0px, 40% 3px, 45% 1px, 50% 3px, 55% 0px, 60% 2px, 65% 0px, 70% 3px, 75% 1px, 80% 3px, 85% 0px, 90% 2px, 95% 0px, 100% 3px,
-    99% 25%, 100% 50%, 98% 75%, 100% 98%,
-    95% 100%, 90% 98%, 85% 100%, 80% 98%, 75% 100%, 70% 98%, 65% 100%, 60% 98%, 55% 100%, 50% 98%, 45% 100%, 40% 98%, 35% 100%, 30% 98%, 25% 100%, 20% 98%, 15% 100%, 10% 98%, 5% 100%, 0% 98%,
-    1% 75%, 0% 50%, 2% 25%
-  );
+  clip-path: polygon(0% 2px, 5% 0px, 10% 3px, 15% 1px, 20% 3px, 25% 0px, 30% 2px, 35% 0px, 40% 3px, 45% 1px, 50% 3px, 55% 0px, 60% 2px, 65% 0px, 70% 3px, 75% 1px, 80% 3px, 85% 0px, 90% 2px, 95% 0px, 100% 3px,
+      99% 25%, 100% 50%, 98% 75%, 100% 98%,
+      95% 100%, 90% 98%, 85% 100%, 80% 98%, 75% 100%, 70% 98%, 65% 100%, 60% 98%, 55% 100%, 50% 98%, 45% 100%, 40% 98%, 35% 100%, 30% 98%, 25% 100%, 20% 98%, 15% 100%, 10% 98%, 5% 100%, 0% 98%,
+      1% 75%, 0% 50%, 2% 25%);
 }
 
 .card-parchment:hover {
@@ -413,7 +481,7 @@ button, input, select, textarea {
 /* Kraft Paper / Cardboard Scrap Styling (Inspired by Reference Image 2) */
 .card-kraft {
   background: #C89F70;
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.06) 0%, transparent 20%),
     linear-gradient(135deg, #C89F70 0%, #BA8E5F 100%);
@@ -424,12 +492,10 @@ button, input, select, textarea {
   position: relative;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  clip-path: polygon(
-    0% 0px, 12% 2px, 24% 0px, 36% 3px, 48% 0px, 60% 2px, 72% 0px, 84% 3px, 100% 0px,
-    98% 15%, 100% 30%, 97% 45%, 100% 60%, 98% 75%, 100% 90%, 99% 100%,
-    88% 98%, 76% 100%, 64% 97%, 52% 100%, 40% 98%, 28% 100%, 16% 98%, 0% 100%,
-    2% 85%, 0% 70%, 3% 55%, 0% 40%, 2% 25%, 0% 10%
-  );
+  clip-path: polygon(0% 0px, 12% 2px, 24% 0px, 36% 3px, 48% 0px, 60% 2px, 72% 0px, 84% 3px, 100% 0px,
+      98% 15%, 100% 30%, 97% 45%, 100% 60%, 98% 75%, 100% 90%, 99% 100%,
+      88% 98%, 76% 100%, 64% 97%, 52% 100%, 40% 98%, 28% 100%, 16% 98%, 0% 100%,
+      2% 85%, 0% 70%, 3% 55%, 0% 40%, 2% 25%, 0% 10%);
 }
 
 .card-kraft:hover {
@@ -465,10 +531,29 @@ button, input, select, textarea {
   letter-spacing: 0.02em;
 }
 
-.badge-terracotta { background: rgba(200, 90, 50, 0.15); color: var(--accent-terracotta); border: 1px solid var(--accent-terracotta); }
-.badge-amber { background: rgba(224, 159, 62, 0.15); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
-.badge-leaf { background: rgba(77, 139, 85, 0.15); color: var(--primary-leaf); border: 1px solid var(--primary-leaf); }
-.badge-rose { background: rgba(216, 131, 115, 0.15); color: var(--accent-dusty-rose); border: 1px solid var(--accent-dusty-rose); }
+.badge-terracotta {
+  background: rgba(200, 90, 50, 0.15);
+  color: var(--accent-terracotta);
+  border: 1px solid var(--accent-terracotta);
+}
+
+.badge-amber {
+  background: rgba(224, 159, 62, 0.15);
+  color: var(--accent-amber);
+  border: 1px solid var(--accent-amber);
+}
+
+.badge-leaf {
+  background: rgba(77, 139, 85, 0.15);
+  color: var(--primary-leaf);
+  border: 1px solid var(--primary-leaf);
+}
+
+.badge-rose {
+  background: rgba(216, 131, 115, 0.15);
+  color: var(--accent-dusty-rose);
+  border: 1px solid var(--accent-dusty-rose);
+}
 
 /* Main Section Layout */
 main {
@@ -505,9 +590,17 @@ main {
 
 /* Spinning Leaf AI Scanner Loader Animation */
 @keyframes leafSpin {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.15); }
-  100% { transform: rotate(360deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.15);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .leaf-loader {
@@ -543,8 +636,13 @@ main {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Footer Styling */
@@ -619,11 +717,11 @@ main {
     align-items: stretch;
     box-shadow: var(--shadow-md);
   }
-  
+
   .nav-links.open {
     display: flex;
   }
-  
+
   .mobile-toggle {
     display: block;
   }
@@ -632,10 +730,51 @@ main {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
+}
+
+/* --- TORN PAPER SCRAPBOOK SYSTEM --- */
+:root {
+  --bg-kraft: #d8c7ad;
+  --paper-white: #fdfbf7;
+  --paper-cream: #f4ecdc;
+  --green-dark: #193f2d;
+  --green-leaf: #2e7d32;
+  --sticky-yellow: #f8ebb2;
+  --sticky-pink: #f7d2d7;
+  --font-hand: 'Caveat', cursive;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --shadow-paper: 3px 12px 25px rgba(45, 30, 15, 0.18), 0 3px 6px rgba(45, 30, 15, 0.08);
+}
+
+body {
+  background-color: var(--bg-kraft) !important;
+  font-family: var(--font-body) !important;
+}
+
+/* Jagged ripped paper edges */
+.torn-top {
+  clip-path: polygon(0% 0%, 3% 18px, 7% 4px, 12% 20px, 16% 5px, 21% 17px, 25% 6px,
+      30% 19px, 34% 7px, 39% 21px, 44% 8px, 49% 19px, 54% 5px, 59% 21px,
+      64% 8px, 69% 18px, 74% 6px, 79% 20px, 83% 7px, 88% 19px, 93% 5px,
+      97% 18px, 100% 0%, 100% 100%, 0% 100%) !important;
+}
+
+.torn-bottom {
+  clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 15px),
+      97% 100%, 93% calc(100% - 18px), 88% calc(100% - 4px), 83% calc(100% - 16px),
+      79% 100%, 74% calc(100% - 15px), 69% calc(100% - 5px), 64% calc(100% - 17px),
+      59% 100%, 54% calc(100% - 16px), 49% calc(100% - 4px), 44% calc(100% - 18px),
+      39% 100%, 34% calc(100% - 15px), 30% calc(100% - 4px), 25% calc(100% - 16px),
+      21% 100%, 16% calc(100% - 17px), 12% calc(100% - 5px), 7% calc(100% - 19px),
+      3% 100%, 0% calc(100% - 14px)) !important;
+}
+
+.handwritten {
+  font-family: var(--font-hand) !important;
 }

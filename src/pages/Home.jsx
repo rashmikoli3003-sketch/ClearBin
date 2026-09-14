@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TornEdgeMultiLayerTop, TornEdgeMultiLayerBottom } from '../components/TornEdge';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { PaperSheet } from '../components/Scrapbook/PaperSheet';
 import { StickyNote } from '../components/Scrapbook/StickyNote';
@@ -12,43 +11,41 @@ export default function Home() {
   useScrollReveal();
 
   return (
-    <div className="home-page" style={{ background: '#D4C3AA', color: '#1B3F2E', overflowX: 'hidden' }}>
+    <div className="home-page" style={{ background: 'var(--bg-kraft, #d8c7ad)', color: 'var(--green-dark, #193f2d)', overflowX: 'hidden' }}>
       
       {/* =========================================================================
-         01. HERO SECTION (Torn Spiral Notebook Sheet + Digital Scrapbook Collage)
+         01. HERO SECTION (Centered Torn Notebook Sheet -0.5deg + Flanking Collage)
          ========================================================================= */}
       <section style={{
-        padding: '3rem 1rem 4.5rem 1rem',
-        background: 'radial-gradient(circle at 50% 30%, #E6DAC8 0%, #D4C3AA 85%)',
+        padding: '3.5rem 1rem 4.5rem 1rem',
         position: 'relative',
-        minHeight: '90vh',
+        minHeight: '88vh',
         display: 'flex',
         alignItems: 'center',
         justify: 'center'
       }}>
-        {/* Loose Tropical / Olive Leaf Stems Tucked Behind Main Collage */}
-        <BotanicalFoliage type="olive" size={110} rotate="-20deg" color="#2E7D32" style={{ position: 'absolute', top: '20px', left: '2%', opacity: 0.8 }} />
-        <BotanicalFoliage type="tropical" size={130} rotate="35deg" color="#1B3F2E" style={{ position: 'absolute', bottom: '40px', right: '2%', opacity: 0.85 }} />
+        {/* Botanical Foliage & Doodles */}
+        <BotanicalFoliage type="olive" size={110} rotate="-20deg" color="var(--green-leaf, #2e7d32)" style={{ position: 'absolute', top: '20px', left: '2%', opacity: 0.8 }} />
+        <BotanicalFoliage type="tropical" size={130} rotate="35deg" color="var(--green-dark, #193f2d)" style={{ position: 'absolute', bottom: '40px', right: '2%', opacity: 0.85 }} />
 
-        {/* Ambient Hand-drawn Doodles */}
-        <RecyclingDoodle size={80} color="#2E7D32" style={{ position: 'absolute', top: '60px', right: '12%', opacity: 0.3 }} />
+        <RecyclingDoodle size={80} color="var(--green-leaf, #2e7d32)" style={{ position: 'absolute', top: '60px', right: '12%', opacity: 0.3 }} />
         <SparkleDoodle size={45} color="#D9A036" style={{ position: 'absolute', bottom: '90px', left: '10%', opacity: 0.45 }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 10, maxWidth: '1100px' }}>
           <div style={{ position: 'relative', margin: '0 auto' }}>
             
-            {/* SURROUNDING COLLAGE ELEMENT (Left): Pink Sticky Note + Globe Doodle */}
+            {/* FLANKING LEFT: Pink Sticky Note ("Good Waste, Brighter Future ♡") */}
             <StickyNote color="pink" rotate="-6.5deg" fastener="tape" style={{ position: 'absolute', top: '-15px', left: '-35px', zIndex: 15, maxWidth: '240px' }}>
-              <div className="font-handwritten" style={{ fontSize: '1.35rem', color: '#1B3F2E', lineHeight: 1.25 }}>
+              <div className="handwritten" style={{ fontSize: '1.35rem', color: 'var(--green-dark, #193f2d)', lineHeight: 1.25 }}>
                 Good Waste, Brighter Future ♡
               </div>
-              <div className="font-handwritten" style={{ fontSize: '1.1rem', color: '#2E7D32', marginTop: '0.5rem', fontWeight: 'bold' }}>
+              <div className="handwritten" style={{ fontSize: '1.1rem', color: 'var(--green-leaf, #2e7d32)', marginTop: '0.5rem', fontWeight: 'bold' }}>
                 🌎 There is no planet B <br />
                 <span style={{ color: '#C85A32' }}>#SortRight</span>
               </div>
             </StickyNote>
 
-            {/* SURROUNDING COLLAGE ELEMENT (Right): Pinned Polaroid Photo with Red Paperclip */}
+            {/* FLANKING RIGHT: Tilted Polaroid Photo with Red Paperclip */}
             <PaperSheet variant="parchment" rotate="5.8deg" shadow="deep" style={{
               position: 'absolute',
               top: '20px',
@@ -56,36 +53,36 @@ export default function Home() {
               width: '230px',
               padding: '0.85rem 0.85rem 1.35rem 0.85rem',
               zIndex: 14,
-              background: '#FDFBF7',
-              border: '2px solid #E6DAC8',
+              background: 'var(--paper-white, #fdfbf7)',
+              border: '2px solid var(--border-parchment, #e6dac8)',
               textAlign: 'center'
             }}>
               <RedPaperClip size={40} style={{ position: 'absolute', top: '-22px', left: '25px' }} />
-              <div style={{ background: '#E6DAC8', height: '135px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.65rem', overflow: 'hidden' }}>
+              <div style={{ background: 'var(--paper-cream, #f4ecdc)', height: '135px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.65rem', overflow: 'hidden' }}>
                 <span style={{ fontSize: '3rem' }}>♻️</span>
               </div>
-              <div className="font-handwritten" style={{ fontSize: '1.2rem', color: '#1B3F2E', fontWeight: 'bold', lineHeight: 1.2 }}>
+              <div className="handwritten" style={{ fontSize: '1.2rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold', lineHeight: 1.2 }}>
                 A cleaner tomorrow is in your hands ♡
               </div>
             </PaperSheet>
 
-            {/* SURROUNDING COLLAGE ELEMENT (Bottom Right Sticky Note) */}
+            {/* FLANKING BOTTOM RIGHT: Sticky Note */}
             <StickyNote color="yellow" rotate="-3.8deg" fastener="pin" style={{ position: 'absolute', bottom: '-40px', right: '40px', zIndex: 15, maxWidth: '220px' }}>
-              <div className="font-handwritten" style={{ fontSize: '1.25rem', color: '#1B3F2E', fontWeight: 'bold' }}>
+              <div className="handwritten" style={{ fontSize: '1.25rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold' }}>
                 Reduce, Reuse, Recycle, Repeat 🔄
               </div>
             </StickyNote>
 
-            {/* MAIN HERO CARD: Large Torn-Edge Spiral Notebook Sheet in Warm Off-White */}
-            <PaperSheet variant="parchment" rotate="-0.4deg" shadow="deep" style={{
+            {/* CENTERED MAIN HERO CARD: Torn Notebook Card with Rotation (-0.5deg) */}
+            <PaperSheet variant="parchment" rotate="-0.5deg" shadow="deep" style={{
               padding: '4rem 3rem 3.5rem 3rem',
               zIndex: 5,
-              border: '2px solid #E6DAC8',
-              background: '#FDFBF7',
+              border: '2px solid var(--border-parchment, #e6dac8)',
+              background: 'var(--paper-white, #fdfbf7)',
               position: 'relative',
-              boxShadow: '2px 8px 20px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)'
+              boxShadow: 'var(--shadow-paper, 3px 12px 25px rgba(45, 30, 15, 0.18))'
             }}>
-              {/* Spiral Hole Punch Details on Top Margin */}
+              {/* Spiral Hole Punch Top Margin */}
               <div style={{
                 position: 'absolute',
                 top: '12px',
@@ -96,66 +93,64 @@ export default function Home() {
                 pointerEvents: 'none'
               }}>
                 {[...Array(12)].map((_, i) => (
-                  <div key={i} style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#D4C3AA', border: '1px solid #BCA88E' }} />
+                  <div key={i} style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--bg-kraft, #d8c7ad)', border: '1px solid #bca88e' }} />
                 ))}
               </div>
 
               <MaskingTape width="150px" height="34px" rotate="-1deg" style={{ position: 'absolute', top: '-18px', left: '50%', transform: 'translateX(-50%)' }} />
 
               <div style={{ textAlign: 'center', marginTop: '0.75rem' }}>
-                {/* Bold Handwritten Logo "ClearBin" with Sprout Details */}
+                {/* Bold Handwritten Logo "ClearBin" */}
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
                   <span style={{ fontSize: '2.5rem' }}>🌱</span>
-                  <span className="font-handwritten" style={{ fontSize: '3.2rem', fontWeight: 'bold', color: '#1B3F2E', lineHeight: 1 }}>
+                  <span className="handwritten" style={{ fontSize: '3.4rem', fontWeight: 'bold', color: 'var(--green-dark, #193f2d)', lineHeight: 1 }}>
                     ClearBin
                   </span>
                 </div>
-                <div className="font-handwritten" style={{ fontSize: '1.4rem', color: '#2E7D32', fontWeight: 'bold', marginBottom: '1.25rem' }}>
+                <div className="handwritten" style={{ fontSize: '1.45rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold', marginBottom: '1.25rem' }}>
                   "Small Actions, Big Change"
                 </div>
 
                 <h1 style={{
                   fontSize: 'clamp(2.3rem, 4.8vw, 3.8rem)',
-                  fontFamily: 'var(--font-heading)',
+                  fontFamily: 'var(--font-body)',
                   fontWeight: '800',
-                  color: '#1B3F2E',
+                  color: 'var(--green-dark, #193f2d)',
                   lineHeight: '1.15',
                   marginBottom: '1rem'
                 }}>
                   A smarter way to manage waste. <br />
-                  <span style={{ color: '#2E7D32' }}>For cleaner communities and a greener tomorrow.</span>
+                  <span style={{ color: 'var(--green-leaf, #2e7d32)' }}>For cleaner communities and a greener tomorrow.</span>
                 </h1>
-                <UnderlineDoodle color="#2E7D32" width={320} style={{ margin: '-6px auto 1.75rem auto' }} />
+                <UnderlineDoodle color="var(--green-leaf, #2e7d32)" width={320} style={{ margin: '-6px auto 1.75rem auto' }} />
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', flexWrap: 'wrap', position: 'relative', marginTop: '2rem' }}>
-                  {/* Dark Green Button "Schedule Pickup →" */}
                   <Link
                     to="/post"
                     className="btn"
                     style={{
-                      background: '#1B3F2E',
-                      color: '#FDFBF7',
+                      background: 'var(--green-dark, #193f2d)',
+                      color: 'var(--paper-white, #fdfbf7)',
                       padding: '1rem 2.25rem',
                       borderRadius: '50px',
-                      fontWeight: '700',
+                      fontWeight: '800',
                       fontSize: '1.05rem',
-                      boxShadow: '2px 8px 20px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)'
+                      boxShadow: 'var(--shadow-paper, 3px 12px 25px rgba(45, 30, 15, 0.18))'
                     }}
                   >
                     Schedule Pickup →
                   </Link>
 
-                  {/* Soft Kraft Button "Learn More" */}
                   <a
                     href="#how-it-works"
                     className="btn"
                     style={{
-                      background: '#E6DAC8',
-                      color: '#1B3F2E',
-                      border: '1.5px solid #D4C3AA',
+                      background: 'var(--paper-cream, #f4ecdc)',
+                      color: 'var(--green-dark, #193f2d)',
+                      border: '1.5px solid var(--bg-kraft, #d8c7ad)',
                       padding: '1rem 2.25rem',
                       borderRadius: '50px',
-                      fontWeight: '700',
+                      fontWeight: '800',
                       fontSize: '1.05rem'
                     }}
                   >
@@ -170,99 +165,97 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-         02. "HOW IT WORKS" SECTION (Pinned Cardboard Swatches + Dashed Arrows)
+         02. "HOW IT WORKS" SECTION (4 Pinned Cardboard Swatches)
          ========================================================================= */}
-      <TornEdgeMultiLayerTop fillBack="#9DBE9B" fillMid="#2E7D32" fillFront="#FDFBF7" height={55} />
-      <section id="how-it-works" style={{ background: '#FDFBF7', color: '#1B3F2E', padding: '4.5rem 1rem 5.5rem 1rem', position: 'relative' }}>
+      <section id="how-it-works" style={{ background: 'var(--paper-white, #fdfbf7)', color: 'var(--green-dark, #193f2d)', padding: '4.5rem 1rem 5.5rem 1rem', position: 'relative' }}>
         <div className="container">
           
           {/* Header */}
           <div className="section-header reveal-on-scroll" style={{ textAlign: 'center', marginBottom: '3.5rem', position: 'relative' }}>
-            <span className="badge" style={{ background: '#9DBE9B', color: '#1B3F2E', padding: '0.4rem 1.1rem', borderRadius: '50px', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            <span className="badge" style={{ background: '#9DBE9B', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1.1rem', borderRadius: '50px', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
               How It Works
             </span>
-            <h2 className="section-title" style={{ color: '#1B3F2E', fontSize: '2.6rem', fontWeight: '800', marginTop: '0.75rem', marginBottom: '0.5rem' }}>
+            <h2 className="section-title" style={{ color: 'var(--green-dark, #193f2d)', fontSize: '2.6rem', fontWeight: '800', marginTop: '0.75rem', marginBottom: '0.5rem' }}>
               A Simple Process For A Cleaner Tomorrow.
             </h2>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span className="font-handwritten" style={{ fontSize: '1.5rem', color: '#2E7D32', fontWeight: 'bold' }}>
+              <span className="handwritten" style={{ fontSize: '1.55rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold' }}>
                 It's easier than you think!
               </span>
-              <ArrowDoodle color="#2E7D32" size={45} rotate="-30deg" />
+              <ArrowDoodle color="var(--green-leaf, #2e7d32)" size={45} rotate="-30deg" />
             </div>
           </div>
 
-          {/* 4-Step Horizontal Process Cards (Pinned Cardboard Swatches) */}
+          {/* 4 Pinned Cardboard Swatches */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.75rem', position: 'relative' }}>
             
-            {/* Step 1: 01 SORT */}
-            <PaperSheet variant="notebook" rotate="-2.2deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', border: '1.5px solid #E6DAC8' }} className="reveal-on-scroll">
+            {/* Step 1: Cream Paper Swatch */}
+            <PaperSheet variant="notebook" rotate="-2.2deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: 'var(--paper-cream, #f4ecdc)', border: '1.5px solid var(--border-parchment, #e6dac8)' }} className="reveal-on-scroll">
               <MaskingTape width="85px" height="24px" rotate="1deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🗑️</div>
-              <span className="badge" style={{ background: '#1B3F2E', color: '#FDFBF7', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
+              <span className="badge" style={{ background: 'var(--green-dark, #193f2d)', color: 'var(--paper-white, #fdfbf7)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
                 01 SORT
               </span>
-              <h3 style={{ fontSize: '1.35rem', color: '#1B3F2E', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Separate Waste</h3>
-              <p style={{ fontSize: '0.9rem', color: '#2E7D32', lineHeight: '1.45' }}>
+              <h3 style={{ fontSize: '1.35rem', color: 'var(--green-dark, #193f2d)', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Separate Waste</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--green-leaf, #2e7d32)', lineHeight: '1.45' }}>
                 Illustrated green bin sorting for paper, plastic, glass, and compostable organic waste.
               </p>
             </PaperSheet>
 
-            {/* Step 2: 02 COLLECT */}
-            <PaperSheet variant="kraft" rotate="1.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', border: '1.5px solid #D4C3AA' }} className="reveal-on-scroll">
+            {/* Step 2: Light Green Paper Swatch */}
+            <PaperSheet variant="parchment" rotate="1.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: '#e2f0d9', border: '1.5px solid #b5d9a7' }} className="reveal-on-scroll">
               <RedPaperClip size={34} style={{ position: 'absolute', top: '-16px', right: '20px' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🚛</div>
-              <span className="badge" style={{ background: '#2E7D32', color: '#FDFBF7', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
+              <span className="badge" style={{ background: 'var(--green-leaf, #2e7d32)', color: 'var(--paper-white, #fdfbf7)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
                 02 COLLECT
               </span>
-              <h3 style={{ fontSize: '1.35rem', color: '#1B3F2E', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Garbage Truck</h3>
-              <p style={{ fontSize: '0.9rem', color: '#1B3F2E', lineHeight: '1.45', fontWeight: '500' }}>
+              <h3 style={{ fontSize: '1.35rem', color: 'var(--green-dark, #193f2d)', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Garbage Truck</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--green-dark, #193f2d)', lineHeight: '1.45', fontWeight: '500' }}>
                 Green collection vehicles pick up your pre-sorted batch right at your doorstep.
               </p>
             </PaperSheet>
 
-            {/* Step 3: 03 PROCESS */}
-            <PaperSheet variant="parchment" rotate="-1.5deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', border: '1.5px solid #E6DAC8' }} className="reveal-on-scroll">
+            {/* Step 3: Kraft Card Swatch with Green Pushpin */}
+            <PaperSheet variant="kraft" rotate="-1.5deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', border: '1.5px solid #d4c3aa' }} className="reveal-on-scroll">
               <GreenPushPin style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>♻️</div>
-              <span className="badge" style={{ background: '#D9A036', color: '#1B3F2E', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
+              <span className="badge" style={{ background: '#D9A036', color: 'var(--green-dark, #193f2d)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
                 03 PROCESS
               </span>
-              <h3 style={{ fontSize: '1.35rem', color: '#1B3F2E', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Clean Recovery</h3>
-              <p style={{ fontSize: '0.9rem', color: '#2E7D32', lineHeight: '1.45' }}>
+              <h3 style={{ fontSize: '1.35rem', color: 'var(--green-dark, #193f2d)', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Clean Recovery</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--green-dark, #193f2d)', lineHeight: '1.45', fontWeight: '500' }}>
                 Materials are cleaned, prepped, and cataloged for local recycling & craft studios.
               </p>
             </PaperSheet>
 
-            {/* Step 4: 04 REUSE */}
-            <PaperSheet variant="green" rotate="2.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: '#1B3F2E' }} className="reveal-on-scroll">
+            {/* Step 4: Green Paper Swatch */}
+            <PaperSheet variant="green" rotate="2.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: 'var(--green-dark, #193f2d)' }} className="reveal-on-scroll">
               <WashiTape width="85px" height="24px" rotate="-2deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🌱</div>
-              <span className="badge" style={{ background: '#9DBE9B', color: '#1B3F2E', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
+              <span className="badge" style={{ background: '#9DBE9B', color: 'var(--green-dark, #193f2d)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem' }}>
                 04 REUSE
               </span>
-              <h3 style={{ fontSize: '1.35rem', color: '#FDFBF7', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Second Life</h3>
-              <p style={{ fontSize: '0.9rem', color: '#FDFBF7', lineHeight: '1.45' }}>
+              <h3 style={{ fontSize: '1.35rem', color: 'var(--paper-white, #fdfbf7)', fontWeight: '800', margin: '0.65rem 0 0.35rem 0' }}>Second Life</h3>
+              <p style={{ fontSize: '0.9rem', color: 'var(--paper-white, #fdfbf7)', lineHeight: '1.45' }}>
                 Materials get a second life as upcycled goods, totes, and eco-friendly products!
               </p>
             </PaperSheet>
 
           </div>
 
-          {/* Floating Doodle on the Right */}
-          <div className="font-handwritten reveal-on-scroll" style={{ textAlign: 'right', marginTop: '2rem', fontSize: '1.4rem', color: '#2E7D32', fontWeight: 'bold' }}>
+          {/* Floating Doodle on Right */}
+          <div className="handwritten reveal-on-scroll" style={{ textAlign: 'right', marginTop: '2rem', fontSize: '1.5rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold' }}>
             Small steps lead to big impact ♡
           </div>
 
         </div>
       </section>
-      <TornEdgeMultiLayerBottom fillBack="#9DBE9B" fillMid="#2E7D32" fillFront="#FDFBF7" height={55} />
 
       {/* =========================================================================
-         03. "ABOUT CLEARBIN" (Dark Green Full-Width Torn Band)
+         03. "ABOUT CLEARBIN" (Full-Width Dark Green #193f2d with .torn-top & .torn-bottom)
          ========================================================================= */}
-      <section style={{ background: '#1B3F2E', color: '#FDFBF7', padding: '5rem 1rem 5.5rem 1rem', position: 'relative' }}>
-        <BotanicalFoliage type="olive" size={120} rotate="45deg" color="#9DBE9B" style={{ position: 'absolute', top: '15px', right: '3%', opacity: 0.6 }} />
+      <section className="torn-top torn-bottom" style={{ background: 'var(--green-dark, #193f2d)', color: 'var(--paper-white, #fdfbf7)', padding: '6rem 1rem 6.5rem 1rem', position: 'relative' }}>
+        <BotanicalFoliage type="olive" size={120} rotate="45deg" color="#9DBE9B" style={{ position: 'absolute', top: '25px', right: '3%', opacity: 0.6 }} />
 
         <div className="container reveal-on-scroll">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
@@ -272,28 +265,28 @@ export default function Home() {
               <PaperSheet variant="parchment" rotate="-4.2deg" shadow="deep" style={{
                 width: '300px',
                 padding: '1rem 1rem 1.5rem 1rem',
-                background: '#FDFBF7',
-                border: '2px solid #E6DAC8',
+                background: 'var(--paper-white, #fdfbf7)',
+                border: '2px solid var(--border-parchment, #e6dac8)',
                 textAlign: 'center',
                 position: 'relative'
               }}>
                 <GreenPushPin style={{ position: 'absolute', top: '-16px', left: '50%', transform: 'translateX(-50%)' }} />
-                <div style={{ background: '#2E7D32', height: '190px', borderRadius: '6px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#FDFBF7', marginBottom: '0.85rem' }}>
+                <div style={{ background: 'var(--green-leaf, #2e7d32)', height: '190px', borderRadius: '6px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#fdfbf7', marginBottom: '0.85rem' }}>
                   <span style={{ fontSize: '3.5rem' }}>🧹🌿</span>
-                  <span style={{ fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Volunteer Drive</span>
+                  <span style={{ fontSize: '0.85rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Volunteer Drive</span>
                 </div>
-                <div className="font-handwritten" style={{ fontSize: '1.3rem', color: '#1B3F2E', fontWeight: 'bold' }}>
+                <div className="handwritten" style={{ fontSize: '1.35rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold' }}>
                   Cleaner communities, Happier tomorrows ♡
                 </div>
               </PaperSheet>
             </div>
 
-            {/* Center: Story Text */}
+            {/* Center: Story Copy */}
             <div>
-              <span className="badge" style={{ background: '#2E7D32', color: '#FDFBF7', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
+              <span className="badge" style={{ background: 'var(--green-leaf, #2e7d32)', color: 'var(--paper-white, #fdfbf7)', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
                 About ClearBin
               </span>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#FDFBF7', marginTop: '0.75rem', marginBottom: '1rem', lineHeight: '1.2' }}>
+              <h2 style={{ fontSize: '2.6rem', fontWeight: '800', color: 'var(--paper-white, #fdfbf7)', marginTop: '0.75rem', marginBottom: '1rem', lineHeight: '1.2' }}>
                 Waste Solutions For A Brighter Tomorrow.
               </h2>
               <p style={{ color: '#9DBE9B', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
@@ -304,11 +297,11 @@ export default function Home() {
                 to="/about"
                 className="btn"
                 style={{
-                  background: '#FDFBF7',
-                  color: '#1B3F2E',
+                  background: 'var(--paper-white, #fdfbf7)',
+                  color: 'var(--green-dark, #193f2d)',
                   padding: '0.85rem 1.85rem',
                   borderRadius: '50px',
-                  fontWeight: '700',
+                  fontWeight: '800',
                   fontSize: '0.95rem',
                   boxShadow: '0 4px 14px rgba(0,0,0,0.2)'
                 }}
@@ -323,31 +316,31 @@ export default function Home() {
                 width: '100%',
                 maxWidth: '300px',
                 padding: '2rem 1.5rem',
-                background: '#FDFBF7',
-                border: '2px solid #E6DAC8',
+                background: 'var(--paper-white, #fdfbf7)',
+                border: '2px solid var(--border-parchment, #e6dac8)',
                 textAlign: 'center',
                 position: 'relative'
               }}>
                 <MaskingTape width="100px" height="28px" rotate="-2deg" style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)' }} />
                 
-                <h3 className="font-handwritten" style={{ fontSize: '1.5rem', color: '#1B3F2E', fontWeight: 'bold', marginBottom: '1.25rem' }}>
+                <h3 className="handwritten" style={{ fontSize: '1.6rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold', marginBottom: '1.25rem' }}>
                   Our Impact So Far 📊
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <div style={{ borderBottom: '1.5px dashed #E6DAC8', paddingBottom: '0.75rem' }}>
-                    <div style={{ fontSize: '2.1rem', fontWeight: '800', color: '#1B3F2E', lineHeight: 1 }}>1,200+</div>
-                    <div style={{ fontSize: '0.85rem', color: '#2E7D32', fontWeight: '700', textTransform: 'uppercase' }}>Pickups Completed</div>
+                  <div style={{ borderBottom: '1.5px dashed var(--border-parchment, #e6dac8)', paddingBottom: '0.75rem' }}>
+                    <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', lineHeight: 1 }}>1,200+</div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: '800', textTransform: 'uppercase' }}>Pickups Completed</div>
                   </div>
 
-                  <div style={{ borderBottom: '1.5px dashed #E6DAC8', paddingBottom: '0.75rem' }}>
-                    <div style={{ fontSize: '2.1rem', fontWeight: '800', color: '#1B3F2E', lineHeight: 1 }}>15+</div>
-                    <div style={{ fontSize: '0.85rem', color: '#2E7D32', fontWeight: '700', textTransform: 'uppercase' }}>Communities Served</div>
+                  <div style={{ borderBottom: '1.5px dashed var(--border-parchment, #e6dac8)', paddingBottom: '0.75rem' }}>
+                    <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', lineHeight: 1 }}>15+</div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: '800', textTransform: 'uppercase' }}>Communities Served</div>
                   </div>
 
                   <div>
-                    <div style={{ fontSize: '2.1rem', fontWeight: '800', color: '#2E7D32', lineHeight: 1 }}>3,500+ kg</div>
-                    <div style={{ fontSize: '0.85rem', color: '#1B3F2E', fontWeight: '700', textTransform: 'uppercase' }}>Waste Recycled</div>
+                    <div style={{ fontSize: '2.2rem', fontWeight: '800', color: 'var(--green-leaf, #2e7d32)', lineHeight: 1 }}>3,500+ kg</div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--green-dark, #193f2d)', fontWeight: '800', textTransform: 'uppercase' }}>Waste Recycled</div>
                   </div>
                 </div>
               </PaperSheet>
@@ -358,17 +351,17 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-         04. "KNOW YOUR WASTE" (Interactive Category Strip)
+         04. "KNOW YOUR WASTE" (Tilted Scrap Paper Tags)
          ========================================================================= */}
-      <section id="waste-guide" style={{ padding: '5rem 1rem', background: '#E6DAC8', position: 'relative' }}>
+      <section id="waste-guide" style={{ padding: '5rem 1rem', background: 'var(--paper-cream, #f4ecdc)', position: 'relative' }}>
         <div className="container reveal-on-scroll">
           
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '3rem' }}>
             <div>
-              <span className="badge" style={{ background: '#1B3F2E', color: '#FDFBF7', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
+              <span className="badge" style={{ background: 'var(--green-dark, #193f2d)', color: 'var(--paper-white, #fdfbf7)', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
                 Sorting Guide
               </span>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#1B3F2E', marginTop: '0.5rem', margin: 0 }}>
+              <h2 style={{ fontSize: '2.6rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginTop: '0.5rem', margin: 0 }}>
                 Know Your Waste.
               </h2>
             </div>
@@ -377,11 +370,11 @@ export default function Home() {
               to="/post"
               className="btn"
               style={{
-                background: '#1B3F2E',
-                color: '#FDFBF7',
+                background: 'var(--green-dark, #193f2d)',
+                color: 'var(--paper-white, #fdfbf7)',
                 padding: '0.75rem 1.65rem',
                 borderRadius: '50px',
-                fontWeight: '700',
+                fontWeight: '800',
                 fontSize: '0.9rem'
               }}
             >
@@ -389,55 +382,55 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* 6 Realistic Waste Cards Placed on a Torn Paper Strip */}
+          {/* 6 Realistic Tilted Scrap Paper Tags */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1.5rem' }}>
             
-            {/* 1. Paper */}
-            <PaperSheet variant="parchment" rotate="-2deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#FDFBF7' }}>
+            {/* Paper */}
+            <PaperSheet variant="parchment" rotate="-2.2deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--paper-white, #fdfbf7)' }}>
               <RedPaperClip size={32} style={{ position: 'absolute', top: '-14px', left: '15px' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📄</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1B3F2E', marginBottom: '0.25rem' }}>Paper</h4>
-              <p style={{ fontSize: '0.8rem', color: '#2E7D32' }}>Crumpled paper ball & magazines</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginBottom: '0.25rem' }}>Paper</h4>
+              <p style={{ fontSize: '0.825rem', color: 'var(--green-leaf, #2e7d32)' }}>Crumpled paper ball & magazines</p>
             </PaperSheet>
 
-            {/* 2. Plastic */}
-            <PaperSheet variant="kraft" rotate="2.5deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#FDFBF7' }}>
+            {/* Plastic */}
+            <PaperSheet variant="kraft" rotate="2.5deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--paper-white, #fdfbf7)' }}>
               <MaskingTape width="65px" height="20px" rotate="-1deg" style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🧴</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1B3F2E', marginBottom: '0.25rem' }}>Plastic</h4>
-              <p style={{ fontSize: '0.8rem', color: '#2E7D32' }}>PET plastic water bottles & jugs</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginBottom: '0.25rem' }}>Plastic</h4>
+              <p style={{ fontSize: '0.825rem', color: 'var(--green-leaf, #2e7d32)' }}>PET plastic water bottles & jugs</p>
             </PaperSheet>
 
-            {/* 3. Glass */}
-            <PaperSheet variant="green" rotate="-1.8deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#1B3F2E' }}>
+            {/* Glass */}
+            <PaperSheet variant="green" rotate="-1.8deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--green-dark, #193f2d)' }}>
               <GreenPushPin style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🍾</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#FDFBF7', marginBottom: '0.25rem' }}>Glass</h4>
-              <p style={{ fontSize: '0.8rem', color: '#9DBE9B' }}>Green glass bottles & jars</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--paper-white, #fdfbf7)', marginBottom: '0.25rem' }}>Glass</h4>
+              <p style={{ fontSize: '0.825rem', color: '#9DBE9B' }}>Green glass bottles & jars</p>
             </PaperSheet>
 
-            {/* 4. Metal */}
-            <PaperSheet variant="parchment" rotate="3deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#FDFBF7' }}>
+            {/* Metal */}
+            <PaperSheet variant="parchment" rotate="3deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--paper-white, #fdfbf7)' }}>
               <WashiTape width="70px" height="20px" rotate="2deg" style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🥫</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1B3F2E', marginBottom: '0.25rem' }}>Metal</h4>
-              <p style={{ fontSize: '0.8rem', color: '#2E7D32' }}>Crushed soda cans & tin food tins</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginBottom: '0.25rem' }}>Metal</h4>
+              <p style={{ fontSize: '0.825rem', color: 'var(--green-leaf, #2e7d32)' }}>Crushed soda cans & tin food tins</p>
             </PaperSheet>
 
-            {/* 5. Organic */}
-            <PaperSheet variant="kraft" rotate="-2.5deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#FDFBF7' }}>
+            {/* Organic */}
+            <PaperSheet variant="kraft" rotate="-2.8deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--paper-white, #fdfbf7)' }}>
               <RedPaperClip size={32} style={{ position: 'absolute', top: '-14px', right: '15px' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🍌</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1B3F2E', marginBottom: '0.25rem' }}>Organic</h4>
-              <p style={{ fontSize: '0.8rem', color: '#2E7D32' }}>Banana peels & compost scraps</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginBottom: '0.25rem' }}>Organic</h4>
+              <p style={{ fontSize: '0.825rem', color: 'var(--green-leaf, #2e7d32)' }}>Banana peels & compost scraps</p>
             </PaperSheet>
 
-            {/* 6. E-waste */}
-            <PaperSheet variant="parchment" rotate="1.5deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: '#FDFBF7' }}>
+            {/* E-Waste */}
+            <PaperSheet variant="parchment" rotate="1.8deg" shadow="medium" style={{ padding: '1.5rem 1rem', textAlign: 'center', background: 'var(--paper-white, #fdfbf7)' }}>
               <GreenPushPin style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)' }} />
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📦</div>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#1B3F2E', marginBottom: '0.25rem' }}>E-Waste</h4>
-              <p style={{ fontSize: '0.8rem', color: '#2E7D32' }}>Cardboard box with cables & tech</p>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginBottom: '0.25rem' }}>E-Waste</h4>
+              <p style={{ fontSize: '0.825rem', color: 'var(--green-leaf, #2e7d32)' }}>Cardboard box with cables & tech</p>
             </PaperSheet>
 
           </div>
@@ -448,73 +441,70 @@ export default function Home() {
       {/* =========================================================================
          05. "COMMUNITY IMPACT" SECTION
          ========================================================================= */}
-      <section id="community" style={{ padding: '5rem 1rem 6rem 1rem', background: '#FDFBF7', color: '#1B3F2E', position: 'relative' }}>
+      <section id="community" style={{ padding: '5rem 1rem 6rem 1rem', background: 'var(--paper-white, #fdfbf7)', color: 'var(--green-dark, #193f2d)', position: 'relative' }}>
         <div className="container reveal-on-scroll">
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
             
-            {/* Left: Three Vertical Mini-Polaroid Snapshots Pinned Side by Side */}
+            {/* Left: 3 Mini-Polaroid Snapshots */}
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               
-              {/* Photo 1: Sapling Planting */}
-              <PaperSheet variant="parchment" rotate="-5deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid #E6DAC8', textAlign: 'center' }}>
+              <PaperSheet variant="parchment" rotate="-5deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid var(--border-parchment, #e6dac8)', textAlign: 'center' }}>
                 <RedPaperClip size={32} style={{ position: 'absolute', top: '-16px', left: '15px' }} />
-                <div style={{ background: '#2E7D32', height: '110px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem', overflow: 'hidden' }}>
+                <div style={{ background: 'var(--green-leaf, #2e7d32)', height: '110px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem', overflow: 'hidden' }}>
                   <span style={{ fontSize: '2.5rem' }}>🌱</span>
                 </div>
-                <div className="font-handwritten" style={{ fontSize: '1.05rem', color: '#1B3F2E', fontWeight: 'bold' }}>
+                <div className="handwritten" style={{ fontSize: '1.1rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold' }}>
                   Planting hope 🌿
                 </div>
               </PaperSheet>
 
-              {/* Photo 2: Earth Poster */}
-              <PaperSheet variant="parchment" rotate="3deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid #E6DAC8', textAlign: 'center' }}>
+              <PaperSheet variant="parchment" rotate="3deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid var(--border-parchment, #e6dac8)', textAlign: 'center' }}>
                 <GreenPushPin style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)' }} />
-                <div style={{ background: '#1B3F2E', height: '110px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem', overflow: 'hidden' }}>
+                <div style={{ background: 'var(--green-dark, #193f2d)', height: '110px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem', overflow: 'hidden' }}>
                   <span style={{ fontSize: '2.5rem' }}>🌎</span>
                 </div>
-                <div className="font-handwritten" style={{ fontSize: '1rem', color: '#1B3F2E', fontWeight: 'bold' }}>
+                <div className="handwritten" style={{ fontSize: '1.05rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold' }}>
                   No planet B 🌎
                 </div>
               </PaperSheet>
 
-              {/* Photo 3: Mountain Clean-up */}
-              <PaperSheet variant="parchment" rotate="-2.5deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid #E6DAC8', textAlign: 'center' }}>
+              <PaperSheet variant="parchment" rotate="-2.5deg" shadow="deep" style={{ width: '150px', padding: '0.65rem 0.65rem 1rem 0.65rem', background: '#FFFDF7', border: '1.5px solid var(--border-parchment, #e6dac8)', textAlign: 'center' }}>
                 <MaskingTape width="65px" height="20px" rotate="2deg" style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)' }} />
                 <div style={{ background: '#9DBE9B', height: '110px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem', overflow: 'hidden' }}>
                   <span style={{ fontSize: '2.5rem' }}>🏔️</span>
                 </div>
-                <div className="font-handwritten" style={{ fontSize: '1.05rem', color: '#1B3F2E', fontWeight: 'bold' }}>
+                <div className="handwritten" style={{ fontSize: '1.1rem', color: 'var(--green-dark, #193f2d)', fontWeight: 'bold' }}>
                   Clean trails ⛰️
                 </div>
               </PaperSheet>
 
             </div>
 
-            {/* Right Side: Headline + Handwritten Checklist */}
+            {/* Right: Headline + Handwritten Checklist */}
             <div>
-              <span className="badge" style={{ background: '#2E7D32', color: '#FDFBF7', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
+              <span className="badge" style={{ background: 'var(--green-leaf, #2e7d32)', color: 'var(--paper-white, #fdfbf7)', padding: '0.35rem 0.95rem', borderRadius: '20px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
                 Community Impact
               </span>
-              <h2 style={{ fontSize: '2.6rem', fontWeight: '800', color: '#1B3F2E', marginTop: '0.5rem', marginBottom: '1rem', lineHeight: '1.2' }}>
+              <h2 style={{ fontSize: '2.6rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', marginTop: '0.5rem', marginBottom: '1rem', lineHeight: '1.2' }}>
                 Real People. Real Change.
               </h2>
-              <p style={{ color: '#2E7D32', fontSize: '1.05rem', lineHeight: '1.65', marginBottom: '1.75rem', fontWeight: '500' }}>
+              <p style={{ color: 'var(--green-leaf, #2e7d32)', fontSize: '1.05rem', lineHeight: '1.65', marginBottom: '1.75rem', fontWeight: '500' }}>
                 When neighbors collaborate to sort and hand off recyclable materials, entire towns become cleaner, healthier, and more resilient.
               </p>
 
-              {/* Handwritten Checklist with Checkmark Boxes */}
-              <div className="font-handwritten" style={{ fontSize: '1.4rem', color: '#1B3F2E', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
+              {/* Handwritten Checklist */}
+              <div className="handwritten" style={{ fontSize: '1.45rem', color: 'var(--green-dark, #193f2d)', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                  <span style={{ width: '26px', height: '26px', border: '2px solid #2E7D32', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2E7D32', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
+                  <span style={{ width: '26px', height: '26px', border: '2px solid var(--green-leaf, #2e7d32)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--green-leaf, #2e7d32)', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
                   <span>Cleaner cities</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                  <span style={{ width: '26px', height: '26px', border: '2px solid #2E7D32', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2E7D32', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
+                  <span style={{ width: '26px', height: '26px', border: '2px solid var(--green-leaf, #2e7d32)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--green-leaf, #2e7d32)', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
                   <span>Healthier lives</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                  <span style={{ width: '26px', height: '26px', border: '2px solid #2E7D32', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2E7D32', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
+                  <span style={{ width: '26px', height: '26px', border: '2px solid var(--green-leaf, #2e7d32)', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--green-leaf, #2e7d32)', fontWeight: '900', fontSize: '1.1rem' }}>✓</span>
                   <span>Greener future</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', color: '#C85A32', fontWeight: 'bold' }}>
@@ -527,13 +517,13 @@ export default function Home() {
                 to="/post"
                 className="btn"
                 style={{
-                  background: '#1B3F2E',
-                  color: '#FDFBF7',
+                  background: 'var(--green-dark, #193f2d)',
+                  color: 'var(--paper-white, #fdfbf7)',
                   padding: '0.9rem 2.2rem',
                   borderRadius: '50px',
-                  fontWeight: '700',
+                  fontWeight: '800',
                   fontSize: '1rem',
-                  boxShadow: '0 4px 14px rgba(27, 63, 46, 0.3)'
+                  boxShadow: '0 4px 14px rgba(25, 63, 45, 0.3)'
                 }}
               >
                 Join the Movement →
@@ -546,22 +536,20 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-         06. CALL-TO-ACTION (CTA) BANNER & FOOTER
+         06. CALL-TO-ACTION (CTA) BANNER & FOOTER (Dark Green #193f2d with .torn-top)
          ========================================================================= */}
-      <TornEdgeMultiLayerTop fillBack="#9DBE9B" fillMid="#2E7D32" fillFront="#1B3F2E" height={60} />
-      <footer id="contact" style={{ background: '#1B3F2E', color: '#FDFBF7', padding: '5rem 1rem 3rem 1rem', position: 'relative' }}>
+      <footer id="contact" className="torn-top" style={{ background: 'var(--green-dark, #193f2d)', color: 'var(--paper-white, #fdfbf7)', padding: '6rem 1rem 3rem 1rem', position: 'relative' }}>
         
-        {/* Foliage Overlays */}
         <BotanicalFoliage type="tropical" size={130} rotate="-15deg" color="#9DBE9B" style={{ position: 'absolute', top: '20px', left: '3%', opacity: 0.5 }} />
-        <BotanicalFoliage type="olive" size={110} rotate="25deg" color="#2E7D32" style={{ position: 'absolute', top: '30px', right: '4%', opacity: 0.6 }} />
+        <BotanicalFoliage type="olive" size={110} rotate="25deg" color="var(--green-leaf, #2e7d32)" style={{ position: 'absolute', top: '30px', right: '4%', opacity: 0.6 }} />
 
         <div className="container reveal-on-scroll" style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           
-          <span className="badge" style={{ background: '#9DBE9B', color: '#1B3F2E', padding: '0.4rem 1.1rem', borderRadius: '50px', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase' }}>
+          <span className="badge" style={{ background: '#9DBE9B', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1.1rem', borderRadius: '50px', fontWeight: '800', fontSize: '0.85rem', textTransform: 'uppercase' }}>
             Get Started Today
           </span>
 
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', fontWeight: '800', color: '#FDFBF7', marginTop: '1rem', marginBottom: '1.5rem', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', fontWeight: '800', color: 'var(--paper-white, #fdfbf7)', marginTop: '1rem', marginBottom: '1.5rem', lineHeight: 1.15 }}>
             READY TO MAKE A DIFFERENCE?
           </h2>
 
@@ -570,8 +558,8 @@ export default function Home() {
               to="/post"
               className="btn"
               style={{
-                background: '#FDFBF7',
-                color: '#1B3F2E',
+                background: 'var(--paper-white, #fdfbf7)',
+                color: 'var(--green-dark, #193f2d)',
                 padding: '1.1rem 2.75rem',
                 borderRadius: '50px',
                 fontWeight: '800',
@@ -583,47 +571,46 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Scattered Paper Notes Around CTA Banner */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '4rem' }} className="font-handwritten">
-            <span style={{ background: '#F4E8B2', color: '#1B3F2E', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(-3deg)', fontSize: '1.25rem', fontWeight: 'bold' }}>
+          {/* Scattered Paper Notes */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '4rem' }} className="handwritten">
+            <span style={{ background: 'var(--sticky-yellow, #f8ebb2)', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(-3deg)', fontSize: '1.3rem', fontWeight: 'bold' }}>
               Reduce 🌿
             </span>
-            <span style={{ background: '#F2D4D7', color: '#1B3F2E', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(2deg)', fontSize: '1.25rem', fontWeight: 'bold' }}>
+            <span style={{ background: 'var(--sticky-pink, #f7d2d7)', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(2deg)', fontSize: '1.3rem', fontWeight: 'bold' }}>
               Reuse 🔄
             </span>
-            <span style={{ background: '#9DBE9B', color: '#1B3F2E', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(-2.5deg)', fontSize: '1.25rem', fontWeight: 'bold' }}>
+            <span style={{ background: '#9DBE9B', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(-2.5deg)', fontSize: '1.3rem', fontWeight: 'bold' }}>
               Recycle ♻️
             </span>
-            <span style={{ background: '#E6DAC8', color: '#1B3F2E', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(3.5deg)', fontSize: '1.25rem', fontWeight: 'bold' }}>
+            <span style={{ background: 'var(--paper-cream, #f4ecdc)', color: 'var(--green-dark, #193f2d)', padding: '0.4rem 1rem', borderRadius: '4px', transform: 'rotate(3.5deg)', fontSize: '1.3rem', fontWeight: 'bold' }}>
               Repeat ♡
             </span>
           </div>
 
-          {/* Minimal Clean Footer Links & Socials */}
+          {/* Footer Navigation & Social Icons */}
           <div style={{ borderTop: '1px dashed rgba(253, 251, 247, 0.2)', paddingTop: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontSize: '1.5rem' }}>🌱</span>
-              <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: '800', color: '#FDFBF7' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.6rem', fontWeight: '800', color: 'var(--paper-white, #fdfbf7)' }}>
                 ClearBin
               </span>
             </div>
 
-            <div style={{ display: 'flex', gap: '1.75rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.9rem', color: '#9DBE9B', fontWeight: '600' }}>
+            <div style={{ display: 'flex', gap: '1.75rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.9rem', color: '#9DBE9B', fontWeight: '700' }}>
               <Link to="/" style={{ color: 'inherit' }}>Home</Link>
               <Link to="/about" style={{ color: 'inherit' }}>About</Link>
               <a href="#waste-guide" style={{ color: 'inherit' }}>Waste Guide</a>
               <a href="#community" style={{ color: 'inherit' }}>Community</a>
             </div>
 
-            {/* Social Icons */}
-            <div style={{ display: 'flex', gap: '1.25rem', fontSize: '1.3rem', color: '#FDFBF7' }}>
+            <div style={{ display: 'flex', gap: '1.25rem', fontSize: '1.3rem', color: 'var(--paper-white, #fdfbf7)' }}>
               <span title="Instagram" style={{ cursor: 'pointer' }}>📸</span>
               <span title="LinkedIn" style={{ cursor: 'pointer' }}>💼</span>
               <span title="YouTube" style={{ cursor: 'pointer' }}>▶️</span>
             </div>
 
-            <div className="font-handwritten" style={{ fontSize: '1.25rem', color: '#9DBE9B', marginTop: '0.5rem' }}>
+            <div className="handwritten" style={{ fontSize: '1.3rem', color: '#9DBE9B', marginTop: '0.5rem' }}>
               Made for a Cleaner Tomorrow. ♡
             </div>
           </div>

@@ -1,17 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ClearBin — Reusable Waste & Circular Economy Platform</title>
-    <meta name="description" content="Connecting households with reusable waste to nearby artisans, upcyclers, NGOs, and community circular economy partners." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClearBin — Reusable Waste & Circular Economy Platform</title>
+  <meta name="description" content="Connecting households with reusable waste to nearby artisans and recyclers" />
+
+  <!-- Google Fonts: Handwritten (Caveat) + Clean Sans (Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Embedded Scrapbook Texture & Jagged Edge System -->
+  <style>
+    :root {
+      --bg-kraft: #d8c7ad;
+      --paper-white: #fdfbf7;
+      --paper-cream: #f4ecdc;
+      --green-dark: #193f2d;
+      --green-leaf: #2e7d32;
+      --sticky-yellow: #f8ebb2;
+      --sticky-pink: #f7d2d7;
+      --font-hand: 'Caveat', cursive;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --shadow-paper: 3px 12px 25px rgba(45, 30, 15, 0.18), 0 3px 6px rgba(45, 30, 15, 0.08);
+    }
+
+    body {
+      background-color: var(--bg-kraft) !important;
+      font-family: var(--font-body) !important;
+    }
+
+    /* Jagged ripped paper edges */
+    .torn-top {
+      clip-path: polygon(0% 0%, 3% 18px, 7% 4px, 12% 20px, 16% 5px, 21% 17px, 25% 6px,
+          30% 19px, 34% 7px, 39% 21px, 44% 8px, 49% 19px, 54% 5px, 59% 21px,
+          64% 8px, 69% 18px, 74% 6px, 79% 20px, 83% 7px, 88% 19px, 93% 5px,
+          97% 18px, 100% 0%, 100% 100%, 0% 100%) !important;
+    }
+
+    .torn-bottom {
+      clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 15px),
+          97% 100%, 93% calc(100% - 18px), 88% calc(100% - 4px), 83% calc(100% - 16px),
+          79% 100%, 74% calc(100% - 15px), 69% calc(100% - 5px), 64% calc(100% - 17px),
+          59% 100%, 54% calc(100% - 16px), 49% calc(100% - 4px), 44% calc(100% - 18px),
+          39% 100%, 34% calc(100% - 15px), 30% calc(100% - 4px), 25% calc(100% - 16px),
+          21% 100%, 16% calc(100% - 17px), 12% calc(100% - 5px), 7% calc(100% - 19px),
+          3% 100%, 0% calc(100% - 14px)) !important;
+    }
+
+    .handwritten {
+      font-family: var(--font-hand) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
