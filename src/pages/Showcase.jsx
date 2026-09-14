@@ -12,10 +12,10 @@ export default function Showcase() {
   const [artisan, setArtisan] = useState('Local Eco-Artisan');
   const [caption, setCaption] = useState('');
 
-  const handleSubmitStory = (e) => {
+  const handleSubmitStory = async (e) => {
     e.preventDefault();
 
-    addShowcaseStory({
+    await addShowcaseStory({
       title,
       beforeText,
       afterText,

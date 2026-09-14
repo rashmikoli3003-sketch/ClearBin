@@ -1,39 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { SHOWCASE_ITEMS } from '../data/mockData';
+import { db } from '../firebase';
+import { 
+  collection, 
+  addDoc, 
+  updateDoc, 
+  doc, 
+  onSnapshot, 
+  query, 
+  orderBy, 
+  serverTimestamp 
+} from 'firebase/firestore';
 
 const AppContext = createContext();
 
 const INITIAL_ECO_POINTS = 250;
-
-const DEFAULT_USER_LISTINGS = [
-  {
-    id: 'listing-demo-1',
-    category: 'plastic',
-    categoryLabel: 'Plastic (PET, HDPE, Bottles)',
-    quantity: '12 clean PET bottles (~500g)',
-    location: 'Kothrud, Block 4, Pune',
-    notes: 'Rinsed, labels removed, dry and ready for upcycling.',
-    photoUrl: null,
-    createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
-    status: 'matched', // 'active' | 'matched' | 'completed'
-    matchedArtisan: 'GreenCraft Upcycling Studio'
-  }
-];
-
-const DEFAULT_PICKUP_REQUESTS = [
-  {
-    id: 'req-demo-1',
-    listingId: 'listing-demo-1',
-    artisanId: 1,
-    artisanName: 'GreenCraft Upcycling Studio',
-    material: 'Clean PET Plastic Bottles',
-    location: 'Kothrud, Block 4, Pune',
-    pickupDate: 'Tomorrow, 10:00 AM - 12:00 PM',
-    status: 'in_progress', // 'requested' | 'confirmed' | 'in_progress' | 'completed'
-    pointsOffer: 120,
-    requestedAt: new Date(Date.now() - 3600000 * 12).toISOString()
-  }
-];
 
 export function AppProvider({ children }) {
   // 1. EcoPoints state
@@ -42,23 +22,14 @@ export function AppProvider({ children }) {
     return saved ? parseInt(saved, 10) : INITIAL_ECO_POINTS;
   });
 
-  // 2. User Listings state
-  const [userListings, setUserListings] = useState(() => {
-    const saved = localStorage.getItem('clearbin_listings');
-    return saved ? JSON.parse(saved) : DEFAULT_USER_LISTINGS;
-  });
+  // 2. User Listings state (Firestore)
+  const [userListings, setUserListings] = useState([]);
 
-  // 3. Pickup Requests state
-  const [pickupRequests, setPickupRequests] = useState(() => {
-    const saved = localStorage.getItem('clearbin_pickups');
-    return saved ? JSON.parse(saved) : DEFAULT_PICKUP_REQUESTS;
-  });
+  // 3. Pickup Requests state (Firestore)
+  const [pickupRequests, setPickupRequests] = useState([]);
 
-  // 4. Showcase Items state
-  const [showcaseList, setShowcaseList] = useState(() => {
-    const saved = localStorage.getItem('clearbin_showcase');
-    return saved ? JSON.parse(saved) : SHOWCASE_ITEMS;
-  });
+  // 4. Showcase Items state (Firestore)
+  const [showcaseList, setShowcaseList] = useState([]);
 
   // 5. Toast Notifications state
   const [toasts, setToasts] = useState([]);
@@ -69,22 +40,67 @@ export function AppProvider({ children }) {
   // 7. EcoCraft AI Modal Open state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
-  // Persistence Effects
+  // EcoPoints Persistence Effect
   useEffect(() => {
     localStorage.setItem('clearbin_ecopoints', ecoPoints.toString());
   }, [ecoPoints]);
 
+  // Real-time Firestore Listener: Listings
   useEffect(() => {
-    localStorage.setItem('clearbin_listings', JSON.stringify(userListings));
-  }, [userListings]);
+    const q = query(collection(db, 'listings'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...data,
+          createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt || new Date().toISOString())
+        };
+      });
+      setUserListings(docs);
+    }, (err) => {
+      console.warn('Firestore listings listener error:', err);
+    });
+    return () => unsubscribe();
+  }, []);
 
+  // Real-time Firestore Listener: Pickups
   useEffect(() => {
-    localStorage.setItem('clearbin_pickups', JSON.stringify(pickupRequests));
-  }, [pickupRequests]);
+    const q = query(collection(db, 'pickups'), orderBy('requestedAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...data,
+          requestedAt: data.requestedAt?.toDate ? data.requestedAt.toDate().toISOString() : (data.requestedAt || new Date().toISOString())
+        };
+      });
+      setPickupRequests(docs);
+    }, (err) => {
+      console.warn('Firestore pickups listener error:', err);
+    });
+    return () => unsubscribe();
+  }, []);
 
+  // Real-time Firestore Listener: Showcase
   useEffect(() => {
-    localStorage.setItem('clearbin_showcase', JSON.stringify(showcaseList));
-  }, [showcaseList]);
+    const q = query(collection(db, 'showcase'), orderBy('createdAt', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const docs = snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...data,
+          createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : (data.createdAt || new Date().toISOString())
+        };
+      });
+      setShowcaseList(docs);
+    }, (err) => {
+      console.warn('Firestore showcase listener error:', err);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // Toast Helper
   const showToast = (message, type = 'success') => {
@@ -100,52 +116,59 @@ export function AppProvider({ children }) {
   };
 
   // Add New Waste Listing
-  const addListing = (newListingData) => {
-    const newListing = {
-      id: `listing-${Date.now()}`,
-      createdAt: new Date().toISOString(),
+  const addListing = async (newListingData) => {
+    const docData = {
+      ...newListingData,
       status: 'active',
-      ...newListingData
+      createdAt: serverTimestamp()
     };
-
-    setUserListings(prev => [newListing, ...prev]);
+    const docRef = await addDoc(collection(db, 'listings'), docData);
     showToast('🎉 Waste item posted successfully!');
-    return newListing;
+    return {
+      id: docRef.id,
+      ...newListingData,
+      status: 'active',
+      createdAt: new Date().toISOString()
+    };
   };
 
   // Request Pickup with an Artisan
-  const requestPickup = ({ match, listingId, pickupDate, notes }) => {
-    const pointsOfferNum = parseInt(match.pointsOffer.replace(/[^0-9]/g, ''), 10) || 100;
+  const requestPickup = async ({ match, listingId, pickupDate, notes }) => {
+    const pointsOfferNum = parseInt(match.pointsOffer ? match.pointsOffer.toString().replace(/[^0-9]/g, '') : '', 10) || 100;
     
-    const newReq = {
-      id: `req-${Date.now()}`,
+    const newReqData = {
       listingId: listingId || null,
       artisanId: match.id,
       artisanName: match.name,
       material: match.neededMaterial,
-      location: match.distance,
+      location: match.distance || match.location || '',
       pickupDate: pickupDate || 'Scheduled within 24-48 hours',
       notes: notes || '',
-      status: 'requested', // 'requested' -> 'confirmed' -> 'completed'
+      status: 'requested',
       pointsOffer: pointsOfferNum,
-      requestedAt: new Date().toISOString()
+      requestedAt: serverTimestamp()
     };
 
-    setPickupRequests(prev => [newReq, ...prev]);
+    const docRef = await addDoc(collection(db, 'pickups'), newReqData);
 
     // Update listing status if linked
     if (listingId) {
-      setUserListings(prev => prev.map(item => 
-        item.id === listingId ? { ...item, status: 'matched', matchedArtisan: match.name } : item
-      ));
+      await updateDoc(doc(db, 'listings', listingId), {
+        status: 'matched',
+        matchedArtisan: match.name
+      });
     }
 
     showToast(`🚚 Pickup requested from ${match.name}!`);
-    return newReq;
+    return {
+      id: docRef.id,
+      ...newReqData,
+      requestedAt: new Date().toISOString()
+    };
   };
 
   // Confirm Pickup Hand-off Complete (Collect EcoPoints)
-  const completePickup = (requestId) => {
+  const completePickup = async (requestId) => {
     const target = pickupRequests.find(r => r.id === requestId);
     if (!target) return;
 
@@ -155,9 +178,10 @@ export function AppProvider({ children }) {
     }
 
     // Mark request as completed
-    setPickupRequests(prev => prev.map(req => 
-      req.id === requestId ? { ...req, status: 'completed', completedAt: new Date().toISOString() } : req
-    ));
+    await updateDoc(doc(db, 'pickups', requestId), {
+      status: 'completed',
+      completedAt: serverTimestamp()
+    });
 
     // Award EcoPoints
     const pointsAwarded = target.pointsOffer || 150;
@@ -165,9 +189,9 @@ export function AppProvider({ children }) {
 
     // Update linked listing status
     if (target.listingId) {
-      setUserListings(prev => prev.map(item => 
-        item.id === target.listingId ? { ...item, status: 'completed' } : item
-      ));
+      await updateDoc(doc(db, 'listings', target.listingId), {
+        status: 'completed'
+      });
     }
 
     showToast(`🌟 Hand-off complete! +${pointsAwarded} EcoPoints added to your balance!`, 'success');
@@ -186,17 +210,22 @@ export function AppProvider({ children }) {
   };
 
   // Add New Showcase Story
-  const addShowcaseStory = (story) => {
-    const newStory = {
-      id: Date.now(),
+  const addShowcaseStory = async (story) => {
+    const newStoryData = {
       bgGradient: 'linear-gradient(135deg, #e0f2fe, #eaf4ed)',
       icon: '✨',
       pointsEarned: `+${story.points || 150} EcoPoints`,
-      ...story
+      ...story,
+      createdAt: serverTimestamp()
     };
 
-    setShowcaseList(prev => [newStory, ...prev]);
+    const docRef = await addDoc(collection(db, 'showcase'), newStoryData);
     showToast('🎨 Upcycling story added to community showcase!', 'success');
+    return {
+      id: docRef.id,
+      ...newStoryData,
+      createdAt: new Date().toISOString()
+    };
   };
 
   return (
@@ -230,3 +259,4 @@ export function useApp() {
   }
   return context;
 }
+

@@ -76,13 +76,13 @@ export default function PostWaste() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const categoryObj = CATEGORIES.find(c => c.id === category);
 
-    // Save listing in local storage via AppContext
-    const newListing = addListing({
+    // Save listing in Firestore via AppContext
+    const newListing = await addListing({
       category,
       categoryLabel: categoryObj ? categoryObj.label : category,
       location,
@@ -113,8 +113,8 @@ export default function PostWaste() {
     }, 350);
   };
 
-  const handleQuickRequestPickup = (match) => {
-    requestPickup({
+  const handleQuickRequestPickup = async (match) => {
+    await requestPickup({
       match,
       listingId: createdListing?.id,
       pickupDate: 'Tomorrow between 10:00 AM - 1:00 PM',

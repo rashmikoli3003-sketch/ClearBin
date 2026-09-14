@@ -31,11 +31,11 @@ export default function Matches() {
     setSelectedListingId(matchingListing ? matchingListing.id : (userListings[0]?.id || ''));
   };
 
-  const handleConfirmPickupRequest = (e) => {
+  const handleConfirmPickupRequest = async (e) => {
     e.preventDefault();
     if (!selectedMatch) return;
 
-    requestPickup({
+    await requestPickup({
       match: selectedMatch,
       listingId: selectedListingId,
       pickupDate,
