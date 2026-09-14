@@ -11,7 +11,16 @@ export default function Home() {
   useScrollReveal();
 
   return (
-    <div className="home-page" style={{ background: 'var(--bg-kraft, #d8c7ad)', color: 'var(--green-dark, #193f2d)', overflowX: 'hidden', position: 'relative' }}>
+    <div className="home-page" style={{
+      backgroundImage: "url('/assets/scrapbook_background.jpg')",
+      backgroundSize: '100% auto',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'top center',
+      backgroundColor: '#193f2d',
+      color: 'var(--green-dark, #193f2d)',
+      overflowX: 'hidden',
+      position: 'relative'
+    }}>
       
       {/* BACKGROUND FLOATING GREEN SCRIBBLE ARROWS SCATTERED ON THE KRAFT CANVAS */}
       <ScribbleArrow size={140} rotate="-25deg" style={{ position: 'absolute', top: '120px', left: '3%', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }} />
@@ -245,7 +254,7 @@ export default function Home() {
       {/* =========================================================================
          02. "HOW IT WORKS" (LIGHT CREAM TORN BANNER ON KRAFT)
          ========================================================================= */}
-      <section id="how-it-works" className="torn-top torn-bottom" style={{ background: '#f4ecdc', color: '#193f2d', padding: '5.5rem 1rem 6rem 1rem', position: 'relative' }}>
+      <section id="how-it-works" className="torn-top torn-bottom" style={{ background: 'rgba(244, 236, 220, 0.45)', color: '#193f2d', padding: '5.5rem 1rem 6rem 1rem', position: 'relative', backdropFilter: 'blur(2px)' }}>
         <div className="container">
           
           {/* Section Header */}
@@ -343,7 +352,7 @@ export default function Home() {
       {/* =========================================================================
          03. "ABOUT CLEARBIN" (DARK FOREST GREEN FULL-WIDTH TORN BAND #193f2d WITH GREEN BAG QUOTE)
          ========================================================================= */}
-      <section className="torn-top torn-bottom" style={{ background: '#193f2d', color: '#FDFBF7', padding: '6.5rem 1rem 7rem 1rem', position: 'relative' }}>
+      <section className="torn-top torn-bottom" style={{ background: 'rgba(25, 63, 45, 0.65)', color: '#FDFBF7', padding: '6.5rem 1rem 7rem 1rem', position: 'relative', backdropFilter: 'blur(2px)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             
@@ -471,7 +480,7 @@ export default function Home() {
       {/* =========================================================================
          04. "KNOW YOUR WASTE" (WASTE CATEGORIES SCRAP PAPER TAGS ON KRAFT)
          ========================================================================= */}
-      <section id="waste-guide" style={{ padding: '6rem 1rem 6.5rem 1rem', background: '#d8c7ad', position: 'relative' }}>
+      <section id="waste-guide" style={{ padding: '6rem 1rem 6.5rem 1rem', background: 'transparent', position: 'relative' }}>
         <div className="container">
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '2rem', marginBottom: '3.5rem' }}>
@@ -577,7 +586,7 @@ export default function Home() {
       {/* =========================================================================
          05. "COMMUNITY IMPACT" (DARK FOREST GREEN SECTION #193f2d)
          ========================================================================= */}
-      <section id="community" className="torn-top torn-bottom" style={{ background: '#193f2d', color: '#FDFBF7', padding: '6.5rem 1rem 7rem 1rem', position: 'relative' }}>
+      <section id="community" className="torn-top torn-bottom" style={{ background: 'rgba(25, 63, 45, 0.65)', color: '#FDFBF7', padding: '6.5rem 1rem 7rem 1rem', position: 'relative', backdropFilter: 'blur(2px)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             
@@ -711,7 +720,7 @@ export default function Home() {
       {/* =========================================================================
          06. CTA BANNER & 07. FOOTER SECTION
          ========================================================================= */}
-      <section id="contact" style={{ background: '#193f2d', color: '#FDFBF7', padding: '4rem 1rem 2rem 1rem', position: 'relative' }}>
+      <section id="contact" style={{ background: 'rgba(25, 63, 45, 0.75)', color: '#FDFBF7', padding: '4rem 1rem 2rem 1rem', position: 'relative', backdropFilter: 'blur(2px)' }}>
         <div className="container" style={{ position: 'relative', zIndex: 5 }}>
           
           {/* CTA Banner Card */}
