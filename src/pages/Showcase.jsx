@@ -33,81 +33,138 @@ export default function Showcase() {
   };
 
   return (
-    <div className="container" style={{ padding: '3rem 1.5rem' }}>
-      <div className="section-header">
-        <span className="section-tag">Upcycling Stories</span>
-        <h1 className="section-title">Before & After Showcase</h1>
-        <p className="section-desc">
-          Witness how everyday household waste gets transformed into valuable, handcrafted products by local artisans and eco-collectives.
-        </p>
-      </div>
+    <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
+      {/* 1. Scrapbook Corkboard Main Container */}
+      <div className="scrapbook-board">
+        {/* Background Decorative Sticker SVGs */}
+        <div style={{ position: 'absolute', top: '25px', left: '30px', fontSize: '2rem', opacity: 0.85, transform: 'rotate(-12deg)' }}>
+          ⭐
+        </div>
+        <div style={{ position: 'absolute', top: '120px', right: '40px', fontSize: '2.2rem', opacity: 0.85, transform: 'rotate(15deg)' }}>
+          💖
+        </div>
+        <div style={{ position: 'absolute', bottom: '80px', left: '45px', fontSize: '2.4rem', opacity: 0.8, transform: 'rotate(8deg)' }}>
+          ✨
+        </div>
+        <div style={{ position: 'absolute', bottom: '30px', right: '50px', fontSize: '2.5rem', opacity: 0.85, transform: 'rotate(-15deg)' }}>
+          ⭐
+        </div>
 
-      {/* Points & Impact Banner */}
-      <div style={{
-        background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1))',
-        border: '1px solid var(--border-glow)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '1.75rem 2rem',
-        marginBottom: '2.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '1.5rem'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <div style={{
-            fontSize: '2.5rem',
-            background: 'rgba(16, 185, 129, 0.2)',
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            🌟
+        {/* 2. Pinned Scrapbook Header Note */}
+        <div style={{
+          background: '#FFFDF9',
+          border: '1px solid #D1C7B3',
+          borderRadius: '4px',
+          padding: '2.25rem 2rem',
+          maxWidth: '780px',
+          margin: '0 auto 3rem auto',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+          position: 'relative',
+          transform: 'rotate(-1deg)',
+          textAlign: 'center'
+        }}>
+          {/* Top Washi Tape Clip */}
+          <div className="washi-tape" style={{ width: '130px', background: 'rgba(255, 138, 128, 0.75)', border: '1.5px dashed rgba(229, 115, 115, 0.9)' }} />
+
+          <span className="font-handwritten" style={{ fontSize: '1.75rem', color: 'var(--accent-terracotta)', display: 'block', marginBottom: '0.25rem' }}>
+            📌 Community Vision-Board & Scrapbook
+          </span>
+
+          <h1 className="font-handwritten" style={{ fontSize: '3.2rem', color: 'var(--primary-forest)', marginBottom: '0.5rem', lineHeight: '1.1' }}>
+            Upcycling Transformation Gallery
+          </h1>
+
+          <p className="font-handwritten" style={{ fontSize: '1.5rem', color: '#4D5C54', maxWidth: '640px', margin: '0 auto 1.5rem auto', lineHeight: '1.3' }}>
+            "Witness how everyday household waste gets transformed into handcrafted goods by local artisans!"
+          </p>
+
+          <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap' }}>
+            <div style={{
+              background: '#EAF4ED',
+              padding: '0.5rem 1.1rem',
+              borderRadius: 'var(--radius-full)',
+              border: '1px solid var(--border-green)',
+              fontWeight: '700',
+              color: 'var(--primary-forest)',
+              fontSize: '0.9rem'
+            }}>
+              🌟 Total EcoPoints Issued: <strong>{45200 + ecoPoints} pts</strong>
+            </div>
+
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="btn btn-primary"
+              style={{ padding: '0.65rem 1.5rem', fontSize: '0.95rem' }}
+            >
+              + Pin Upcycling Story
+            </button>
           </div>
-          <div>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.2rem' }}>Circular Community Impact</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              Every completed handoff awards EcoPoints redeemable for green store discounts or artisan product drops.
+        </div>
+
+        {/* 3. Collage / Masonry Polaroid Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
+          gap: '2.5rem',
+          alignItems: 'start'
+        }}>
+          {/* Interleaved Sticky Note 1 */}
+          <div className="sticky-note sticky-note-yellow">
+            <div className="paperclip">📎</div>
+            <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#37474F' }}>
+              🌟 Nice Job Team!
+            </h4>
+            <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3' }}>
+              Every completed handoff awards EcoPoints redeemable for green store discounts or artisan product drops!
+            </p>
+            <div style={{ marginTop: '0.75rem', fontWeight: '800', fontSize: '0.85rem', color: 'var(--accent-terracotta)', textAlign: 'right' }}>
+              +150 EcoPoints Pinned
+            </div>
+          </div>
+
+          {/* Render Firestore Polaroid Cards */}
+          {showcaseList.map((item, idx) => (
+            <React.Fragment key={item.id}>
+              <ShowcaseCard item={item} index={idx} />
+
+              {/* Interleave a sticky note after every 2 cards */}
+              {idx === 1 && (
+                <div className="sticky-note sticky-note-pink">
+                  <div className="paperclip">📎</div>
+                  <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#4E342E' }}>
+                    💚 Did You Know?
+                  </h4>
+                  <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3' }}>
+                    Pre-sorting household PET bottles and glass cuts raw material costs for artisans by up to 35%!
+                  </p>
+                </div>
+              )}
+
+              {idx === 3 && (
+                <div className="sticky-note sticky-note-mint">
+                  <div className="paperclip">📎</div>
+                  <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#004D40' }}>
+                    ✨ AI Scanner Tip
+                  </h4>
+                  <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3' }}>
+                    Upload an item photo in Post Waste to trigger Gemini AI automatic material & quantity tagging!
+                  </p>
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+
+          {/* Sticky Note 4 at the end */}
+          <div className="sticky-note sticky-note-blue">
+            <div className="paperclip">📎</div>
+            <h4 className="font-handwritten" style={{ fontSize: '1.8rem', marginBottom: '0.35rem', color: '#006064' }}>
+              🌱 Zero Landfill Goal
+            </h4>
+            <p className="font-handwritten" style={{ fontSize: '1.4rem', lineHeight: '1.3' }}>
+              Over 12,400 Kg of reusable household waste diverted directly to local studio craftspeople!
             </p>
           </div>
         </div>
-
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          <div style={{
-            background: 'var(--bg-surface-elevated)',
-            padding: '0.75rem 1.25rem',
-            borderRadius: 'var(--radius-md)',
-            border: '1px solid var(--border-subtle)',
-            fontWeight: '700',
-            color: 'var(--primary-light)',
-            fontSize: '0.95rem'
-          }}>
-            Total EcoPoints Issued: <strong>{45200 + ecoPoints} pts</strong>
-          </div>
-
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="btn btn-primary"
-            style={{ padding: '0.65rem 1.25rem', fontSize: '0.9rem' }}
-          >
-            + Submit Upcycling Story
-          </button>
-        </div>
-      </div>
-
-      {/* Showcase Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '2rem'
-      }}>
-        {showcaseList.map(item => (
-          <ShowcaseCard key={item.id} item={item} />
-        ))}
       </div>
 
       {/* SUBMIT STORY MODAL */}
@@ -126,9 +183,11 @@ export default function Showcase() {
           justifyContent: 'center',
           padding: '1.5rem'
         }}>
-          <div className="card" style={{ maxWidth: '540px', width: '100%', padding: '2rem' }}>
+          <div className="card" style={{ maxWidth: '540px', width: '100%', padding: '2rem', borderRadius: 'var(--radius-lg)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <h3 style={{ fontSize: '1.4rem' }}>Submit Upcycled Transformation</h3>
+              <h3 className="font-handwritten" style={{ fontSize: '2.2rem', color: 'var(--primary-forest)' }}>
+                📌 Pin New Upcycled Story
+              </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
                 style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '1.5rem', cursor: 'pointer' }}
@@ -139,7 +198,7 @@ export default function Showcase() {
 
             <form onSubmit={handleSubmitStory}>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
                   Transformation Title
                 </label>
                 <input
@@ -150,10 +209,10 @@ export default function Showcase() {
                   required
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
+                    padding: '0.8rem 1.1rem',
+                    background: 'var(--bg-main)',
                     border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
+                    borderRadius: 'var(--radius-full)',
                     color: 'var(--text-primary)'
                   }}
                 />
@@ -161,7 +220,7 @@ export default function Showcase() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
                     Before Item (Waste Input)
                   </label>
                   <input
@@ -172,16 +231,16 @@ export default function Showcase() {
                     required
                     style={{
                       width: '100%',
-                      padding: '0.75rem',
-                      background: 'var(--bg-surface-elevated)',
+                      padding: '0.8rem 1.1rem',
+                      background: 'var(--bg-main)',
                       border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-md)',
+                      borderRadius: 'var(--radius-full)',
                       color: 'var(--text-primary)'
                     }}
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                  <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
                     After Item (End Product)
                   </label>
                   <input
@@ -192,10 +251,10 @@ export default function Showcase() {
                     required
                     style={{
                       width: '100%',
-                      padding: '0.75rem',
-                      background: 'var(--bg-surface-elevated)',
+                      padding: '0.8rem 1.1rem',
+                      background: 'var(--bg-main)',
                       border: '1px solid var(--border-subtle)',
-                      borderRadius: 'var(--radius-md)',
+                      borderRadius: 'var(--radius-full)',
                       color: 'var(--text-primary)'
                     }}
                   />
@@ -203,7 +262,7 @@ export default function Showcase() {
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
                   Artisan / Studio Name
                 </label>
                 <input
@@ -214,18 +273,18 @@ export default function Showcase() {
                   required
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
+                    padding: '0.8rem 1.1rem',
+                    background: 'var(--bg-main)',
                     border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-md)',
+                    borderRadius: 'var(--radius-full)',
                     color: 'var(--text-primary)'
                   }}
                 />
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem' }}>
-                  Transformation Process / Story
+                <label style={{ display: 'block', fontWeight: '700', fontSize: '0.875rem', marginBottom: '0.4rem', color: 'var(--primary-forest)' }}>
+                  Transformation Story / Caption
                 </label>
                 <textarea
                   value={caption}
@@ -235,8 +294,8 @@ export default function Showcase() {
                   rows={3}
                   style={{
                     width: '100%',
-                    padding: '0.75rem',
-                    background: 'var(--bg-surface-elevated)',
+                    padding: '0.8rem 1.1rem',
+                    background: 'var(--bg-main)',
                     border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-md)',
                     color: 'var(--text-primary)',
@@ -247,7 +306,7 @@ export default function Showcase() {
 
               <div style={{ display: 'flex', gap: '0.75rem' }}>
                 <button type="submit" className="btn btn-primary btn-full">
-                  Add to Showcase 🎨
+                  Pin to Board 📌
                 </button>
                 <button type="button" onClick={() => setIsModalOpen(false)} className="btn btn-secondary btn-full">
                   Cancel

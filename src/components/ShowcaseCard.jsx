@@ -1,88 +1,147 @@
 import React from 'react';
 
-export default function ShowcaseCard({ item }) {
+export default function ShowcaseCard({ item, index = 0 }) {
+  // Pre-calculated rotation angles for authentic scrapbook feel
+  const rotations = [-2.8, 3.2, -1.5, 2.4, -3.1, 1.8, -2.2, 3.5];
+  const rotation = item.rotation || rotations[index % rotations.length];
+
+  // Alternating between pushpin 📌 and washi tape 🎗️ top decoration
+  const isWashiTape = index % 2 === 1;
+
   return (
-    <div className="card showcase-card" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-      {/* Visual Placeholder Banner */}
-      <div style={{
-        height: '180px',
-        background: item.bgGradient,
-        borderRadius: 'var(--radius-md)',
+    <div 
+      className="polaroid-card" 
+      style={{ 
+        transform: `rotate(${rotation}deg)`,
+        margin: '0.75rem 0'
+      }}
+    >
+      {/* Top Pin / Washi Tape Accent */}
+      {isWashiTape ? (
+        <div className="washi-tape" title="Washi Tape" />
+      ) : (
+        <div className="pushpin" title="Pushpin">
+          📌
+        </div>
+      )}
+
+      {/* Inner Photo Window / Frame */}
+      <div className="polaroid-photo-frame" style={{
+        height: '210px',
+        background: item.bgGradient || 'linear-gradient(135deg, #e0f2fe, #eaf4ed)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-around',
-        padding: '1.5rem',
-        position: 'relative',
-        marginBottom: '1.25rem',
-        border: '1px solid rgba(255, 255, 255, 0.05)'
+        padding: '1.25rem',
+        position: 'relative'
       }}>
         {/* Points Badge */}
         <div style={{
           position: 'absolute',
-          top: '12px',
-          right: '12px',
-          background: 'rgba(16, 185, 129, 0.25)',
-          color: 'var(--primary-light)',
-          border: '1px solid rgba(16, 185, 129, 0.5)',
-          backdropFilter: 'blur(8px)',
-          padding: '0.35rem 0.75rem',
+          top: '10px',
+          right: '10px',
+          background: 'rgba(28, 56, 41, 0.85)',
+          color: '#84CC16',
+          border: '1px solid #84CC16',
+          padding: '0.25rem 0.65rem',
           borderRadius: 'var(--radius-full)',
           fontSize: '0.8rem',
-          fontWeight: '700'
+          fontWeight: '700',
+          boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+          fontFamily: 'var(--font-body)'
         }}>
-          🏆 {item.pointsEarned}
+          🏆 {item.pointsEarned || '+150 Pts'}
         </div>
 
+        {/* Before Item */}
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>🗑️</div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>Before</span>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>🗑️</div>
+          <span style={{ 
+            fontSize: '0.8rem', 
+            color: '#37474F', 
+            fontWeight: '700',
+            background: 'rgba(255,255,255,0.85)',
+            padding: '0.15rem 0.5rem',
+            borderRadius: '4px'
+          }}>
+            Before
+          </span>
         </div>
 
-        <div style={{ fontSize: '1.75rem', color: 'var(--primary-light)', fontWeight: '800' }}>
+        {/* Arrow */}
+        <div style={{ 
+          fontSize: '1.75rem', 
+          color: 'var(--primary-forest)', 
+          fontWeight: '800',
+          textShadow: '0 1px 2px rgba(255,255,255,0.8)'
+        }}>
           ➔
         </div>
 
+        {/* After Item */}
         <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem' }}>{item.icon}</div>
-          <span style={{ fontSize: '0.75rem', color: 'var(--primary-light)', fontWeight: '700' }}>After</span>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.25rem', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>{item.icon || '✨'}</div>
+          <span style={{ 
+            fontSize: '0.8rem', 
+            color: 'var(--primary-forest)', 
+            fontWeight: '700',
+            background: 'rgba(255,255,255,0.9)',
+            padding: '0.15rem 0.5rem',
+            borderRadius: '4px'
+          }}>
+            After
+          </span>
         </div>
       </div>
 
-      {/* Card Content */}
-      <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
-        {item.title}
-      </h3>
+      {/* Classic Bottom Polaroid Caption Area (Handwritten Cursive) */}
+      <div style={{ paddingTop: '1.25rem', paddingBottom: '0.25rem' }}>
+        <h3 className="font-handwritten" style={{ 
+          fontSize: '1.75rem', 
+          color: '#1C2421', 
+          lineHeight: '1.2',
+          marginBottom: '0.25rem' 
+        }}>
+          {item.title}
+        </h3>
 
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        fontSize: '0.85rem',
-        color: 'var(--text-secondary)',
-        marginBottom: '0.75rem'
-      }}>
-        <span>🛠️</span>
-        <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{item.artisan}</span>
-      </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '0.5rem',
-        marginBottom: '1rem',
-        fontSize: '0.8rem'
-      }}>
-        <div style={{ background: 'rgba(239, 68, 68, 0.08)', padding: '0.5rem 0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(239, 68, 68, 0.2)', color: '#fca5a5' }}>
-          <strong>Was:</strong> {item.beforeText}
+        {/* Handwritten Transformation Line */}
+        <div className="font-handwritten" style={{ 
+          fontSize: '1.35rem', 
+          color: 'var(--accent-terracotta)',
+          marginBottom: '0.65rem',
+          fontWeight: '600'
+        }}>
+          "{item.beforeText} ➔ {item.afterText}"
         </div>
-        <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '0.5rem 0.75rem', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(16, 185, 129, 0.2)', color: '#6ee7b7' }}>
-          <strong>Became:</strong> {item.afterText}
-        </div>
-      </div>
 
-      <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
-        {item.caption}
-      </p>
+        {/* Artisan Tag */}
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '0.4rem', 
+          fontSize: '0.85rem', 
+          color: 'var(--text-secondary)',
+          marginBottom: '0.65rem'
+        }}>
+          <span>🛠️</span>
+          <span>Crafted by <strong>{item.artisan}</strong></span>
+        </div>
+
+        {/* Personal Handwritten Quote Story */}
+        <p className="font-handwritten" style={{ 
+          fontSize: '1.3rem', 
+          color: '#4D5C54', 
+          lineHeight: '1.35',
+          fontStyle: 'italic',
+          background: 'rgba(250, 247, 242, 0.6)',
+          padding: '0.6rem 0.85rem',
+          borderRadius: '6px',
+          borderLeft: '3px solid var(--primary-leaf)'
+        }}>
+          "{item.caption}"
+        </p>
+      </div>
     </div>
   );
 }
