@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div className="home-page" style={{
-      backgroundImage: "url('/assets/scrapbook_background.jpg')",
+      backgroundImage: "linear-gradient(to bottom, rgba(216, 199, 173, 0.15), rgba(25, 63, 45, 0.25)), url('/assets/scrapbook_background.jpg')",
       backgroundSize: '100% auto',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'top center',
