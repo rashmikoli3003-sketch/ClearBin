@@ -61,14 +61,16 @@ export function SparkleDoodle({ color = '#D9A036', size = 32, style = {} }) {
 }
 
 /**
- * Hand-Drawn Underline / Scribble Line
+ * Hand-Drawn Green Arrow Loop Scribble Image (Uploaded by user)
  */
-export function UnderlineDoodle({ color = '#C85A32', width = 140, style = {} }) {
+export function ScribbleArrow({ size = 120, rotate = '0deg', color = '#688D56', style = {} }) {
   return (
-    <div style={{ display: 'block', lineHeight: 0, marginTop: '2px', ...style }}>
-      <svg width={width} height="12" viewBox="0 0 160 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 10 C40 2, 90 14, 158 6" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+    <div style={{ display: 'inline-block', lineHeight: 0, transform: `rotate(${rotate})`, ...style }}>
+      <svg width={size} height={size * 0.85} viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 25 75 C 10 40, 25 15, 55 20 C 85 25, 80 65, 50 65 C 20 65, 30 35, 75 25 C 85 22, 95 25, 102 38" stroke={color} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 90 24 L 104 38 L 88 48" stroke={color} strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   );
 }
+

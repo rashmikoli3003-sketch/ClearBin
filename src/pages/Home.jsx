@@ -4,15 +4,21 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { PaperSheet } from '../components/Scrapbook/PaperSheet';
 import { StickyNote } from '../components/Scrapbook/StickyNote';
 import { RedPaperClip, GreenPushPin, MaskingTape, WashiTape } from '../components/Scrapbook/Fasteners';
-import { ArrowDoodle } from '../components/Scrapbook/Doodle';
+import { ArrowDoodle, ScribbleArrow } from '../components/Scrapbook/Doodle';
 import { BotanicalFoliage } from '../components/Scrapbook/Foliage';
 
 export default function Home() {
   useScrollReveal();
 
   return (
-    <div className="home-page" style={{ background: 'var(--bg-kraft, #d8c7ad)', color: 'var(--green-dark, #193f2d)', overflowX: 'hidden' }}>
+    <div className="home-page" style={{ background: 'var(--bg-kraft, #d8c7ad)', color: 'var(--green-dark, #193f2d)', overflowX: 'hidden', position: 'relative' }}>
       
+      {/* BACKGROUND FLOATING GREEN SCRIBBLE ARROWS SCATTERED ON THE KRAFT CANVAS */}
+      <ScribbleArrow size={140} rotate="-25deg" style={{ position: 'absolute', top: '120px', left: '3%', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }} />
+      <ScribbleArrow size={160} rotate="110deg" style={{ position: 'absolute', top: '480px', right: '4%', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }} />
+      <ScribbleArrow size={150} rotate="45deg" style={{ position: 'absolute', top: '1250px', left: '2%', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }} />
+      <ScribbleArrow size={170} rotate="-80deg" style={{ position: 'absolute', top: '2100px', right: '3%', opacity: 0.85, zIndex: 2, pointerEvents: 'none' }} />
+
       {/* =========================================================================
          01. HERO SECTION (KRAFT BACKGROUND + CENTERED NOTEBOOK PAGE + FLANKING COLLAGE)
          ========================================================================= */}
@@ -22,7 +28,7 @@ export default function Home() {
         minHeight: '92vh',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justify: 'center'
       }}>
         {/* Botanical Foliage Stems Behind Hero */}
         <BotanicalFoliage type="olive" size={130} rotate="-20deg" color="var(--green-leaf, #2e7d32)" style={{ position: 'absolute', top: '15px', left: '1%', opacity: 0.85 }} />
@@ -31,17 +37,35 @@ export default function Home() {
         <div className="container" style={{ position: 'relative', zIndex: 10, maxWidth: '1160px' }}>
           <div style={{ position: 'relative', margin: '0 auto' }}>
             
-            {/* FLANKING TOP-LEFT: Pink Sticky Note ("Good Waste Brighter Future ♡") */}
-            <StickyNote color="pink" rotate="-7deg" fastener="tape" style={{ position: 'absolute', top: '10px', left: '-35px', zIndex: 15, maxWidth: '210px' }}>
-              <div className="handwritten" style={{ fontSize: '1.45rem', color: '#193f2d', lineHeight: 1.2, fontWeight: 'bold' }}>
+            {/* FLANKING TOP-LEFT: Pink Clip Heart Notepad Card (Uploaded by user) */}
+            <div style={{
+              position: 'absolute',
+              top: '5px',
+              left: '-40px',
+              zIndex: 15,
+              width: '190px',
+              transform: 'rotate(-7deg)',
+              filter: 'drop-shadow(0 8px 18px rgba(0,0,0,0.15))'
+            }}>
+              <img src="/assets/pink_clip_notepad.jpg" alt="Pink Clip Notepad Card" style={{ width: '100%', borderRadius: '8px' }} />
+              <div className="handwritten" style={{
+                position: 'absolute',
+                top: '55px',
+                left: '25px',
+                right: '15px',
+                fontSize: '1.25rem',
+                color: '#193f2d',
+                lineHeight: 1.2,
+                fontWeight: 'bold'
+              }}>
                 Good Waste <br />
                 Brighter Future <br />
-                <span style={{ fontSize: '1.6rem' }}>♡</span>
+                <span style={{ fontSize: '1.4rem' }}>♡</span>
               </div>
-            </StickyNote>
+            </div>
 
-            {/* FLANKING MIDDLE-LEFT: Circular Earth Seal Stamp ("There is no planet B #SortRight") */}
-            <div style={{ position: 'absolute', top: '220px', left: '-30px', zIndex: 14, textAlign: 'center' }}>
+            {/* FLANKING MIDDLE-LEFT: Circular Earth Seal Stamp + Green Scribble Arrow */}
+            <div style={{ position: 'absolute', top: '240px', left: '-35px', zIndex: 14, textAlign: 'center' }}>
               <div style={{
                 width: '135px',
                 height: '135px',
@@ -51,17 +75,17 @@ export default function Home() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justify: 'center',
-                background: 'rgba(244, 236, 220, 0.55)',
+                background: 'rgba(244, 236, 220, 0.65)',
                 transform: 'rotate(-12deg)',
                 padding: '0.5rem',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
               }}>
                 <span style={{ fontSize: '1.9rem' }}>🌎</span>
                 <span className="handwritten" style={{ fontSize: '0.92rem', color: '#193f2d', fontWeight: 'bold', lineHeight: 1.1 }}>
                   There is no planet B #SortRight
                 </span>
               </div>
-              <ArrowDoodle color="#193f2d" size={42} rotate="-50deg" style={{ marginTop: '0.25rem' }} />
+              <ScribbleArrow size={110} rotate="-40deg" style={{ marginTop: '0.2rem' }} />
             </div>
 
             {/* FLANKING TOP-RIGHT: Polaroid Photo Pinned with Red Clip */}
@@ -85,23 +109,32 @@ export default function Home() {
               </div>
             </PaperSheet>
 
-            {/* FLANKING TOP FAR-RIGHT: Torn Kraft Paper Scrap */}
-            <PaperSheet variant="kraft" rotate="-4deg" shadow="medium" style={{
+            {/* FLANKING TOP FAR-RIGHT: Ripped Ruled Paper Scrap (Uploaded by user) */}
+            <div style={{
               position: 'absolute',
               top: '-35px',
               right: '95px',
-              width: '185px',
-              padding: '0.75rem 1rem',
+              width: '190px',
               zIndex: 12,
-              border: '1.5px solid #d4c3aa'
+              transform: 'rotate(-4deg)',
+              filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.12))'
             }}>
-              <div className="handwritten" style={{ fontSize: '1.3rem', color: '#193f2d', fontWeight: 'bold', lineHeight: 1.25 }}>
-                Reduce <br />
-                Reuse <br />
-                Recycle <br />
-                Repeat 🔄
+              <img src="/assets/ripped_ruled_paper.jpg" alt="Ripped Ruled Paper Scrap" style={{ width: '100%' }} />
+              <div className="handwritten" style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                fontSize: '1.15rem',
+                color: '#193f2d',
+                fontWeight: 'bold',
+                lineHeight: 1.2,
+                whiteSpace: 'nowrap',
+                textAlign: 'center'
+              }}>
+                Reduce • Reuse • Recycle
               </div>
-            </PaperSheet>
+            </div>
 
             {/* FLANKING MIDDLE-RIGHT: Sage Green Sticky Note */}
             <StickyNote color="mint" rotate="3.5deg" fastener="pin" style={{ position: 'absolute', top: '245px', right: '-30px', zIndex: 15, maxWidth: '200px', background: '#9DBE9B' }}>
@@ -223,22 +256,24 @@ export default function Home() {
             <h2 className="section-title" style={{ color: '#193f2d', fontSize: '2.8rem', fontWeight: '800', marginTop: '0.75rem', marginBottom: '0.35rem' }}>
               A Simple Process For A Cleaner Tomorrow.
             </h2>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span className="handwritten" style={{ fontSize: '1.6rem', color: '#2e7d32', fontWeight: 'bold' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem' }}>
+              <span className="handwritten" style={{ fontSize: '1.65rem', color: '#2e7d32', fontWeight: 'bold' }}>
                 It's easier than you think!
               </span>
-              <ArrowDoodle color="#2e7d32" size={45} rotate="-30deg" />
+              <ScribbleArrow size={90} rotate="-20deg" />
             </div>
           </div>
 
           {/* 4-Step Process Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.75rem', position: 'relative', alignItems: 'stretch' }}>
             
-            {/* Step 1: Cream Paper Swatch */}
-            <PaperSheet variant="notebook" rotate="-2.5deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: '#fdfbf7', border: '1.5px solid #e6dac8' }}>
+            {/* Step 1: Cream Paper Swatch featuring Colored Crayon Bin Illustration */}
+            <PaperSheet variant="notebook" rotate="-2.5deg" shadow="medium" style={{ padding: '1.75rem 1.35rem', textAlign: 'center', background: '#fdfbf7', border: '1.5px solid #e6dac8' }}>
               <MaskingTape width="85px" height="24px" rotate="1deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
-              <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.35rem' }}>01</span>
-              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🗑️</div>
+              <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.2rem' }}>01</span>
+              <div style={{ width: '90px', height: '90px', margin: '0 auto 0.5rem auto' }}>
+                <img src="/assets/colored_bin_illustration.jpg" alt="Crayon Waste Bin Illustration" style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply' }} />
+              </div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>SORT</h3>
               <p style={{ fontSize: '0.9rem', color: '#2e7d32', lineHeight: '1.45', fontWeight: '600' }}>
                 Separate waste at source.
@@ -249,7 +284,7 @@ export default function Home() {
             <PaperSheet variant="parchment" rotate="1.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: '#fdfbf7', border: '1.5px solid #e6dac8' }}>
               <RedPaperClip size={34} style={{ position: 'absolute', top: '-16px', right: '20px' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.35rem' }}>02</span>
-              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🚛</div>
+              <div style={{ fontSize: '3.2rem', marginBottom: '0.5rem' }}>🚛</div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>COLLECT</h3>
               <p style={{ fontSize: '0.9rem', color: '#193f2d', lineHeight: '1.45', fontWeight: '600' }}>
                 We pick it up from your location.
@@ -260,7 +295,7 @@ export default function Home() {
             <PaperSheet variant="kraft" rotate="-1.5deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', border: '1.5px solid #d4c3aa' }}>
               <GreenPushPin style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.35rem' }}>03</span>
-              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>♻️</div>
+              <div style={{ fontSize: '3.2rem', marginBottom: '0.5rem' }}>♻️</div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>PROCESS</h3>
               <p style={{ fontSize: '0.9rem', color: '#193f2d', lineHeight: '1.45', fontWeight: '600' }}>
                 Waste is sorted and processed responsibly.
@@ -271,7 +306,7 @@ export default function Home() {
             <PaperSheet variant="green" rotate="2.8deg" shadow="medium" style={{ padding: '2rem 1.35rem', textAlign: 'center', background: '#9DBE9B' }}>
               <WashiTape width="85px" height="24px" rotate="-2deg" style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)' }} />
               <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#193f2d', display: 'block', marginBottom: '0.35rem' }}>04</span>
-              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🍃</div>
+              <div style={{ fontSize: '3.2rem', marginBottom: '0.5rem' }}>🍃</div>
               <h3 style={{ fontSize: '1.35rem', color: '#193f2d', fontWeight: '800', marginBottom: '0.35rem' }}>REUSE</h3>
               <p style={{ fontSize: '0.9rem', color: '#193f2d', lineHeight: '1.45', fontWeight: '600' }}>
                 Materials get a second life.
@@ -306,7 +341,7 @@ export default function Home() {
       </section>
 
       {/* =========================================================================
-         03. "ABOUT CLEARBIN" (DARK FOREST GREEN FULL-WIDTH TORN BAND #193f2d)
+         03. "ABOUT CLEARBIN" (DARK FOREST GREEN FULL-WIDTH TORN BAND #193f2d WITH GREEN BAG QUOTE)
          ========================================================================= */}
       <section className="torn-top torn-bottom" style={{ background: '#193f2d', color: '#FDFBF7', padding: '6.5rem 1rem 7rem 1rem', position: 'relative' }}>
         <div className="container">
@@ -333,17 +368,25 @@ export default function Home() {
               </PaperSheet>
             </div>
 
-            {/* Center: Story Text */}
-            <div>
+            {/* Center: Translucent Green Plastic Bag Eco Quote (Uploaded by user) */}
+            <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{
+                width: '240px',
+                marginBottom: '1.25rem',
+                transform: 'rotate(2deg)',
+                filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.3))'
+              }}>
+                <img src="/assets/green_bag_quote.jpg" alt="Nothing we use for a few minutes should pollute our planet for centuries" style={{ width: '100%', borderRadius: '12px' }} />
+              </div>
+
               <span className="badge" style={{ background: '#2e7d32', color: '#FDFBF7', padding: '0.35rem 0.95rem', borderRadius: '4px', fontWeight: '800', fontSize: '0.8rem', textTransform: 'uppercase' }}>
                 About ClearBin
               </span>
-              <h2 style={{ fontSize: '2.8rem', fontWeight: '800', color: '#FDFBF7', marginTop: '0.75rem', marginBottom: '1rem', lineHeight: '1.2' }}>
-                Waste Solutions <br />
-                For A Brighter Tomorrow.
+              <h2 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#FDFBF7', marginTop: '0.75rem', marginBottom: '0.85rem', lineHeight: '1.2' }}>
+                Waste Solutions For A Brighter Tomorrow.
               </h2>
-              <p style={{ color: '#9DBE9B', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.75rem' }}>
-                We connect individuals, communities and organizations with responsible waste collection, recycling and disposal solutions. Our goal is to make sustainable living simple, accessible and impactful.
+              <p style={{ color: '#9DBE9B', fontSize: '1.05rem', lineHeight: '1.7', marginBottom: '1.75rem', maxWidth: '440px' }}>
+                We connect individuals, communities and organizations with responsible waste collection, recycling and disposal solutions.
               </p>
 
               <Link
@@ -520,12 +563,12 @@ export default function Home() {
 
           </div>
 
-          {/* Right Annotation: Sort it Right! Doodle */}
-          <div style={{ position: 'absolute', right: '2%', top: '40%', textAlign: 'center' }}>
+          {/* Right Annotation: Sort it Right! Doodle + Green Scribble Arrow */}
+          <div style={{ position: 'absolute', right: '2%', top: '35%', textAlign: 'center' }}>
             <span className="handwritten" style={{ fontSize: '1.8rem', color: '#193f2d', fontWeight: 'bold', display: 'block' }}>
               Sort it <br /> Right!
             </span>
-            <ArrowDoodle color="#193f2d" size={45} rotate="90deg" style={{ margin: '0 auto' }} />
+            <ScribbleArrow size={100} rotate="85deg" style={{ marginTop: '0.2rem' }} />
           </div>
 
         </div>
