@@ -40,7 +40,7 @@ export default function Toast() {
             fontSize: '0.925rem',
             fontWeight: '600',
             backdropFilter: 'blur(8px)',
-            animation: 'slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+            animation: 'toastSpringIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
             border: '1px solid rgba(255,255,255,0.2)'
           }}
         >
@@ -62,13 +62,17 @@ export default function Toast() {
         </div>
       ))}
       <style>{`
-        @keyframes slideInRight {
-          from {
-            transform: translateX(100%);
+        @keyframes toastSpringIn {
+          0% {
+            transform: translateX(120%) scale(0.9);
             opacity: 0;
           }
-          to {
-            transform: translateX(0);
+          70% {
+            transform: translateX(-8px) scale(1.02);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(0) scale(1);
             opacity: 1;
           }
         }

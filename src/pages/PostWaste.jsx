@@ -355,62 +355,92 @@ export default function PostWaste() {
         </form>
       )}
 
-      {/* Animated Matching State */}
+      {/* Animated Matching St      {/* Animated Matching State */}
       {status === 'matching' && (
-        <div className="card" style={{ padding: '3.5rem 2rem', textAlign: 'center' }}>
+        <div className="card-parchment" style={{ padding: '3.5rem 2rem', textAlign: 'center', margin: '0 auto', maxWidth: '640px' }}>
+          {/* Animated Botanical Pulse Icon */}
           <div style={{
-            width: '72px',
-            height: '72px',
+            width: '80px',
+            height: '80px',
             margin: '0 auto 1.5rem auto',
-            border: '4px solid rgba(16, 185, 129, 0.2)',
-            borderTopColor: 'var(--primary-light)',
             borderRadius: '50%',
-            animation: 'spin 1s linear infinite'
-          }} />
-          <style>{`
-            @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-            }
-          `}</style>
-          <h2 style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>
-            Matching with Local Upcyclers...
+            background: 'rgba(77, 139, 85, 0.15)',
+            border: '2px stroke var(--primary-leaf)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '2.5rem',
+            position: 'relative'
+          }} className="pulse-glow">
+            <span style={{ display: 'inline-block', animation: 'bohoWobble 1s infinite ease-in-out' }}>🌿</span>
+          </div>
+
+          <h2 style={{ fontSize: '1.75rem', marginBottom: '0.75rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
+            Matching with Local Upcyclers
+            <span className="dot-bounce-1">.</span>
+            <span className="dot-bounce-2">.</span>
+            <span className="dot-bounce-3">.</span>
           </h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem auto' }}>
+          
+          <p style={{ color: 'var(--text-secondary-parchment)', marginBottom: '1.5rem', maxWidth: '500px', margin: '0 auto 1.5rem auto', fontSize: '0.95rem' }}>
             Calculating match confidence for <strong>{category.toUpperCase()}</strong> near <em>{location}</em>...
           </p>
 
           <div style={{
             width: '100%',
-            maxWidth: '400px',
-            height: '10px',
-            background: 'var(--bg-surface-elevated)',
+            maxWidth: '420px',
+            height: '14px',
+            background: '#EAE1CE',
             borderRadius: 'var(--radius-full)',
             overflow: 'hidden',
-            margin: '0 auto 1.5rem auto'
+            margin: '0 auto 1.25rem auto',
+            border: '1px solid var(--border-parchment)',
+            boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
           }}>
             <div style={{
               width: `${matchingProgress}%`,
               height: '100%',
-              background: 'linear-gradient(90deg, var(--primary-emerald), var(--accent-lime))',
-              transition: 'width 0.3s ease'
+              background: 'linear-gradient(90deg, var(--accent-terracotta), var(--accent-amber), var(--primary-leaf))',
+              borderRadius: 'var(--radius-full)',
+              transition: 'width 0.3s ease-out'
             }} />
           </div>
-          <span style={{ fontSize: '0.85rem', color: 'var(--primary-light)', fontWeight: '700' }}>
-            {matchingProgress}% Match Calculation Complete
+          <span style={{ fontSize: '0.85rem', color: 'var(--accent-terracotta)', fontWeight: '800' }}>
+            ⚡ {matchingProgress}% Match Calculation Complete
           </span>
         </div>
       )}
 
-      {/* Success Confirmation with Matched Artisans */}
+      {/* Success Confirmation with Celebratory Animated Checkmark */}
       {status === 'success' && (
-        <div className="card" style={{ padding: '3rem 2rem', borderColor: 'var(--border-glow)' }}>
+        <div className="card-parchment page-transition-container" style={{ padding: '3rem 2rem', border: '2px solid var(--primary-leaf)', maxWidth: '680px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <div style={{ fontSize: '3.5rem', marginBottom: '0.75rem' }}>🎉</div>
-            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
-              Waste Listing Created & AI Matched!
+            {/* Animated SVG Draw Checkmark Badge */}
+            <div style={{
+              width: '84px',
+              height: '84px',
+              borderRadius: '50%',
+              background: 'var(--primary-leaf)',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 1rem auto',
+              boxShadow: '0 8px 24px rgba(77, 139, 85, 0.4)'
+            }} className="bounce-badge">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5" style={{ strokeDasharray: 50, animation: 'checkmarkDraw 0.5s ease forwards' }} />
+              </svg>
+            </div>
+
+            <div className="badge badge-leaf bounce-badge" style={{ marginBottom: '0.75rem', fontSize: '0.85rem' }}>
+              🎉 Verified AI Match Found!
+            </div>
+
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.5rem', color: 'var(--bg-main)', fontFamily: 'var(--font-heading)' }}>
+              Waste Listing Created!
             </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto' }}>
+            <p style={{ color: 'var(--text-secondary-parchment)', fontSize: '1.05rem', maxWidth: '560px', margin: '0 auto' }}>
               We found <strong>{computedMatches.length} verified upcycler(s)</strong> within pickup range actively seeking {category.toUpperCase()} waste.
             </p>
           </div>

@@ -187,9 +187,9 @@ export default function Showcase() {
           justifyContent: 'center',
           padding: '1.5rem'
         }}>
-          <div className="card-parchment" style={{ maxWidth: '540px', width: '100%', padding: '2.25rem' }}>
+          <div className="card-parchment page-transition-container" style={{ maxWidth: '540px', width: '100%', padding: '2.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <h3 className="font-handwritten" style={{ fontSize: '2.2rem', color: 'var(--bg-main)' }}>
+              <h3 className="font-handwritten bounce-badge" style={{ fontSize: '2.2rem', color: 'var(--bg-main)' }}>
                 📌 Pin New Upcycled Story
               </h3>
               <button

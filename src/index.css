@@ -214,6 +214,11 @@ button, input, select, textarea {
   border: none;
   outline: none;
   position: relative;
+  user-select: none;
+}
+
+.btn:active, button:active {
+  transform: scale(0.97) translateY(1px) !important;
 }
 
 .btn-primary {
@@ -224,8 +229,8 @@ button, input, select, textarea {
 
 .btn-primary:hover {
   background: #B34825;
-  animation: bohoWobble 0.4s ease forwards;
-  box-shadow: 0 10px 25px rgba(200, 90, 50, 0.45);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 28px rgba(200, 90, 50, 0.45);
 }
 
 .btn-secondary {
@@ -237,7 +242,8 @@ button, input, select, textarea {
 .btn-secondary:hover {
   background: #FFFFFF;
   color: var(--bg-main);
-  animation: bohoWobble 0.4s ease forwards;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-amber {
@@ -247,7 +253,8 @@ button, input, select, textarea {
 
 .btn-amber:hover {
   background: #C98B2E;
-  animation: bohoWobble 0.4s ease forwards;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(224, 159, 62, 0.35);
 }
 
 .btn-lg {
@@ -266,17 +273,83 @@ button, input, select, textarea {
   100% { transform: scale(1.03) rotate(0deg); }
 }
 
+/* Page Route Transition Animation */
+.page-transition-container {
+  animation: pageFadeInSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes pageFadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Scroll-Triggered Reveal Animations */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(35px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal-on-scroll.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Celebratory & Micro-Animations */
+@keyframes bounceBadge {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.25) rotate(-3deg); }
+  60% { transform: scale(0.95) rotate(3deg); }
+}
+
+.bounce-badge {
+  animation: bounceBadge 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(77, 139, 85, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(77, 139, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(77, 139, 85, 0); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 1.8s infinite;
+}
+
+@keyframes checkmarkDraw {
+  0% { stroke-dashoffset: 50; opacity: 0; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+}
+
+.dot-bounce-1 { animation: dotBounce 1.2s infinite ease-in-out 0s; }
+.dot-bounce-2 { animation: dotBounce 1.2s infinite ease-in-out 0.2s; }
+.dot-bounce-3 { animation: dotBounce 1.2s infinite ease-in-out 0.4s; }
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Torn Paper Contrast Sections (Parchment background) */

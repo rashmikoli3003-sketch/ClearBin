@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AppProvider, useApp } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,6 +12,26 @@ import Matches from './pages/Matches';
 import Showcase from './pages/Showcase';
 import About from './pages/About';
 
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [location.pathname]);
+
+  return (
+    <div key={location.pathname} className="page-transition-container">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/post" element={<PostWaste />} />
+        <Route path="/matches" element={<Matches />} />
+        <Route path="/showcase" element={<Showcase />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
+  );
+}
+
 function AppContent() {
   const { isAiModalOpen, setIsAiModalOpen } = useApp();
 
@@ -19,13 +39,7 @@ function AppContent() {
     <Router>
       <Navbar />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/post" element={<PostWaste />} />
-          <Route path="/matches" element={<Matches />} />
-          <Route path="/showcase" element={<Showcase />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <AnimatedRoutes />
       </main>
       <Footer />
       <RewardsModal />

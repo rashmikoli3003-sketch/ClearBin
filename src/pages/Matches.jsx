@@ -284,8 +284,8 @@ export default function Matches() {
                         ⚡ Confirm Hand-off & Collect +{req.pointsOffer} Pts
                       </button>
                     ) : (
-                      <span style={{ fontSize: '0.9rem', color: 'var(--primary-leaf)', fontWeight: '800' }}>
-                        🌟 +{req.pointsOffer} EcoPoints Credited to Balance
+                      <span className="badge badge-leaf bounce-badge" style={{ fontSize: '0.9rem', padding: '0.5rem 1rem' }}>
+                        🌟 +{req.pointsOffer} EcoPoints Credited to Balance!
                       </span>
                     )}
                   </div>
