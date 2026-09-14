@@ -90,3 +90,17 @@ export function WashiTape({ width = '120px', height = '34px', pattern = 'dots', 
     />
   );
 }
+
+/**
+ * Red PaperClip SVG Fastener Component
+ */
+export function RedPaperClip({ size = 38, style = {} }) {
+  return <PaperClip color="#D62828" size={size} style={style} />;
+}
+
+/**
+ * Green PushPin SVG Fastener Component
+ */
+export function GreenPushPin({ style = {} }) {
+  return <PushPin color="#2E7D32" style={style} />;
+}
