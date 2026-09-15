@@ -48,12 +48,12 @@ export default function Login() {
   return (
     <div
       style={{
-        background: 'var(--bg-offwhite, #FAF8F5)',
-        minHeight: '88vh',
-        padding: '3.5rem 1.5rem',
+        background: 'transparent',
+        minHeight: '85vh',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: '3.5rem 1.5rem'
       }}
     >
       <div

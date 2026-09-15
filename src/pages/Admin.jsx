@@ -15,9 +15,10 @@ export default function Admin() {
   return (
     <div
       style={{
-        background: 'var(--bg-offwhite, #FAF8F5)',
-        minHeight: '90vh',
-        padding: '3.5rem 1.5rem 6rem 1.5rem'
+        background: 'transparent',
+        color: 'var(--text-dark, #1C352D)',
+        minHeight: '100vh',
+        padding: '2.5rem 1.5rem 4rem 1.5rem'
       }}
     >
       <div className="container" style={{ maxWidth: '1200px' }}>

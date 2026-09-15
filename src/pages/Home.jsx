@@ -9,7 +9,7 @@ export default function Home() {
     <div
       className="home-page"
       style={{
-        background: 'var(--bg-offwhite, #FAF8F5)',
+        background: 'transparent',
         color: 'var(--text-dark, #1C352D)',
         overflowX: 'hidden',
         position: 'relative'
@@ -35,7 +35,17 @@ export default function Home() {
             }}
           >
             {/* Left Column: Headline & Action Controls */}
-            <div>
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.82)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                padding: '2.25rem',
+                borderRadius: '24px',
+                border: '1px solid rgba(226, 234, 228, 0.8)',
+                boxShadow: '0 8px 32px rgba(28, 53, 45, 0.05)'
+              }}
+            >
               <div
                 className="badge badge-pastel"
                 style={{
@@ -363,7 +373,17 @@ export default function Home() {
             </div>
 
             {/* Right: Content & Statistics */}
-            <div>
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.85)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                padding: '2.25rem',
+                borderRadius: '24px',
+                border: '1px solid rgba(226, 234, 228, 0.8)',
+                boxShadow: '0 8px 32px rgba(28, 53, 45, 0.05)'
+              }}
+            >
               <span className="section-tag">About ClearBin</span>
               <h2 className="section-title" style={{ marginBottom: '1rem' }}>
                 Waste Solutions For A Brighter Tomorrow
@@ -575,7 +595,17 @@ export default function Home() {
             </div>
 
             {/* Right: Story & Checklist */}
-            <div>
+            <div
+              style={{
+                background: 'rgba(255, 255, 255, 0.85)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                padding: '2.25rem',
+                borderRadius: '24px',
+                border: '1px solid rgba(226, 234, 228, 0.8)',
+                boxShadow: '0 8px 32px rgba(28, 53, 45, 0.05)'
+              }}
+            >
               <span className="section-tag">Community Impact</span>
               <h2 className="section-title">Real People. Real Change.</h2>
               <p
