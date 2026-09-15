@@ -13,6 +13,7 @@ import Showcase from './pages/Showcase';
 import About from './pages/About';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import PartnerDashboard from './pages/PartnerDashboard';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -26,11 +27,13 @@ function AnimatedRoutes() {
       <Routes location={location}>
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<PostWaste />} />
+        <Route path="/post-waste" element={<PostWaste />} />
         <Route path="/matches" element={<Matches />} />
         <Route path="/showcase" element={<Showcase />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/partner-dashboard" element={<PartnerDashboard />} />
       </Routes>
     </div>
   );

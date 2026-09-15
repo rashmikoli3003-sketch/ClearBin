@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" fill="none">
+  <!-- Kraft & Paper Base Gradient -->
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8DFD1"/>
+      <stop offset="40%" stop-color="#F2EBDC"/>
+      <stop offset="80%" stop-color="#D9E6DC"/>
+      <stop offset="100%" stop-color="#C5D8C9"/>
+    </linearGradient>
+
+    <pattern id="paper-texture" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="15" r="1" fill="#000000" opacity="0.04"/>
+      <circle cx="45" cy="70" r="1.5" fill="#000000" opacity="0.03"/>
+      <circle cx="80" cy="30" r="0.8" fill="#000000" opacity="0.05"/>
+      <circle cx="25" cy="85" r="1.2" fill="#000000" opacity="0.04"/>
+    </pattern>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="6" stdDeviation="6" flood-color="#1b3f2e" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1440" height="900" fill="url(#bg-grad)" />
+  <rect width="1440" height="900" fill="url(#paper-texture)" />
+
+  <!-- Torn Paper Layers Left & Top -->
+  <path d="M-50 -50 L450 -50 L420 180 L380 160 L320 210 L250 170 L180 220 L100 190 L30 240 L-50 210 Z" fill="#D2C3B0" opacity="0.7" filter="url(#shadow)"/>
+  <path d="M-50 -50 L380 -50 L350 140 L310 120 L240 160 L180 130 L110 170 L40 140 L-50 180 Z" fill="#2E4F3E" opacity="0.85" filter="url(#shadow)"/>
+
+  <!-- Torn Paper Layers Right & Bottom -->
+  <path d="M1490 950 L1000 950 L1040 720 L1100 750 L1160 690 L1240 730 L1310 680 L1380 720 L1490 670 Z" fill="#81A693" opacity="0.7" filter="url(#shadow)"/>
+  <path d="M1490 950 L1080 950 L1120 780 L1180 810 L1250 760 L1320 800 L1400 750 L1490 790 Z" fill="#1C352D" opacity="0.85" filter="url(#shadow)"/>
+
+  <!-- Scrapbook Polaroids & Stamps Left -->
+  <g transform="translate(90, 320) rotate(-8)">
+    <rect width="180" height="210" rx="8" fill="#FFFDF7" filter="url(#shadow)"/>
+    <rect x="15" y="15" width="150" height="135" fill="#A8C3B2"/>
+    <text x="90" y="180" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1C352D" text-anchor="middle">🌱 Sort &amp; Reuse</text>
+    <!-- Tape Strip -->
+    <rect x="50" y="-12" width="80" height="24" fill="#E8E0CE" opacity="0.8" transform="rotate(3)"/>
+  </g>
+
+  <!-- Scrapbook Polaroids & Stamps Right -->
+  <g transform="translate(1160, 240) rotate(10)">
+    <rect width="190" height="220" rx="8" fill="#FFFDF7" filter="url(#shadow)"/>
+    <rect x="15" y="15" width="160" height="145" fill="#DCE9DF"/>
+    <text x="95" y="190" font-family="sans-serif" font-weight="bold" font-size="14" fill="#1C352D" text-anchor="middle">🎨 Artisan Upcycle</text>
+    <!-- Tape Strip -->
+    <rect x="55" y="-14" width="80" height="26" fill="#F4E8E8" opacity="0.85" transform="rotate(-4)"/>
+  </g>
+
+  <!-- Leaf Doodles & Scribbles -->
+  <g stroke="#1C352D" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.6">
+    <!-- Leaf Left -->
+    <path d="M 280 580 Q 320 540 360 570 Q 330 610 280 580 Z M 280 580 L 340 575"/>
+    <path d="M 300 578 Q 305 565 315 562"/>
+    <path d="M 320 577 Q 325 588 335 585"/>
+
+    <!-- Leaf Right -->
+    <path d="M 1120 540 Q 1160 500 1200 530 Q 1170 570 1120 540 Z M 1120 540 L 1180 535"/>
+  </g>
+
+  <!-- Heart & Sparkle Doodles -->
+  <g fill="#1C352D" opacity="0.5">
+    <path d="M 380 280 C 380 270 370 260 360 270 C 350 260 340 270 340 280 C 340 295 360 305 360 310 C 360 305 380 295 380 280 Z" />
+    <path d="M 1080 200 C 1080 190 1070 180 1060 190 C 1050 180 1040 190 1040 200 C 1040 215 1060 225 1060 230 C 1060 225 1080 215 1080 200 Z" />
+  </g>
+</svg>
