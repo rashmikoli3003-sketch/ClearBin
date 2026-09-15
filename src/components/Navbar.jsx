@@ -27,60 +27,70 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: '#173F35', // Dark forest green background
-        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(35, 85, 72, 0.4) 0%, rgba(23, 63, 53, 0.95) 100%)`,
-        padding: '0.85rem 1rem 1.1rem 1rem',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.3)',
+        background: '#173F35', // Deep Forest Green Background
+        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(35, 85, 72, 0.4) 0%, rgba(23, 63, 53, 0.98) 100%)`,
+        padding: '0.9rem 1rem 1.1rem 1rem',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
         overflow: 'hidden'
       }}
     >
-      {/* Background Decorative Scrapbook Elements (Corner leaves, tape, sticky note) */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        {/* Top-Left Leaf Line Doodle & Torn Green Paper Accent */}
-        <div style={{ position: 'absolute', top: '-10px', left: '12px', opacity: 0.85 }}>
-          <svg width="60" height="70" viewBox="0 0 60 70" fill="none">
-            <path d="M15 60 Q 25 30 45 10" stroke="rgba(255,255,255,0.4)" strokeWidth="1.8" strokeLinecap="round"/>
-            <path d="M 22 45 Q 10 35 15 25 Q 30 30 22 45 Z" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" fill="none"/>
-            <path d="M 32 30 Q 20 20 25 10 Q 40 15 32 30 Z" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" fill="none"/>
+      {/* BACKGROUND SCRAPBOOK DECORATIONS (Leaves, Kraft Note, Doodles, Recycling Symbol) */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
+        {/* Top-Left Line-Art Leaf Stem Doodle */}
+        <div style={{ position: 'absolute', top: '2px', left: '10px', opacity: 0.85 }}>
+          <svg width="65" height="75" viewBox="0 0 60 70" fill="none">
+            <path d="M15 60 Q 25 30 45 10" stroke="rgba(255,255,255,0.45)" strokeWidth="1.8" strokeLinecap="round"/>
+            <path d="M 22 45 Q 10 35 15 25 Q 30 30 22 45 Z" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" fill="none"/>
+            <path d="M 32 30 Q 20 20 25 10 Q 40 15 32 30 Z" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" fill="none"/>
           </svg>
         </div>
 
-        {/* Top-Right Kraft Sticky Note ("Small Actions Big Change ♡") */}
+        {/* Bottom-Left Realistic Green Leaves Cluster */}
+        <div style={{ position: 'absolute', bottom: '-8px', left: '20px', zIndex: 2 }}>
+          <svg width="85" height="65" viewBox="0 0 100 80" fill="none">
+            <path d="M 10 70 Q 40 30 80 20 C 60 50 40 75 10 70 Z" fill="#2A5C47" stroke="#1D4233" strokeWidth="1.5" />
+            <path d="M 10 70 L 65 30" stroke="#4B886B" strokeWidth="2" />
+            <path d="M 5 60 Q 30 20 60 10 C 45 40 30 65 5 60 Z" fill="#366E56" opacity="0.9" />
+          </svg>
+        </div>
+
+        {/* Top-Right Realistic Green Leaves peaking over navbar */}
+        <div style={{ position: 'absolute', top: '-18px', right: '170px', zIndex: 2 }}>
+          <svg width="70" height="60" viewBox="0 0 80 70" fill="none">
+            <path d="M 15 60 C 15 25 50 5 65 10 C 70 35 45 65 15 60 Z" fill="#2E5F4A" stroke="#1C4031" strokeWidth="1" />
+            <path d="M 15 60 L 52 20" stroke="#508F71" strokeWidth="2" />
+          </svg>
+        </div>
+
+        {/* Top-Right Kraft Paper Sticky Note ("Small Actions Big Change ♡") */}
         <div
           style={{
             position: 'absolute',
-            top: '8px',
-            right: '25px',
-            background: '#D8BD9D',
-            padding: '0.4rem 0.65rem',
-            borderRadius: '4px',
-            transform: 'rotate(4deg)',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.25)',
+            top: '6px',
+            right: '20px',
+            background: '#D4B896',
+            padding: '0.45rem 0.75rem',
+            borderRadius: '3px',
+            transform: 'rotate(5deg)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
             fontFamily: "'Caveat', cursive, sans-serif",
-            fontSize: '0.78rem',
+            fontSize: '0.88rem',
             fontWeight: '700',
-            color: '#3D2A18',
+            color: '#382513',
             textAlign: 'center',
-            lineHeight: '1.1',
-            display: 'none',
-            '@media (minWidth: 1200px)': { display: 'block' }
+            lineHeight: '1.15',
+            zIndex: 12
           }}
         >
-          <div>Small Actions</div>
-          <div>Big Change ♡</div>
+          <div>Small</div>
+          <div>Actions</div>
+          <div>Big Change</div>
+          <div style={{ fontSize: '0.8rem', marginTop: '2px' }}>♡</div>
         </div>
 
-        {/* Top-Right Realistic Green Leaves background peak */}
-        <div style={{ position: 'absolute', top: '-15px', right: '160px', opacity: 0.85 }}>
-          <svg width="55" height="55" viewBox="0 0 55 55" fill="none">
-            <path d="M 10 45 C 10 20 35 5 45 10 C 50 30 30 50 10 45 Z" fill="#2D5A47" stroke="#1D3E30" strokeWidth="1"/>
-            <path d="M 10 45 L 38 18" stroke="#467B63" strokeWidth="1.5"/>
-          </svg>
-        </div>
-
-        {/* Bottom-Right Line-Art Recycling Symbol */}
-        <div style={{ position: 'absolute', bottom: '6px', right: '35px', opacity: 0.4 }}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round">
+        {/* Bottom-Right Line-Art Recycling Symbol Doodle */}
+        <div style={{ position: 'absolute', bottom: '6px', right: '35px', opacity: 0.5 }}>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round">
             <path d="M7 19l-4-4 4-4" />
             <path d="M3 15h11a4 4 0 0 0 4-4V9" />
             <path d="M17 5l4 4-4 4" />
@@ -105,7 +115,7 @@ export default function Navbar() {
           padding: '0.65rem 1.25rem',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
+          justify: 'space-between',
           minHeight: '82px'
         }}
       >
@@ -511,8 +521,8 @@ export default function Navbar() {
                 }}
               >
                 <span>Log In</span>
-                {/* Tiny Leaf Doodle Icon */}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C352D" strokeWidth="2" strokeLinecap="round">
+                {/* Line-Art Leaf Doodle Icon */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C352D" strokeWidth="1.8" strokeLinecap="round">
                   <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12 C22 6.5 17.5 2 12 2Z" fill="none" opacity="0.15"/>
                   <path d="M11 17 C 8 13 8 8 15 5 C 16 11 14 15 11 17 Z"/>
                 </svg>
