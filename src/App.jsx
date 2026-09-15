@@ -11,6 +11,8 @@ import PostWaste from './pages/PostWaste';
 import Matches from './pages/Matches';
 import Showcase from './pages/Showcase';
 import About from './pages/About';
+import Login from './pages/Login';
+import Admin from './pages/Admin';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -27,6 +29,8 @@ function AnimatedRoutes() {
         <Route path="/matches" element={<Matches />} />
         <Route path="/showcase" element={<Showcase />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );
