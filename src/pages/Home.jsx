@@ -22,7 +22,7 @@ export default function Home() {
         style={{
           padding: '4.5rem 1.5rem 5.5rem 1.5rem',
           position: 'relative',
-          background: 'var(--bg-offwhite, #FAF8F5)'
+          background: 'transparent'
         }}
       >
         <div className="container" style={{ maxWidth: '1180px' }}>
@@ -199,7 +199,9 @@ export default function Home() {
       <section
         id="how-it-works"
         style={{
-          background: 'var(--bg-pastel, #E8F0EA)',
+          background: 'rgba(232, 240, 234, 0.65)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           padding: '6rem 1.5rem',
           position: 'relative'
         }}
@@ -332,7 +334,7 @@ export default function Home() {
       {/* =========================================================================
          03. ABOUT CLEARBIN (MINIMAL 2-COLUMN WITH METRICS)
          ========================================================================= */}
-      <section style={{ padding: '6.5rem 1.5rem', background: 'var(--bg-offwhite, #FAF8F5)' }}>
+      <section style={{ padding: '6.5rem 1.5rem', background: 'transparent' }}>
         <div className="container">
           <div
             style={{
@@ -449,7 +451,9 @@ export default function Home() {
       <section
         id="waste-guide"
         style={{
-          background: 'var(--bg-pastel, #E8F0EA)',
+          background: 'rgba(232, 240, 234, 0.65)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           padding: '6rem 1.5rem'
         }}
       >
@@ -539,7 +543,7 @@ export default function Home() {
       {/* =========================================================================
          05. COMMUNITY IMPACT
          ========================================================================= */}
-      <section id="community" style={{ padding: '6.5rem 1.5rem', background: 'var(--bg-offwhite, #FAF8F5)' }}>
+      <section id="community" style={{ padding: '6.5rem 1.5rem', background: 'transparent' }}>
         <div className="container">
           <div
             style={{
@@ -622,7 +626,7 @@ export default function Home() {
         id="contact"
         style={{
           padding: '4rem 1.5rem 2.5rem 1.5rem',
-          background: 'var(--bg-offwhite, #FAF8F5)'
+          background: 'transparent'
         }}
       >
         <div className="container">
