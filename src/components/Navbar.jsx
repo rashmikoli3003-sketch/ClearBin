@@ -10,10 +10,21 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header style={{ position: 'relative', zIndex: 100, padding: '1.25rem 2rem 0.5rem 2rem', background: 'transparent' }}>
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        background: 'rgba(250, 248, 245, 0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid var(--border-light, #E2EAE4)',
+        padding: '0.85rem 1.5rem'
+      }}
+    >
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1200px',
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
@@ -22,166 +33,255 @@ export default function Navbar() {
           gap: '1rem'
         }}
       >
-        {/* Pinned White Paper Logo Badge */}
+        {/* Minimal Clean Logo */}
         <NavLink
           to="/"
           onClick={closeMenu}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
-            textDecoration: 'none',
-            background: 'var(--paper-white, #fdfbf7)',
-            padding: '0.5rem 1.25rem',
-            borderRadius: '12px',
-            boxShadow: 'var(--shadow-paper, 3px 12px 25px rgba(45, 30, 15, 0.18))',
-            border: '1.5px solid #e6dac8',
-            transform: 'rotate(-1deg)'
+            gap: '0.65rem',
+            textDecoration: 'none'
           }}
         >
-          <div style={{ width: '42px', height: '42px', background: 'var(--green-dark, #193f2d)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fdfbf7', fontSize: '1.4rem' }}>
+          <div
+            style={{
+              width: '38px',
+              height: '38px',
+              background: 'var(--primary-green, #1C352D)',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justify: 'center',
+              color: '#FFFFFF',
+              fontSize: '1.25rem'
+            }}
+          >
             🌱
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontFamily: 'var(--font-body)', fontSize: '1.65rem', fontWeight: '800', color: 'var(--green-dark, #193f2d)', lineHeight: 1 }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-heading)',
+                fontSize: '1.45rem',
+                fontWeight: '800',
+                color: 'var(--primary-green, #1C352D)',
+                lineHeight: 1
+              }}
+            >
               ClearBin
             </span>
-            <span className="handwritten" style={{ fontSize: '0.9rem', color: 'var(--green-leaf, #2e7d32)', fontWeight: 'bold' }}>
+            <span
+              style={{
+                fontSize: '0.75rem',
+                color: 'var(--text-muted, #5B7B6D)',
+                fontWeight: '600',
+                letterSpacing: '0.02em',
+                marginTop: '2px'
+              }}
+            >
               Sort Today. A Cleaner Tomorrow.
             </span>
           </div>
         </NavLink>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Menu Toggle */}
         <button
           className="mobile-toggle"
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
-          style={{ background: 'none', border: 'none', fontSize: '1.6rem', color: 'var(--green-dark, #193f2d)', cursor: 'pointer' }}
+          style={{
+            background: 'none',
+            border: 'none',
+            fontSize: '1.5rem',
+            color: 'var(--primary-green, #1C352D)',
+            cursor: 'pointer'
+          }}
         >
           {isOpen ? '✕' : '☰'}
         </button>
 
-        {/* Center Nav Links inside paper tabs */}
-        <nav className={`nav-links ${isOpen ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        {/* Navigation Items */}
+        <nav
+          className={`nav-links ${isOpen ? 'open' : ''}`}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem'
+          }}
+        >
           <NavLink
             to="/"
             end
             onClick={closeMenu}
             style={({ isActive }) => ({
-              background: isActive ? '#f4ecdc' : 'transparent',
-              color: 'var(--green-dark, #193f2d)',
-              padding: '0.4rem 1rem',
-              borderRadius: '6px',
-              fontWeight: '800',
+              background: isActive ? 'var(--bg-pastel, #E8F0EA)' : 'transparent',
+              color: 'var(--primary-green, #1C352D)',
+              padding: '0.45rem 0.9rem',
+              borderRadius: '20px',
+              fontWeight: isActive ? '700' : '600',
               fontSize: '0.9rem',
               textDecoration: 'none',
-              border: isActive ? '1px solid #d8c7ad' : '1px solid transparent'
+              transition: 'background 0.2s ease'
             })}
           >
             Home
           </NavLink>
-          <a href="#how-it-works" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
+
+          <a
+            href="#how-it-works"
+            onClick={closeMenu}
+            style={{
+              color: 'var(--text-muted, #5B7B6D)',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              padding: '0.45rem 0.85rem'
+            }}
+          >
             How It Works
           </a>
-          <a href="#waste-guide" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
+
+          <a
+            href="#waste-guide"
+            onClick={closeMenu}
+            style={{
+              color: 'var(--text-muted, #5B7B6D)',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              padding: '0.45rem 0.85rem'
+            }}
+          >
             Waste Guide
           </a>
-          <a href="#community" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
+
+          <a
+            href="#community"
+            onClick={closeMenu}
+            style={{
+              color: 'var(--text-muted, #5B7B6D)',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              padding: '0.45rem 0.85rem'
+            }}
+          >
             Community
           </a>
-          <NavLink to="/about" onClick={closeMenu} style={({ isActive }) => ({ color: 'var(--green-dark, #193f2d)', fontWeight: isActive ? '800' : '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' })}>
+
+          <NavLink
+            to="/about"
+            onClick={closeMenu}
+            style={({ isActive }) => ({
+              color: isActive ? 'var(--primary-green, #1C352D)' : 'var(--text-muted, #5B7B6D)',
+              background: isActive ? 'var(--bg-pastel, #E8F0EA)' : 'transparent',
+              fontWeight: isActive ? '700' : '600',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              padding: '0.45rem 0.85rem',
+              borderRadius: '20px'
+            })}
+          >
             About
           </NavLink>
-          <a href="#contact" onClick={closeMenu} style={{ color: 'var(--green-dark, #193f2d)', fontWeight: '700', fontSize: '0.9rem', textDecoration: 'none', padding: '0.4rem 0.85rem' }}>
+
+          <a
+            href="#contact"
+            onClick={closeMenu}
+            style={{
+              color: 'var(--text-muted, #5B7B6D)',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              textDecoration: 'none',
+              padding: '0.45rem 0.85rem'
+            }}
+          >
             Contact
           </a>
 
-          {/* EcoCraft AI Button */}
+          {/* AI Assist Pill */}
           <button
             onClick={() => {
               closeMenu();
               setIsAiModalOpen(true);
             }}
             style={{
-              background: '#9DBE9B',
-              border: 'none',
-              color: 'var(--green-dark, #193f2d)',
+              background: 'var(--bg-pastel, #E8F0EA)',
+              border: '1px solid var(--border-light, #E2EAE4)',
+              color: 'var(--primary-green, #1C352D)',
               borderRadius: '20px',
-              padding: '0.4rem 0.85rem',
-              fontSize: '0.8rem',
-              fontWeight: '800',
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.82rem',
+              fontWeight: '700',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.3rem'
+              gap: '0.35rem',
+              transition: 'all 0.2s ease',
+              marginLeft: '0.25rem'
             }}
             title="Open AI Waste Assistant"
           >
             <span>✨ AI Assist</span>
           </button>
 
-          {/* EcoPoints Button */}
+          {/* EcoPoints Rewards Pill */}
           <button
             onClick={() => {
               closeMenu();
               setIsRewardsOpen(true);
             }}
             style={{
-              background: 'var(--sticky-yellow, #f8ebb2)',
-              border: 'none',
-              color: 'var(--green-dark, #193f2d)',
+              background: '#F5ECE0',
+              border: '1px solid #EFE4D4',
+              color: '#8A5D28',
               borderRadius: '20px',
-              padding: '0.4rem 0.85rem',
-              fontSize: '0.8rem',
-              fontWeight: '800',
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.82rem',
+              fontWeight: '700',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.3rem'
+              gap: '0.35rem',
+              transition: 'all 0.2s ease'
             }}
             title="View EcoPoints Rewards"
           >
             <span>🌟 {ecoPoints} pts</span>
           </button>
 
-          {/* CTA: Dark Forest Green Pill Button */}
+          {/* Schedule Pickup Primary CTA */}
           <NavLink
             to="/post"
             onClick={closeMenu}
+            className="btn btn-primary"
             style={{
-              background: 'var(--green-dark, #193f2d)',
-              color: 'var(--paper-white, #fdfbf7)',
-              padding: '0.65rem 1.4rem',
-              borderRadius: '50px',
-              fontWeight: '800',
-              fontSize: '0.9rem',
-              textDecoration: 'none',
-              boxShadow: '0 4px 14px rgba(25, 63, 45, 0.35)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              marginLeft: '0.5rem'
+              padding: '0.55rem 1.35rem',
+              fontSize: '0.88rem',
+              marginLeft: '0.35rem'
             }}
           >
             Schedule Pickup
           </NavLink>
 
-          {/* Circular Profile Button */}
+          {/* User Profile Avatar */}
           <div
             title="User Profile"
             style={{
-              width: '38px',
-              height: '38px',
+              width: '36px',
+              height: '36px',
               borderRadius: '50%',
-              background: 'var(--green-dark, #193f2d)',
-              color: '#fdfbf7',
+              background: 'var(--bg-pastel, #E8F0EA)',
+              border: '1px solid var(--border-light, #E2EAE4)',
+              color: 'var(--primary-green, #1C352D)',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
-              fontWeight: '800',
-              fontSize: '1rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-              cursor: 'pointer'
+              fontWeight: '700',
+              fontSize: '0.95rem',
+              cursor: 'pointer',
+              marginLeft: '0.25rem'
             }}
           >
             👤
