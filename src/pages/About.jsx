@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { TornEdgeMultiLayerTop, TornEdgeMultiLayerBottom } from '../components/TornEdge';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { PaperSheet } from '../components/Scrapbook/PaperSheet';
 import { PaperClip, WashiTape } from '../components/Scrapbook/Fasteners';
@@ -70,7 +69,6 @@ export default function About() {
       </div>
 
       {/* 2. Problem Statement & Mission Cards on Multi-Layered Torn Parchment */}
-      <TornEdgeMultiLayerTop fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
       <section className="parchment-section">
         <div className="container reveal-on-scroll">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', marginBottom: '1rem' }}>
@@ -118,7 +116,6 @@ export default function About() {
           </div>
         </div>
       </section>
-      <TornEdgeMultiLayerBottom fillBack="#8BB096" fillMid="#4D8B55" fillFront="#F4ECD8" height={60} />
 
       {/* 3. Two-Column "Get In Touch" Contact Form Section */}
       <div className="container reveal-on-scroll" style={{ padding: '3.5rem 1.5rem' }}>

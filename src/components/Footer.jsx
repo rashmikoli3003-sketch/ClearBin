@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TornEdgeMultiLayerTop } from './TornEdge';
 
 export default function Footer() {
   return (
-    <>
-      <TornEdgeMultiLayerTop fillBack="#789B62" fillMid="#245C48" fillFront="#173F35" height={55} />
-      <footer className="footer" style={{ background: '#173F35', color: '#F5F0E6', padding: '4rem 0 2rem 0', position: 'relative', overflow: 'hidden' }}>
+    <footer className="footer" style={{ background: '#173F35', color: '#F5F0E6', padding: '4rem 0 2rem 0', position: 'relative', overflow: 'hidden' }}>
         {/* Semi-transparent CLEARBIN Background Watermark */}
         <div style={{ position: 'absolute', bottom: '-20px', right: '-30px', fontSize: '10rem', fontFamily: 'var(--font-heading)', opacity: 0.04, color: '#FFFDF7', pointerEvents: 'none', select: 'none', fontWeight: '900', lineHeight: 1 }}>
           CLEARBIN
@@ -95,6 +92,5 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-    </>
   );
 }
