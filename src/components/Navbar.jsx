@@ -26,176 +26,50 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        background: '#14382E', // Deep Forest Green Background matching Image 2
-        backgroundImage: `radial-gradient(circle at 50% 40%, #1A463A 0%, #103027 100%)`,
-        padding: '2.2rem 1.5rem 2.8rem 1.5rem', // Generous padding to display all scrapbook elements
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.45)',
-        overflow: 'visible'
+        width: '100%',
+        /* Use the reference image itself as the full visual background & layout */
+        backgroundImage: "url('/assets/header_scrapbook_reference.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '190px',
+        display: 'flex',
+        alignItems: 'center',
+        justify: 'center',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
+        position: 'relative'
       }}
     >
-      {/* SCRAPBOOK DECORATIONS (Leaves, Kraft Sticky Note, Tape, Doodles) */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
-        {/* Top-Left Line-Art 3-Leaf Stem Doodle */}
-        <div style={{ position: 'absolute', top: '14px', left: '18px', opacity: 0.85 }}>
-          <svg width="70" height="80" viewBox="0 0 60 70" fill="none">
-            <path d="M15 60 Q 25 30 45 10" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M 22 45 Q 10 35 15 25 Q 30 30 22 45 Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1.6" fill="none"/>
-            <path d="M 32 30 Q 20 20 25 10 Q 40 15 32 30 Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1.6" fill="none"/>
-          </svg>
-        </div>
-
-        {/* Bottom-Left Ripped Kraft Paper Flap */}
-        <div style={{ position: 'absolute', bottom: '-4px', left: '-10px', zIndex: 2 }}>
-          <svg width="220" height="55" viewBox="0 0 220 55" fill="none">
-            <path d="M0,55 L0,15 Q30,35 60,10 Q90,40 130,20 Q170,45 220,5 L220,55 Z" fill="#C4A37A" opacity="0.9" />
-          </svg>
-        </div>
-
-        {/* Bottom-Left Realistic Green Leaves Cluster */}
-        <div style={{ position: 'absolute', bottom: '10px', left: '30px', zIndex: 3 }}>
-          <svg width="110" height="85" viewBox="0 0 110 85" fill="none">
-            <path d="M 15 75 Q 45 35 95 25 C 75 58 45 80 15 75 Z" fill="#2E6B50" stroke="#1D4A36" strokeWidth="1.5" />
-            <path d="M 15 75 L 75 35" stroke="#549E7B" strokeWidth="2.2" />
-            <path d="M 8 65 Q 35 25 70 12 C 50 45 35 70 8 65 Z" fill="#3D8263" opacity="0.9" />
-          </svg>
-        </div>
-
-        {/* Top-Right Realistic Green Leaves peaking over navbar */}
-        <div style={{ position: 'absolute', top: '2px', right: '190px', zIndex: 2 }}>
-          <svg width="80" height="70" viewBox="0 0 80 70" fill="none">
-            <path d="M 15 65 C 15 25 55 5 72 12 C 78 38 50 68 15 65 Z" fill="#2E6B50" stroke="#1D4A36" strokeWidth="1.5" />
-            <path d="M 15 65 L 58 22" stroke="#549E7B" strokeWidth="2.2" />
-          </svg>
-        </div>
-
-        {/* Top-Right Kraft Paper Sticky Note ("Small Actions Big Change ♡") */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '8px',
-            right: '25px',
-            background: '#D1AF84',
-            padding: '0.6rem 0.95rem',
-            borderRadius: '3px',
-            transform: 'rotate(6.5deg)',
-            boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
-            fontFamily: "'Caveat', cursive, sans-serif",
-            fontSize: '0.98rem',
-            fontWeight: '700',
-            color: '#362312',
-            textAlign: 'center',
-            lineHeight: '1.15',
-            zIndex: 30,
-            border: '1px solid #B8966C'
-          }}
-        >
-          <div>Small</div>
-          <div>Actions</div>
-          <div>Big Change</div>
-          <div style={{ fontSize: '0.9rem', marginTop: '2px' }}>♡</div>
-        </div>
-
-        {/* Bottom-Right White Line-Art Recycling Symbol Doodle */}
-        <div style={{ position: 'absolute', bottom: '12px', right: '40px', opacity: 0.6, zIndex: 2 }}>
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 19l-4-4 4-4" />
-            <path d="M3 15h11a4 4 0 0 0 4-4V9" />
-            <path d="M17 5l4 4-4 4" />
-            <path d="M21 9H10a4 4 0 0 0-4 4v2" />
-          </svg>
-        </div>
-      </div>
-
-      {/* CONTINUOUS CREAM RECYCLED PAPER STRIP */}
+      {/* Interactive HTML Hotspot Container aligned over the cream paper strip in the background image */}
       <div
         style={{
-          position: 'relative',
-          zIndex: 10,
-          maxWidth: '1280px',
+          maxWidth: '1240px',
+          width: '94%',
+          height: '74px',
           margin: '0 auto',
-          background: '#F5F0E6', // Warm recycled-paper cream
-          transform: 'rotate(-0.3deg)',
-          /* Hand-torn deckled edges top and bottom */
-          clipPath:
-            'polygon(0% 4px, 1.5% 0px, 3.5% 5px, 6% 1px, 9% 4px, 12% 0px, 15% 4px, 19% 1px, 23% 5px, 27% 1px, 31% 4px, 35% 0px, 40% 4px, 45% 1px, 50% 4px, 55% 0px, 60% 5px, 65% 1px, 70% 4px, 75% 0px, 80% 4px, 85% 1px, 90% 5px, 95% 1px, 98% 4px, 100% 0px, 100% calc(100% - 4px), 98.5% 100%, 96% calc(100% - 5px), 93% 100%, 89% calc(100% - 4px), 85% 100%, 81% calc(100% - 5px), 77% 100%, 72% calc(100% - 4px), 67% 100%, 62% calc(100% - 5px), 57% 100%, 52% calc(100% - 4px), 47% 100%, 42% calc(100% - 5px), 37% 100%, 32% calc(100% - 4px), 27% 100%, 22% calc(100% - 5px), 17% 100%, 12% calc(100% - 4px), 7% 100%, 3% calc(100% - 5px), 0% 100%)',
-          boxShadow: '0 12px 36px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.25)',
-          padding: '0.75rem 1.35rem',
           display: 'flex',
           alignItems: 'center',
           justify: 'space-between',
-          minHeight: '76px'
+          position: 'relative',
+          transform: 'translateY(-10px)'
         }}
       >
-        {/* Semi-transparent Washi Tape Strip at top-left corner */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-12px',
-            left: '40px',
-            width: '72px',
-            height: '24px',
-            background: 'rgba(238, 224, 204, 0.88)',
-            transform: 'rotate(-7deg)',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.18)',
-            zIndex: 25,
-            borderLeft: '1.5px dashed rgba(175,155,125,0.6)',
-            borderRight: '1.5px dashed rgba(175,155,125,0.6)'
-          }}
-        />
-
-        {/* LOGO (Far Left) */}
+        {/* LOGO HOTSPOT (Far Left) */}
         <NavLink
           to="/"
           onClick={closeMenu}
+          title="ClearBin Home"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.7rem',
+            width: '210px',
+            height: '60px',
             textDecoration: 'none',
-            zIndex: 20
+            opacity: 0, // Visual comes from background image; hotspot handles hover & clicks
+            cursor: 'pointer'
           }}
         >
-          <div
-            style={{
-              width: '42px',
-              height: '42px',
-              background: '#1C352D',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justify: 'center',
-              color: '#FFFFFF',
-              fontSize: '1.35rem',
-              boxShadow: '0 3px 8px rgba(28, 53, 45, 0.3)'
-            }}
-          >
-            🌱
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span
-              style={{
-                fontFamily: "'Outfit', 'Plus Jakarta Sans', sans-serif",
-                fontSize: '1.55rem',
-                fontWeight: '800',
-                color: '#1C352D',
-                lineHeight: 1,
-                letterSpacing: '-0.02em'
-              }}
-            >
-              ClearBin
-            </span>
-            <span
-              style={{
-                fontSize: '0.72rem',
-                color: '#5B7B6D',
-                fontWeight: '600',
-                letterSpacing: '0.01em',
-                marginTop: '3px'
-              }}
-            >
-              Sort Today. A Cleaner Tomorrow.
-            </span>
-          </div>
+          <span style={{ fontSize: '0.1px' }}>ClearBin - Sort Today. A Cleaner Tomorrow.</span>
         </NavLink>
 
         {/* Mobile Menu Toggle Button */}
@@ -204,28 +78,32 @@ export default function Navbar() {
           onClick={toggleMenu}
           aria-label="Toggle navigation menu"
           style={{
-            background: 'none',
-            border: 'none',
-            fontSize: '1.6rem',
+            background: '#F5F0E6',
+            border: '1px solid #D8CEBE',
+            borderRadius: '8px',
+            fontSize: '1.4rem',
             color: '#1C352D',
             cursor: 'pointer',
-            padding: '0.25rem 0.5rem'
+            padding: '0.25rem 0.6rem',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+            zIndex: 30
           }}
         >
           {isOpen ? '✕' : '☰'}
         </button>
 
-        {/* MAIN NAVIGATION & ACTION ITEMS */}
+        {/* MAIN NAVIGATION & ACTION HOTSPOTS */}
         <nav
           className={`nav-links ${isOpen ? 'open' : ''}`}
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1.35rem'
+            gap: '1rem',
+            height: '100%'
           }}
         >
           {/* NAVIGATION LINKS */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             {/* Home */}
             <NavLink
               to="/"
@@ -233,35 +111,17 @@ export default function Navbar() {
               onClick={closeMenu}
               style={({ isActive }) => ({
                 color: '#1C352D',
-                fontWeight: isActive ? '700' : '600',
+                fontWeight: '700',
                 fontSize: '0.92rem',
                 textDecoration: 'none',
-                position: 'relative',
-                padding: '0.35rem 0.8rem',
+                padding: '0.4rem 0.8rem',
                 borderRadius: '6px',
-                background: isActive ? '#D8E5DB' : 'transparent',
-                boxShadow: isActive ? '0 2px 6px rgba(0,0,0,0.06)' : 'none',
+                cursor: 'pointer',
+                opacity: isActive ? 1 : 0.85,
                 transition: 'all 0.15s ease'
               })}
             >
-              {({ isActive }) => (
-                <>
-                  <span>Home</span>
-                  {isActive && (
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: '2px',
-                        left: '12%',
-                        right: '12%',
-                        height: '2.5px',
-                        background: '#1C352D',
-                        borderRadius: '2px'
-                      }}
-                    />
-                  )}
-                </>
-              )}
+              <span style={{ opacity: 0 }}>Home</span>
             </NavLink>
 
             {/* How It Works */}
@@ -273,7 +133,9 @@ export default function Navbar() {
                 fontWeight: '600',
                 fontSize: '0.92rem',
                 textDecoration: 'none',
-                padding: '0.35rem 0.65rem'
+                padding: '0.4rem 0.75rem',
+                opacity: 0,
+                cursor: 'pointer'
               }}
             >
               How It Works
@@ -288,7 +150,9 @@ export default function Navbar() {
                 fontWeight: '600',
                 fontSize: '0.92rem',
                 textDecoration: 'none',
-                padding: '0.35rem 0.65rem'
+                padding: '0.4rem 0.75rem',
+                opacity: 0,
+                cursor: 'pointer'
               }}
             >
               Waste Guide
@@ -298,15 +162,15 @@ export default function Navbar() {
             <NavLink
               to="/showcase"
               onClick={closeMenu}
-              style={({ isActive }) => ({
+              style={{
                 color: '#1C352D',
-                fontWeight: isActive ? '700' : '600',
+                fontWeight: '600',
                 fontSize: '0.92rem',
                 textDecoration: 'none',
-                padding: '0.35rem 0.8rem',
-                borderRadius: '6px',
-                background: isActive ? '#D8E5DB' : 'transparent'
-              })}
+                padding: '0.4rem 0.75rem',
+                opacity: 0,
+                cursor: 'pointer'
+              }}
             >
               Community
             </NavLink>
@@ -315,119 +179,95 @@ export default function Navbar() {
             <NavLink
               to="/about"
               onClick={closeMenu}
-              style={({ isActive }) => ({
+              style={{
                 color: '#1C352D',
-                fontWeight: isActive ? '700' : '600',
+                fontWeight: '600',
                 fontSize: '0.92rem',
                 textDecoration: 'none',
-                padding: '0.35rem 0.8rem',
-                borderRadius: '6px',
-                background: isActive ? '#D8E5DB' : 'transparent'
-              })}
+                padding: '0.4rem 0.75rem',
+                opacity: 0,
+                cursor: 'pointer'
+              }}
             >
               About
             </NavLink>
           </div>
 
-          {/* DIVIDER ACCENT */}
-          <div style={{ width: '1px', height: '26px', background: '#D8CEBE', margin: '0 0.25rem' }} />
-
-          {/* ACTION LABELS & BUTTONS */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            {/* AI ASSIST (Pale Sage Paper Tag) */}
+          {/* ACTION BUTTON HOTSPOTS */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            {/* AI ASSIST HOTSPOT */}
             <button
               onClick={() => {
                 closeMenu();
                 setIsAiModalOpen(true);
               }}
               style={{
-                background: '#E3ECE5',
-                border: '1px solid #CBDCD0',
-                color: '#1C352D',
-                borderRadius: '8px',
-                padding: '0.45rem 0.9rem',
-                fontSize: '0.85rem',
-                fontWeight: '700',
+                background: 'transparent',
+                border: 'none',
+                width: '100px',
+                height: '40px',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
-                transition: 'transform 0.15s ease'
+                opacity: 0
               }}
               title="Open AI Waste Assistant"
             >
-              <span style={{ color: '#5B7B6D' }}>✨</span>
-              <span>AI Assist</span>
+              ✨ AI Assist
             </button>
 
-            {/* ECOPOINTS (Mustard / Kraft Paper Tag) */}
+            {/* ECOPOINTS HOTSPOT */}
             <button
               onClick={() => {
                 closeMenu();
                 setIsRewardsOpen(true);
               }}
               style={{
-                background: '#EFE2CA',
-                border: '1px solid #E1D1AF',
-                color: '#755420',
-                borderRadius: '8px',
-                padding: '0.45rem 0.9rem',
-                fontSize: '0.85rem',
-                fontWeight: '700',
+                background: 'transparent',
+                border: 'none',
+                width: '90px',
+                height: '40px',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                boxShadow: '0 2px 5px rgba(0,0,0,0.05)',
-                transition: 'transform 0.15s ease'
+                opacity: 0
               }}
-              title="View EcoPoints Rewards"
+              title={`View Rewards (${ecoPoints} pts)`}
             >
-              <span>⭐</span>
-              <span>{ecoPoints} pts</span>
+              ⭐ {ecoPoints} pts
             </button>
 
-            {/* POST WASTE (Terracotta 3D Button / Paper Label) */}
+            {/* POST WASTE HOTSPOT */}
             <NavLink
               to="/post"
               onClick={closeMenu}
+              title="Post Waste Item"
               style={{
-                background: '#D05E35',
-                color: '#FFFFFF',
-                padding: '0.6rem 1.45rem',
-                borderRadius: '10px',
-                fontWeight: '700',
-                fontSize: '0.92rem',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                boxShadow: '0 4px 12px rgba(208, 94, 53, 0.4), 0 2px 4px rgba(0,0,0,0.12)',
-                border: '1px solid #B84F28',
-                transition: 'transform 0.15s ease, boxShadow 0.15s ease'
+                background: 'transparent',
+                width: '125px',
+                height: '45px',
+                display: 'inline-block',
+                cursor: 'pointer',
+                opacity: 0
               }}
             >
-              <span>+</span>
-              <span>Post Waste</span>
+              + Post Waste
             </NavLink>
 
-            {/* LOGIN / PROFILE */}
+            {/* LOGIN / PROFILE CONTROL */}
             {currentUser ? (
               <div style={{ position: 'relative' }}>
                 <button
                   onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                   style={{
-                    background: 'transparent',
-                    border: 'none',
-                    padding: '0.4rem 0.6rem',
+                    background: '#F5F0E6',
+                    border: '1px solid #D8CEBE',
+                    borderRadius: '20px',
+                    padding: '0.35rem 0.75rem',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
+                    gap: '0.35rem',
                     cursor: 'pointer',
                     fontWeight: '700',
-                    fontSize: '0.88rem',
-                    color: '#1C352D'
+                    fontSize: '0.84rem',
+                    color: '#1C352D',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                   }}
                 >
                   <span>{currentUser.avatar || '👤'}</span>
@@ -440,11 +280,11 @@ export default function Navbar() {
                     style={{
                       position: 'absolute',
                       right: 0,
-                      top: '110%',
+                      top: '115%',
                       background: '#F5F0E6',
                       border: '1px solid #D8CEBE',
                       borderRadius: '12px',
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
                       width: '210px',
                       padding: '0.75rem',
                       zIndex: 150
@@ -516,23 +356,16 @@ export default function Navbar() {
               <NavLink
                 to="/login"
                 onClick={closeMenu}
+                title="Log In"
                 style={{
-                  color: '#1C352D',
-                  fontWeight: '700',
-                  fontSize: '0.92rem',
-                  textDecoration: 'none',
-                  padding: '0.4rem 0.75rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.4rem'
+                  width: '80px',
+                  height: '40px',
+                  display: 'inline-block',
+                  cursor: 'pointer',
+                  opacity: 0
                 }}
               >
-                <span>Log In</span>
-                {/* Line-Art Leaf Doodle Icon */}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C352D" strokeWidth="1.8" strokeLinecap="round">
-                  <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12 C22 6.5 17.5 2 12 2Z" fill="none" opacity="0.15"/>
-                  <path d="M11 17 C 8 13 8 8 15 5 C 16 11 14 15 11 17 Z"/>
-                </svg>
+                Log In
               </NavLink>
             )}
           </div>
